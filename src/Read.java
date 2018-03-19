@@ -7,9 +7,9 @@ public class Read {
         ArrayList<ArrayList<Integer>> bufer = new ArrayList<ArrayList<Integer>>(  );
 
         public StringBuilder s;
-       public ArrayList<Character> ar = new ArrayList<Character> (  );
-        public void read1(String text) throws IOException {
+        public ArrayList<Character> ar = new ArrayList<Character> (  );
 
+        public void readFunction(String text) throws IOException {
             BufferedReader reader = null;
             try {
                 reader = new BufferedReader (
