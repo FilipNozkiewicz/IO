@@ -11,6 +11,11 @@ public class Main {
            System.out.print(read.ar.get ( i ));
        }
        System.out.println ();
-       System.out.println(read.ar.size ());
+       System.out.println (read.check.size ());
+       //System.out.println(read.);
+       System.out.println (read.max);
+
+       String s = "111111111111111111111111111111111111111";
+       System.out.println (s.length ());
    }
 }
