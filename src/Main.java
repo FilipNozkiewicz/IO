@@ -17,5 +17,8 @@ public class Main {
 
        String s = "111111111111111111111111111111111111111";
        System.out.println (s.length ());
+      
+       MapGenerator mapGenerator = new MapGenerator();
+       mapGenerator.generate();
    }
 }
