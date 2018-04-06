@@ -24,7 +24,7 @@ public class MapGenerator {
             for (int j = 0; j < placeLimit; j++) // pionowo(/,y)
             {
                 if (i == placeLimit - 1) { //chce uniknąć by kolumna 50 nie miała dalej na lewo nic
-                    city[i][j][0] = 0;
+                    city[i][j][0] = 0; // brak wagi horyznotalnej na ostatniej kolumnie macierzy
                 } else {
                     city[i][j][0] = 1 + random.nextInt(9);
                 }
