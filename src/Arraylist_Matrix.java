@@ -27,10 +27,21 @@ public class Arraylist_Matrix {
             }
         }
     }
+    public static void ch(){
+        for(ArrayList<Integer> x  : ar){  // dla kazeej arrraylisty w obiekcie ar
+            for(int y : x){   // dla kazdego elementu tej arraylisty z poprzedniej petli
+                // wypisanie za pomoaca petli for each bardzie wygodne tez zalecane :) :) :)
+                y = 2;
+
+            }
+
+        }
+    }
     public static void print(){
         for(ArrayList<Integer> x  : ar){  // dla kazeej arrraylisty w obiekcie ar
             for(int y : x){   // dla kazdego elementu tej arraylisty z poprzedniej petli
                 // wypisanie za pomoaca petli for each bardzie wygodne tez zalecane :) :) :)
+
                 System.out.print(y);
                 System.out.print('\t');
             }
@@ -42,6 +53,7 @@ public class Arraylist_Matrix {
 
         Arraylist_Matrix t = new Arraylist_Matrix ();
         t.matrix ( 5,5 );
+        t.ch();
         t.print ();
         // przyklad pobrania elementu macierzy(2,3);
         System.out.println (t.ar.get ( 2 ).get ( 3 ));
