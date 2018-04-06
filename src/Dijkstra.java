@@ -5,6 +5,8 @@ public class Dijkstra {
 
     public static void main(String[] args){
 
+        System.out.println ("/////////////////////////////DIJKSTRA /////////////////////////////////////////");
+
         Scanner scanner = new Scanner (System.in);
         Random random = new Random (  );
         int[][] matrix = new int[5][5];
