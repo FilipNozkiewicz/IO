@@ -3,7 +3,7 @@ import java.util.Collections;
 
 public class Dijkstra_Proper {
 
-    public  ArrayList<Integer> distance;
+    public ArrayList<Integer> distance;
     public ArrayList<Integer> visited;
     public ArrayList<Integer> path;
 
@@ -32,8 +32,10 @@ public class Dijkstra_Proper {
       for(int i = 0 ; i < dlugosc ; i++){
             distance.set ( i , matrix.get ( 0 ).get ( i ) );
       }
+
+
       distance.set ( 0 , 0 );
-        visited.set ( 0,0 );
+      visited.set ( 0,0 );
 
       for(int i = 0 ; i < dlugosc ; i++){
           min = 999;
