@@ -1,5 +1,3 @@
-import com.sun.jdi.event.MethodExitEvent;
-
 import java.io.*;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -7,7 +5,7 @@ import java.util.ArrayList;
 public class Read {
 
 
-        ArrayList<ArrayList<Integer>> bufer = new ArrayList<ArrayList<Integer>>(  );
+    ArrayList <ArrayList<Integer>> bufer = new ArrayList<ArrayList<Integer>>(  );
     public int max;
     public int k;
     public  ArrayList<Integer> check = new ArrayList<Integer> (  );

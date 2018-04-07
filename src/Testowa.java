@@ -6,6 +6,7 @@ public class Testowa {
     public ArrayList<ArrayList<Integer>> matrix;
 
     public ArrayList<ArrayList<Integer>> alokuj(){
+
         matrix = new ArrayList<ArrayList<Integer>> (  );
 
         ArrayList<Integer> zero = new ArrayList<Integer> ( 5 );
@@ -44,32 +45,32 @@ public class Testowa {
        fourth.add ( 60 );
        fourth.add ( 0 );
 
-      matrix.add (0, zero);
-      matrix.add (1, first);
-      matrix.add ( 2,second);
-      matrix.add (3,third);
-      matrix.add (4,fourth);
+       matrix.add (0, zero);
+       matrix.add (1, first);
+       matrix.add ( 2,second);
+       matrix.add (3,third);
+       matrix.add (4,fourth);
 
-      return matrix;
+       return matrix;
     }
     public static void main(String[] args){
 
         Testowa testowa = new Testowa ();
         testowa.alokuj ();
 
-       Dijkstra_Proper dijkstra_proper = new Dijkstra_Proper ();
+        Dijkstra_Proper dijkstra_proper = new Dijkstra_Proper ();
 
-       for(ArrayList<Integer> x: testowa.alokuj ()){
+        for(ArrayList<Integer> x: testowa.alokuj ()){
            for(Integer  y : x){
                System.out.print (y + "\t");
            }
            System.out.println ();
-       }
+        }
 
-       dijkstra_proper.dijkstra ( testowa.alokuj () );
+        dijkstra_proper.dijkstra ( testowa.alokuj () );
 
 
-       dijkstra_proper.print_distance ();
+        dijkstra_proper.print_distance ();
 
         dijkstra_proper.print_path ();
 

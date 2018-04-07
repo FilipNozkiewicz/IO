@@ -11,7 +11,7 @@ public class Arraylist_Matrix {
 
     // zasada jest taka ze tworze arrayliste arraylist i daje jej jakis typ zmiennej
 
-    public  static  Random r  = new Random (  );
+    public  static  Random random = new Random (  );
 
 
 
@@ -22,21 +22,12 @@ public class Arraylist_Matrix {
             ar.add ( i , new ArrayList<Integer>() );  // waze jest zeby za kazda iteracja dodac nowa arayliste
             for(int j = 0 ; j < b ; j++ ){
 
-                ar.get ( i ).add ( j , r.nextInt ( 10 ) );
+                ar.get ( i ).add ( j ,random.nextInt ( 10 ));
                 // nastepnie do elementow dodanej arraylisty dodajemy kolejne elementy
             }
         }
     }
-    public static void ch(){
-        for(ArrayList<Integer> x  : ar){  // dla kazeej arrraylisty w obiekcie ar
-            for(int y : x){   // dla kazdego elementu tej arraylisty z poprzedniej petli
-                // wypisanie za pomoaca petli for each bardzie wygodne tez zalecane :) :) :)
-                y = 2;
 
-            }
-
-        }
-    }
     public static void print(){
         for(ArrayList<Integer> x  : ar){  // dla kazeej arrraylisty w obiekcie ar
             for(int y : x){   // dla kazdego elementu tej arraylisty z poprzedniej petli
@@ -51,12 +42,11 @@ public class Arraylist_Matrix {
 
     public static void main(String[] args){
 
-        Arraylist_Matrix t = new Arraylist_Matrix ();
-        t.matrix ( 5,5 );
-        t.ch();
-        t.print ();
+        Arraylist_Matrix temp = new Arraylist_Matrix ();
+        temp.matrix ( 5,5 );
+        temp.print ();
         // przyklad pobrania elementu macierzy(2,3);
-        System.out.println (t.ar.get ( 2 ).get ( 3 ));
+        System.out.println (temp.ar.get ( 2 ).get ( 3 ));
 
     }
 }
