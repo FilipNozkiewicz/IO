@@ -4,14 +4,12 @@ import java.util.Random;
 
 public class Parcel {
     public Coordinates  address = new Coordinates(); //współrzędna x,y
-    int  driver; //numer kierowcy (1 do N) - po numerach będzie łatwiej niż po imionach
+
     Timestamp order = new Timestamp(System.currentTimeMillis()); //obecny czas
-    int numberOfDrivers = 3; //ilość kierowców która u nas pracuje
     int coordinatesX = 50;
     int coordinatesY = 50;
 
     public static ArrayList<Parcel> parcels = new ArrayList<Parcel> ();//współrzędna x,y
-    int numberOfParcels = 5; //ustawie losowanie 5 paczek z myślą że losuje nowe w momencie gdy zjedzie
 
     Random random = new Random();
 
@@ -20,23 +18,13 @@ public class Parcel {
         int y = random.nextInt(coordinatesX);
         address.setX(x);
         address.setY(y);
-        driver = random.nextInt(numberOfDrivers) + 1;
     }
 
-    public Parcel(int x, int y, int driver) { // teraz dodam taką by deklarować kierowce
+    public Parcel(int x, int y) {
         address.setX(x);
         address.setY(y);
-        this.driver = driver;
-    }
-    public Parcel(int x, int y ) { // teraz dodam taką by go losowa
-        address.setX(x);
-        address.setY(y);
-        driver = random.nextInt(numberOfDrivers) + 1;
     }
 
-    public int getDriver() {
-        return driver;
-    }
 
     public Timestamp getOrder() {
         return order;
@@ -46,8 +34,7 @@ public class Parcel {
         String coordinates = new String();
         coordinates = getOrder() +
                 " Coordinates: ( " +
-                address.getX() + (" , ") + address.getY() + (" )") +
-                " Driver number: " + getDriver();
+                address.getX() + (" , ") + address.getY() + (" )") ;
         return coordinates;
     }
 
