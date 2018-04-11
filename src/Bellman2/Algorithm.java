@@ -3,7 +3,7 @@ package Bellman2;
 import java.util.*;
 
 public class Algorithm {
-
+int wtf = 2;
     final int infinity = 999;
     List<Vertex> vlist;
     List<Integer> distance;
