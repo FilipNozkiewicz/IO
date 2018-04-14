@@ -13,17 +13,25 @@ public class ArraysGenerator {
     // zasada jest taka ze tworze arrayliste arraylist i daje jej jakis typ zmiennej
 
     public  static Random random = new Random (  );
-    private int weight = 10;
+    private int weight = 9;
 
 
     public void matrix(int a , int b){
         // macierz tworze normalnie w petli
-        for(int i = 0 ; i < a ; i++ ){
+        for(int i = 0 ; i < a; i++ ){
             horizonatal.add ( i , new ArrayList<Integer>() );  // wazme jest zeby za kazda iteracja dodac nowa arayliste
             vertical.add ( i , new ArrayList<Integer>() );
-            for(int j = 0 ; j < b ; j++ ){
-                horizonatal.get ( i ).add ( j ,random.nextInt ( weight ));// nastepnie do elementow dodanej arraylisty dodajemy kolejne elementy
-                vertical.get ( i ).add ( j ,random.nextInt ( weight ));
+            for(int j = 0 ; j < b ; j++ ) {
+                if (j == a - 1) {
+                    horizonatal.get(i).add(j, 0);// nastepnie do elementow dodanej arraylisty dodajemy kolejne elementy
+                } else{
+                    horizonatal.get(i).add(j, random.nextInt(weight) + 1);// nastepnie do elementow dodanej arraylisty dodajemy kolejne elementy
+                }
+                if (i == a - 1) {
+                    vertical.get(i).add(j, 0);// nastepnie do elementow dodanej arraylisty dodajemy kolejne elementy
+                } else{
+                    vertical.get(i).add(j, random.nextInt(weight)+ 1);;// nastepnie do elementow dodanej arraylisty dodajemy kolejne elementy
+                }
             }
         }
     }
@@ -36,7 +44,7 @@ public class ArraysGenerator {
         return vertical;
     }
 
-    public static void print(ArrayList<ArrayList<Integer>> temp){
+    public void print(ArrayList<ArrayList<Integer>> temp){
         for(ArrayList<Integer> x  : temp){  // dla kazeej arrraylisty w obiekcie ar
             for(int y : x){   // dla kazdego elementu tej arraylisty z poprzedniej petli
                 // wypisanie za pomoaca petli for each bardzie wygodne tez zalecane :) :) :)
