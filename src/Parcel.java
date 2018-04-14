@@ -1,9 +1,10 @@
+import java.awt.*;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Parcel {
-    public Coordinates  address = new Coordinates(); //współrzędna x,y
+    public Point address = new Point(); //współrzędna x,y
 
     Timestamp order = new Timestamp(System.currentTimeMillis()); //obecny czas
     int coordinatesX = 50;
@@ -15,14 +16,12 @@ public class Parcel {
 
     public Parcel() { // randomowo tworzymy ze wszystkim
         int x = random.nextInt(coordinatesX);
-        int y = random.nextInt(coordinatesX);
-        address.setX(x);
-        address.setY(y);
+        int y = random.nextInt(coordinatesY);
+        address.setLocation(x,y);;
     }
 
     public Parcel(int x, int y) {
-        address.setX(x);
-        address.setY(y);
+        address.setLocation(x,y);
     }
 
 

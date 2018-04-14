@@ -10,7 +10,6 @@ public class ParcelsGenerator {
     public void generateParcels(int numberOfParcels) {
         for(int i= 0; i < numberOfParcels ;i++){
             parcels.add(new Parcel());
-
         }
     }
         public void writeParcels(){
