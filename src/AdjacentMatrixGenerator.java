@@ -18,16 +18,16 @@ public class AdjacentMatrixGenerator {
         }
         for(int i = 0 ; i < numberOfNeighbors; i++ ){
             for(int j = 0 ; j < numberOfNeighbors ; j++ ){// nastepnie do elementow dodanej arraylisty dodajemy kolejne elementy
-                if(j == i && (j != numberOfNeighbors -2)){ // chce przesunąć j o jeden do przodu i wypełnić kolejnymi Horyzontalnymi
+                if(j == i && (j < numberOfNeighbors -2)){ // chce przesunąć j o jeden do przodu i wypełnić kolejnymi Horyzontalnymi
                     adjacent.get(i).set(j+1,2);
                 }
-                if(j == i && (i != numberOfNeighbors -2)){ // chce przesunąć i o jeden do przodu i wypełnić kolejnymi Vertykalnymi
+                if(j == i && (i < numberOfNeighbors -2)){ // chce przesunąć i o jeden do przodu i wypełnić kolejnymi Vertykalnymi
                     adjacent.get(i+1).set(j,2);
                 }
-                if(j == i && (j != numberOfNeighbors - jump -1)){ // chce przesunąć j o skok czyli cały rząd do przodu i wypełnić kolejnymi Horyzontalnymi
+                if(j == i && (j < numberOfNeighbors - jump -1)){ // chce przesunąć j o skok czyli cały rząd do przodu i wypełnić kolejnymi Horyzontalnymi
                     adjacent.get(i).set(j + jump,3);
                 }
-                if(j == i && (i != numberOfNeighbors - jump - 1)){ // chce przesunąć i o skok czyli cały rząd jeden do przodu i wypełnić kolejnymi Vertykalnymi
+                if(j == i && (i < numberOfNeighbors - jump - 1)){ // chce przesunąć i o skok czyli cały rząd jeden do przodu i wypełnić kolejnymi Vertykalnymi
                     adjacent.get(i + jump).set(j,3);
                 }
             }
