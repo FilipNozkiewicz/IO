@@ -16,20 +16,41 @@ public class AdjacentMatrixGenerator {
                 adjacent.get(i).add(j, 0); // chce wypełnić zerami macierz sąsiedztwa NxN - działa
             }
         }
+        int hx = 0; int ihx; int jhx;
+        int hy = 0; int ihy; int jhy;
+        int vx = 0; int ivx; int jvx;
+        int vy = 0; int ivy; int jvy;
 
         for(int i = 0 ; i < numberOfNeighbors; i++ ){
             for(int j = 0 ; j < numberOfNeighbors ; j++ ){// nastepnie do elementow dodanej arraylisty dodajemy kolejne elementy
                 if(j == i && (j < numberOfNeighbors -1)){ // chce przesunąć j o jeden do przodu i wypełnić kolejnymi Horyzontalnymi
-                    adjacent.get(i).set(j+1,2);
+                    hx ++;
+                    ihx = (hx-1)%jump;
+                    jhx = (int)(hx-1)/jump;
+
+                    adjacent.get(i).set(j+1,hor.get(jhx).get(ihx));
                 }
                 if(j == i && (i < numberOfNeighbors -1)){ // chce przesunąć i o jeden do przodu i wypełnić kolejnymi Vertykalnymi
-                    adjacent.get(i+1).set(j,2);
+                    hy ++;
+                    ihy = (hy-1)%jump;
+                    jhy = (int)(hy-1)/jump;
+
+                    adjacent.get(i+1).set(j,hor.get(jhy).get(ihy));
                 }
                 if(j == i && (j < numberOfNeighbors - jump )){ // chce przesunąć j o skok czyli cały rząd do przodu i wypełnić kolejnymi Horyzontalnymi
-                    adjacent.get(i).set(j + jump,3);
+                    vx ++;
+                    ivx = (vx-1)%jump;
+                    jvx = (int)(vx-1)/jump;
+
+                    adjacent.get(i).set(j + jump,ver.get(jvx).get(ivx));
+
                 }
                 if(j == i && (i < numberOfNeighbors - jump )){ // chce przesunąć i o skok czyli cały rząd jeden do przodu i wypełnić kolejnymi Vertykalnymi
-                    adjacent.get(i + jump).set(j,3);
+                    vy ++;
+                    ivy = (vy-1)%jump;
+                    jvy = (int)(vy-1)/jump;
+
+                    adjacent.get(i + jump).set(j,ver.get(jvy).get(ivy));
                 }
             }
         }
