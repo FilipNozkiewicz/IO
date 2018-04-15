@@ -13,7 +13,11 @@ int wtf = 2;
 
     public ArrayList<ArrayList<Integer>> mapowanie;
 
+
+
     public void getVectors(ArrayList<ArrayList<Integer>> matrix) {
+
+
 
         mapa = new HashMap<> (matrix.size ());
         vlist = new ArrayList<> ( matrix.size () );

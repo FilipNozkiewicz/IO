@@ -71,7 +71,7 @@ public class ArraysGenerator {
     public static void main(String[] args){
 
         ArraysGenerator arraysGenerator = new ArraysGenerator ();
-        int placeLimit = 50; // żeby można było zmienić ilości by szybciej się zapisywał
+        int placeLimit = 49; // żeby można było zmienić ilości by szybciej się zapisywał
         arraysGenerator.matrix ( placeLimit,placeLimit );
         arraysGenerator.print (arraysGenerator.getHorizonatal());
 
