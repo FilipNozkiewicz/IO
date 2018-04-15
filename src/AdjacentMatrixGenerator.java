@@ -72,6 +72,7 @@ public class AdjacentMatrixGenerator {
 
     public static void main(String[] args){
 
+        
         ArraysGenerator arraysGenerator = new ArraysGenerator ();
         int placeLimit = 3; // żeby można było zmienić ilości by szybciej się zapisywał
         arraysGenerator.matrix ( placeLimit,placeLimit );
