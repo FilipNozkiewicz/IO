@@ -12,12 +12,13 @@ public class Floyd_Alghorithm {
         int[][] M = {{0,5,1,2},{5,0,3,999},{1,3,0,4},{2,999,4,0}};
 
         P = new int[N][N];
+        startpath ();
         System.out.println ("Matrix to find the shortest path of");
         printMatrix(M);
         System.out.println ("Shortest Path Matrix");
         printMatrix ( Floyd ( M ) );
-      //  System.out.println ("Path Matrix");
-        //printMatrix ( P );
+        System.out.println ("Path Matrix");
+        printMatrix ( P );
 
     }
     public static void printMatrix(int[][] M){
@@ -35,6 +36,9 @@ public class Floyd_Alghorithm {
         for(int i = 0 ; i < N ; i++){
             System.out.print (i + "|\t");
             for(int j = 0 ; j < N ; j++){
+                if(i == j)
+                    System.out.print ("-");
+                else
                 System.out.print (M[i][j]);
                 System.out.print ("\t");
             }
@@ -51,11 +55,22 @@ public class Floyd_Alghorithm {
                     if(M[i][k] + M[k][j] < M[i][j]){
                         M[i][j] = M[i][k] + M[k][j];
                         P[i][j] = k;
+
                     }
+
                 }
             }
         }
         return M;
+    }
+    public static void startpath(){
+        for(int i = 0 ; i < N ; i++){
+            for(int j = 0 ; j < N ; j++){
+                if(i != j){
+                    P[i][j] = j;
+                }
+            }
+        }
     }
 
     public static int min(int i , int j){
