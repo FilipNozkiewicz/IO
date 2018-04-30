@@ -6,7 +6,6 @@ import java.util.Random;
 public class Parcel {
     public Point address = new Point(); //współrzędna x,y
 
-    Timestamp order = new Timestamp(System.currentTimeMillis()); //obecny czas
     int coordinatesX = 50;
     int coordinatesY = 50;
 
@@ -15,8 +14,8 @@ public class Parcel {
     Random random = new Random();
 
     public Parcel() { // randomowo tworzymy ze wszystkim
-        int x = random.nextInt(coordinatesX);
-        int y = random.nextInt(coordinatesY);
+        int x = random.nextInt(coordinatesX );
+        int y = random.nextInt(coordinatesY );
         address.setLocation(x,y);;
     }
 
@@ -24,15 +23,9 @@ public class Parcel {
         address.setLocation(x,y);
     }
 
-
-    public Timestamp getOrder() {
-        return order;
-    }
-
     public String getDescription(){
         String coordinates = new String();
-        coordinates = getOrder() +
-                " Coordinates: ( " +
+        coordinates = " Coordinates: ( " +
                 address.getX() + (" , ") + address.getY() + (" )") ;
         return coordinates;
     }

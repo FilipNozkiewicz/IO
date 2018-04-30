@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -8,8 +9,8 @@ public class AdjacentMatrixGenerator {
 
 
     public void adjacentGenerator(ArrayList<ArrayList<Integer>> hor , ArrayList<ArrayList<Integer>> ver){
-        int numberOfNeighbors = hor.size() * ver.size(); //kwadrat maxiery, wielkosc sasiedztwa
-        int jump = hor.size();
+        int numberOfNeighbors = (hor.size() + 2) * ver.size(); //kwadrat maxiery, wielkosc sasiedztwa
+        int jump = hor.get(1).size();
         for(int i = 0 ; i < numberOfNeighbors; i++ ){
             adjacent.add ( i , new ArrayList<Integer>() );  // dodajemy te arraylisty
             for(int j = 0 ; j < numberOfNeighbors ; j++ ){// nastepnie do elementow dodanej arraylisty dodajemy kolejne elementy
@@ -72,18 +73,34 @@ public class AdjacentMatrixGenerator {
 
     public static void main(String[] args){
 
-        
-        ArraysGenerator arraysGenerator = new ArraysGenerator ();
-        int placeLimit = 3; // żeby można było zmienić ilości by szybciej się zapisywał
-        arraysGenerator.matrix ( placeLimit,placeLimit );
-        arraysGenerator.print(arraysGenerator.getHorizonatal());
-        System.out.println();
-        arraysGenerator.print(arraysGenerator.getVertical());
-        System.out.println();
+
+       // ArraysGenerator arraysGenerator = new ArraysGenerator ();
+       // int placeLimit = 4; // żeby można było zmienić ilości by szybciej się zapisywał
+       // arraysGenerator.matrix ( placeLimit,placeLimit );
+       // arraysGenerator.print(arraysGenerator.getHorizonatal());
+       // System.out.println();
+       // arraysGenerator.print(arraysGenerator.getVertical());
+       // System.out.println();
+
+       AdjacentMatrixGenerator adjacentMatrixGenerator = new AdjacentMatrixGenerator();
+       // adjacentMatrixGenerator.adjacentGenerator(arraysGenerator.getHorizonatal(),arraysGenerator.getVertical());
+      //  adjacentMatrixGenerator.print(adjacentMatrixGenerator.getAdjacent());
 
 
-        AdjacentMatrixGenerator adjacentMatrixGenerator = new AdjacentMatrixGenerator();
-        adjacentMatrixGenerator.adjacentGenerator(arraysGenerator.getHorizonatal(),arraysGenerator.getVertical());
+        CheckInputData checkInputData = new CheckInputData();
+        try {
+            checkInputData.read ( "data.txt" );
+        }
+        catch (IOException e){
+            System.out.println ("there is no such a file");
+        }
+        checkInputData.separate ();
+        System.out.println ();
+        checkInputData.print_hor();
+        System.out.println ();
+        checkInputData.print_ver();
+        System.out.println ();
+        adjacentMatrixGenerator.adjacentGenerator(checkInputData.getHorizontal(), checkInputData.getVertical());
         adjacentMatrixGenerator.print(adjacentMatrixGenerator.getAdjacent());
     }
 }

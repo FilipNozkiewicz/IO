@@ -4,13 +4,20 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class Check_Input_Data {
+public class CheckInputData {
 
 
     public ArrayList<ArrayList<Integer>> buffer;
     public ArrayList<ArrayList<Integer>> horizontal;
     public ArrayList<ArrayList<Integer>> vertical;
 
+    public ArrayList<ArrayList<Integer>> getHorizontal() {
+        return horizontal;
+    }
+
+    public ArrayList<ArrayList<Integer>> getVertical() {
+        return vertical;
+    }
     public void read(String text) throws IOException {
         int c;
         BufferedReader reader = null;
@@ -27,8 +34,6 @@ public class Check_Input_Data {
         int iter = 0;
         int poczekajka = 999; // poczekajka ustawia nam ostatni znka na nowo linie (dalem jaks artosc co nie waliduje)
         while ((c = reader.read()) != -1) {
-            System.out.println (c);
-
             if( c == 13){
               //  int[] checking = new int[2];
             //    checking[0] = c;
@@ -46,7 +51,7 @@ public class Check_Input_Data {
                 // ale trzeba przeprowadzic konwersje zmiennych
                 Character cc = ((char)c); // zrzutowac z ascii
                 String ss = cc.toString ();  // dac do stringa
-               Integer input = Integer.parseInt ( ss ); // i dopiero an koncu konwersja do inta
+                Integer input = Integer.parseInt ( ss ); // i dopiero an koncu konwersja do inta
                 buffer.get ( iter ).add ( input );
             }
             if(((c != 10) && (c != 13)) && ((c < 48) || (c > 57)) ){ // jesli dane wejsciowe sa zle
@@ -72,6 +77,7 @@ public class Check_Input_Data {
     public void separate(){   // odzielenie horryzontalnych i vertykalnych
         horizontal = new ArrayList<ArrayList<Integer>> (  );
         vertical = new ArrayList<ArrayList<Integer>> (  );
+        ArrayList<Integer> temp = new ArrayList<>();
         try {
             for (int i = 0; i < buffer.size () ; i++){
                 if((i % 2) == 0){
@@ -79,6 +85,11 @@ public class Check_Input_Data {
                 }else{
                     vertical.add ( buffer.get ( i ) );
                 }
+            }
+            if(vertical.size() < horizontal.size()){
+                for(int i = 0; i < buffer.get(1).size() ; i++)
+                    temp.add(0);
+                vertical.add(temp);
             }
         }catch (Exception e){
             System.out.println ("Something goes wrong , check if everything is correct");
@@ -104,9 +115,8 @@ public class Check_Input_Data {
     }
     public static void main(String[] args) throws IOException {
         // SPRAWDZENIE POPRAWnOSCI
-        Check_Input_Data check_input_data = new Check_Input_Data ();
+        CheckInputData check_input_data = new CheckInputData();
         check_input_data.read ( "data.txt" );
-        System.out.println ();
         check_input_data.print ();
         check_input_data.separate ();
         System.out.println ("VERICALLY: ");
