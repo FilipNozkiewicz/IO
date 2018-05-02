@@ -6,12 +6,23 @@ import java.util.Random;
 public class Parcel {
     public Point address = new Point(); //współrzędna x,y
 
-    int coordinatesX = 50;
-    int coordinatesY = 50;
+    int coordinatesX = 5;
+    int coordinatesY = 5;
 
     public static ArrayList<Parcel> parcels = new ArrayList<Parcel> ();//współrzędna x,y
 
     Random random = new Random();
+
+    public Point getAddress() {
+        return address;
+    }
+
+    public int getX() {
+        return (int)getAddress().getX();
+    }
+    public int getY() {
+        return (int)getAddress().getY();
+    }
 
     public Parcel() { // randomowo tworzymy ze wszystkim
         int x = random.nextInt(coordinatesX );

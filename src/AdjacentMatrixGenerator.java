@@ -67,6 +67,8 @@ public class AdjacentMatrixGenerator {
         }
     }
 
+
+
     public ArrayList<ArrayList<Integer>> getAdjacent() {
         return adjacent;
     }
