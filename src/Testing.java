@@ -11,7 +11,6 @@ public class Testing {
         CheckInputData checkInputData = new CheckInputData();
         RouteGenerator parcels = new RouteGenerator();
 
-
         try {
             checkInputData.read("data.txt");
         } catch (IOException e) {
