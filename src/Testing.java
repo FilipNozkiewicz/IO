@@ -19,6 +19,7 @@ public class Testing {
         checkInputData.separate();
 
         adjacentMatrixGenerator.adjacentGenerator(checkInputData.getHorizontal(), checkInputData.getVertical());
+        int pion = checkInputData.getVertical().get(0).size();
         adjacentMatrixGenerator.print(adjacentMatrixGenerator.getAdjacent());
         Dijkstra_Proper dijkstra_proper = new Dijkstra_Proper ();
         Dijkstra_Proper dijkstra_proper2 = new Dijkstra_Proper ();
@@ -27,7 +28,8 @@ public class Testing {
         int numberOfParcels = 3;
         parcels.generateParcels(numberOfParcels);
         parcels.writeParcels();
-        dijkstra_proper2.calculateDistance (parcels.getParcels().get(0), adjacentMatrixGenerator.getAdjacent() );
+
+        dijkstra_proper2.calculateDistance ( pion, parcels.getParcels().get(0), adjacentMatrixGenerator.getAdjacent() );
 
         dijkstra_proper.print_distance ();
         dijkstra_proper.print_path ();

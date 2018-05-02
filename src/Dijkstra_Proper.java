@@ -64,7 +64,7 @@ public class Dijkstra_Proper {
             System.out.println ();   // po kazdym wypisaniu wiersza nowa linia
         }
     }
-    public void calculateDistance(Parcel parcel, ArrayList<ArrayList<Integer>> matrix){ //KURWA NIE WIEM CZY TO DOBRZE?!!?!?!?!
+    public void calculateDistance(int x, Parcel parcel, ArrayList<ArrayList<Integer>> matrix){ //KURWA NIE WIEM CZY TO DOBRZE?!!?!?!?!
 
         Integer size = matrix.size();
         distance = new ArrayList<Integer> ( size );
@@ -86,9 +86,9 @@ public class Dijkstra_Proper {
         for(int i = 0 ; i < size ; i++){
             distance.set ( i , matrix.get ( 0 ).get ( i ) );
         }
-
-        distance.set ( parcel.getX() , parcel.getY() );
-        visited.set ( parcel.getX(), parcel.getY() );
+        int place = x * parcel.getY() + parcel.getX();
+        distance.set(place, 0);
+        visited.set (place , 0);
 
         for(int i = 0 ; i < size ; i++){
             min = 999;

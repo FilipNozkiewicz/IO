@@ -7,7 +7,7 @@ public class Parcel {
     public Point address = new Point(); //współrzędna x,y
 
     int coordinatesX = 5;
-    int coordinatesY = 5;
+    int coordinatesY = 3;
 
     public static ArrayList<Parcel> parcels = new ArrayList<Parcel> ();//współrzędna x,y
 
@@ -35,7 +35,7 @@ public class Parcel {
     }
 
     public String getDescription(){
-        String coordinates = new String();
+        String coordinates;
         coordinates = " Coordinates: ( " +
                 address.getX() + (" , ") + address.getY() + (" )") ;
         return coordinates;
