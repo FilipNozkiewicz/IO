@@ -74,6 +74,20 @@ public class Floyd_Arraylist {
 
 
     }
+
+    public ArrayList<ArrayList<Integer>> infinity(ArrayList<ArrayList<Integer>> M){
+
+        for(int i = 0 ; i < M.size () ; i++){
+            for(int j = 0 ; j < M.size () ; j++){
+                if((i != j) && M.get ( i ).get ( j ) == 0){
+                    M.get ( i ).set ( j , 999 );
+                }
+            }
+        }
+
+        return M;
+    }
+
     public void print(ArrayList<ArrayList<Integer>> M){   // tylko sposob wypisywania
 
         System.out.println ("\n\t");
