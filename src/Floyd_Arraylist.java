@@ -90,32 +90,32 @@ public class Floyd_Arraylist {
         return M;
     }
     //// MINIMALNA SCIEZKA ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public void choose_the_shortest(Integer x1 , Integer y1 , Integer x2 , Integer y2 , Integer x3 , Integer y3 , ArrayList<ArrayList<Integer>> M){
+    public void choose_the_shortest( Integer v1 , Integer v2 , Integer v3 , ArrayList<ArrayList<Integer>> M){
 
         ArrayList<Integer> kombinacje = new ArrayList<Integer> ( 6 );
         HashMap<Integer , String> mapa = new HashMap<Integer, String> (6  );
 
         try {
             Integer startvalue = M.get ( 0 ).get ( 0 );
-            Integer v0_v1 = M.get(0).get ( 0 ) + M.get ( x1 ).get ( y1 );
-            Integer v0_v2 = M.get(0).get ( 0 ) + M.get ( x2 ).get ( y2 );
-            Integer v0_v3 = M.get(0).get ( 0 ) + M.get ( x3 ).get ( y3 );
-            Integer v1_v2 = M.get(x1).get ( y1 ) + M.get ( x2 ).get ( y2 );
-            Integer v1_v3 = M.get(x1).get ( y1 ) + M.get ( x3 ).get ( y3 );
-            Integer v2_v3 = M.get(x2).get ( y2 ) + M.get ( x3 ).get ( y3 );
+            Integer v0_v1 = M.get(0).get ( v1 );
+            Integer v0_v2 = M.get(0).get ( v2 ) ;
+            Integer v0_v3 = M.get(0).get ( v3 ) ;
+            Integer v1_v2 = M.get(v1).get ( v2 );
+            Integer v1_v3 = M.get(v1).get ( v3 ) ;
+            Integer v2_v3 = M.get(v2).get ( v3 );
 
-            String mapa_kombinacji_1 = "(" + "0,0" + ")--->" + "(" + x1.toString () + "," + y1.toString () + ")--->" + "(" + x2.toString () + "," + y2.toString () + ")--->" +
-                    "(" + x3.toString () + "," + y3.toString () + ")" ;
-            String mapa_kombinacji_2 = "(" + "0,0" + ")--->" + "(" + x1.toString () + "," + y1.toString () + ")--->" + "(" + x3.toString () + "," + y3.toString () + ")--->" +
-                    "(" + x2.toString () + "," + y2.toString () + ")" ;
-            String mapa_kombinacji_3 = "(" + "0,0" + ")--->" + "(" + x2.toString () + "," + y2.toString () + ")--->" + "(" + x1.toString () + "," + y1.toString () + ")--->" +
-                    "(" + x3.toString () + "," + y3.toString () + ")" ;
-            String mapa_kombinacji_4 = "(" + "0,0" + ")--->" + "(" + x2.toString () + "," + y2.toString () + ")--->" + "(" + x3.toString () + "," + y3.toString () + ")--->" +
-                    "(" + x1.toString () + "," + y1.toString () + ")" ;
-            String mapa_kombinacji_5 = "(" + "0,0" + ")--->" + "(" + x3.toString () + "," + y3.toString () + ")--->" + "(" + x2.toString () + "," + y2.toString () + ")--->" +
-                    "(" + x1.toString () + "," + y1.toString () + ")" ;
-            String mapa_kombinacji_6 = "(" + "0,0" + ")--->" + "(" + x3.toString () + "," + y3.toString () + ")--->" + "(" + x1.toString () + "," + y1.toString () + ")--->" +
-                    "(" + x2.toString () + "," + y2.toString () + ")" ;
+            String mapa_kombinacji_1 = "(" + "0,0" + ")--->" + "(" + "0" + "," + v1.toString () + ")--->" + "(" + v1.toString () + "," + v2.toString () + ")--->" +
+                    "(" + v2.toString () + "," + v3.toString () + ")" + " = " + " 0-->"+ v1.toString () +"-->"+ v2.toString () + "-->"+v3.toString ()  ;
+            String mapa_kombinacji_2 = "(" + "0,0" + ")--->" + "(" + "0" + "," + v1.toString () + ")--->" + "(" + v1.toString () + "," + v3.toString () + ")--->" +
+                    "(" + v3.toString () + "," + v2.toString () + ")" + " = " + " 0-->"+ v1.toString () +"-->"+ v3.toString () + "-->"+v2.toString ()  ;
+            String mapa_kombinacji_3 = "(" + "0,0" + ")--->" + "(" + "0" + "," + v2.toString () + ")--->" + "(" + v2.toString () + "," + v1.toString () + ")--->" +
+                    "(" + v1.toString () + "," + v3.toString () + ")" + " = " + " 0-->"+ v2.toString () +"-->"+ v1.toString () + "-->"+v3.toString ()  ;
+            String mapa_kombinacji_4 = "(" + "0,0" + ")--->" + "(" + "0" + "," + v2.toString () + ")--->" + "(" + v2.toString () + "," + v3.toString () + ")--->" +
+                    "(" + v3.toString () + "," + v1.toString () + ")" + " = " + " 0-->"+ v2.toString () +"-->"+ v3.toString () + "-->"+v1.toString () ;
+            String mapa_kombinacji_5 = "(" + "0,0" + ")--->" + "(" + "0" + "," + v3.toString () + ")--->" + "(" + v3.toString () + "," + v2.toString () + ")--->" +
+                    "(" + v2.toString () + "," + v1.toString () + ")" + " = " + " 0-->"+ v3.toString () +"-->"+ v2.toString () + "-->"+v1.toString ()  ;
+            String mapa_kombinacji_6 = "(" + "0,0" + ")--->" + "(" + "0" + "," + v3.toString () + ")--->" + "(" + v3.toString () + "," + v1.toString () + ")--->" +
+                    "(" + v1.toString () + "," + v2.toString () + ")" + " = " + " 0-->"+ v3.toString () +"-->"+ v1.toString () + "-->"+v2.toString ()  ;
 
             Integer komb1 = v0_v1 + v1_v2 + v2_v3;
             Integer komb2 = v0_v1 + v1_v3 + v2_v3;

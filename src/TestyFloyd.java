@@ -29,6 +29,6 @@ public class TestyFloyd {
             floyd_arraylist.print ( floyd_arraylist.Floyd ( adjacentMatrixGenerator.getAdjacent () ) );
             System.out.println ();
 
-            floyd_arraylist.choose_the_shortest ( 3,3,4,5,5,7, floyd_arraylist.Floyd ( adjacentMatrixGenerator.getAdjacent () ) );
+            floyd_arraylist.choose_the_shortest ( 4,12,8, floyd_arraylist.Floyd ( adjacentMatrixGenerator.getAdjacent () ) );
     }
 }
