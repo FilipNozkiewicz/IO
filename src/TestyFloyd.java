@@ -21,13 +21,19 @@ public class TestyFloyd {
 
         adjacentMatrixGenerator.adjacentGenerator(checkInputData.getHorizontal(), checkInputData.getVertical());
         int pion = checkInputData.getVertical().get(0).size();
+
         adjacentMatrixGenerator.print(adjacentMatrixGenerator.getAdjacent());
 
        // floyd_arraylist.print ( floyd_arraylist.Floyd ( adjacentMatrixGenerator.getAdjacent () ) );
+            floyd_arraylist.startPath ( adjacentMatrixGenerator.getAdjacent ().size () );
+        System.out.println ();
+        System.out.println ("Macierz Sasiedztwa");
             floyd_arraylist.print ( floyd_arraylist.infinity (  adjacentMatrixGenerator.getAdjacent () ));
-            System.out.println ();
+            System.out.println ("Macierz Odleglosci");
             floyd_arraylist.print ( floyd_arraylist.Floyd ( adjacentMatrixGenerator.getAdjacent () ) );
             System.out.println ();
+        System.out.println ("Macierz sciezek");
+        floyd_arraylist.print ( floyd_arraylist.P );
 
             floyd_arraylist.choose_the_shortest ( 6,12,8, floyd_arraylist.Floyd ( adjacentMatrixGenerator.getAdjacent () ) );
     }

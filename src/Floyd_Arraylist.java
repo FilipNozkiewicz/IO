@@ -182,7 +182,7 @@ public class Floyd_Arraylist {
                 for(int j = 0 ; j < M.size () ; j++){
                     if(M.get ( i ).get ( k ) + M.get ( k ).get ( j ) < M.get ( i ).get ( j )){ // pacze czy znaleziono dla danej iteracji mniejszy dystans
                         M.get ( i ).set ( j , M.get ( i ).get ( k ) + M.get ( k ).get ( j ) );
-                       // P.get ( i ).set ( j , k );     // jak tak to ustwiam go w macierzy M i macierzy sciezek P
+                        P.get ( i ).set ( j , k );     // jak tak to ustwiam go w macierzy M i macierzy sciezek P
                     }
                 }
             }
