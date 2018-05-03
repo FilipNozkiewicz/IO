@@ -136,6 +136,7 @@ public class Floyd_Arraylist {
             Object value = mapa.get ( min );
             System.out.println ();
             System.out.println ("Minimum Path");
+            System.out.println ("Value " + min );
             System.out.println (value);
 
 
