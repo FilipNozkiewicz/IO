@@ -27,6 +27,6 @@ public class TestyFloyd {
             floyd_arraylist.print ( floyd_arraylist.infinity (  adjacentMatrixGenerator.getAdjacent () ));
             System.out.println ();
             floyd_arraylist.print ( floyd_arraylist.Floyd ( adjacentMatrixGenerator.getAdjacent () ) );
-
+            System.out.println ();
     }
 }
