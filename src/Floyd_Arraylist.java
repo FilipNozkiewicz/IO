@@ -37,28 +37,28 @@ public class Floyd_Arraylist {
         ArrayList<Integer> fourth = new ArrayList<Integer> ( N );
 
         zero.add ( 0 );
-        zero.add ( 10 );
-        zero.add ( 0 );
-        zero.add ( 30 );
-        zero.add ( 100 );
+        zero.add ( 5 );
+        zero.add ( 1 );
+        zero.add ( 2 );
+        //zero.add ( 100 );
 
-        first.add ( 10 );
+        first.add ( 5 );
         first.add ( 0 );
-        first.add ( 50 );
-        first.add ( 0 );
-        first.add ( 0 );
+        first.add ( 3 );
+        first.add ( 999 );
+        //first.add ( 0 );
 
+        second.add ( 1 );
+        second.add ( 3 );
         second.add ( 0 );
-        second.add ( 50 );
-        second.add ( 0 );
-        second.add ( 20 );
-        second.add ( 10 );
+        second.add ( 4 );
+        //second.add ( 10 );
 
-        third.add ( 30 );
+        third.add ( 2 );
+        third.add ( 999 );
+        third.add ( 4 );
         third.add ( 0 );
-        third.add ( 20 );
-        third.add ( 0 );
-        third.add ( 60 );
+        //third.add ( 60 );
 
         fourth.add ( 100 );
         fourth.add ( 0 );
@@ -70,7 +70,7 @@ public class Floyd_Arraylist {
         M.add (1, first);
         M.add ( 2,second);
         M.add (3,third);
-        M.add (4,fourth);
+        //M.add (4,fourth);
 
 
     }
@@ -123,11 +123,11 @@ public class Floyd_Arraylist {
         Floyd_Arraylist floyd_arraylist = new Floyd_Arraylist ();
         System.out.println ();
         System.out.println ("Adjacencies Matrix");
-        floyd_arraylist.alloc ( 5 );
+        floyd_arraylist.alloc ( 4 );
         floyd_arraylist.print ( floyd_arraylist.M);
         System.out.println ();
         System.out.println ("Shortest Path Matrix");
-        floyd_arraylist.startPath ( 5 );
+        floyd_arraylist.startPath ( 4 );
         floyd_arraylist.print ( floyd_arraylist.Floyd ( floyd_arraylist.M ) );
         System.out.println ("Path Matrix");
         floyd_arraylist.print ( floyd_arraylist.P );
