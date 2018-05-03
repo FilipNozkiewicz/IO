@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-public class RouteGenerator {
+public class  RouteGenerator {
     public  ArrayList<Parcel> parcels = new ArrayList<Parcel> ();
     Random random = new Random();
     Parcel parcel = new Parcel();
