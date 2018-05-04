@@ -154,7 +154,7 @@ public class Floyd_Arraylist {
     public void choose_the_shortest( ArrayList<Integer> v , ArrayList<ArrayList<Integer>> M){
         Integer v1 = v.get(0) ;
         Integer v2 = v.get(1) ;
-        Integer v3 = v.get(2);
+        Integer v3 = v.get(2) ;
         ArrayList<Integer> kombinacje = new ArrayList<Integer> ( 6 );
         HashMap<Integer , String> mapa = new HashMap<Integer, String> (6  );
 
