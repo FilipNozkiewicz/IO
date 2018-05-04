@@ -8,7 +8,7 @@ public class TestyFloyd {
 
         AdjacentMatrixGenerator adjacentMatrixGenerator = new AdjacentMatrixGenerator();
         CheckInputData checkInputData = new CheckInputData();
-        RouteGenerator parcels = new RouteGenerator();
+        RouteGenerator routeGenerator = new RouteGenerator();
 
         Floyd_Arraylist floyd_arraylist = new Floyd_Arraylist ();
 
@@ -20,21 +20,24 @@ public class TestyFloyd {
         checkInputData.separate();
 
         adjacentMatrixGenerator.adjacentGenerator(checkInputData.getHorizontal(), checkInputData.getVertical());
-        int pion = checkInputData.getVertical().get(0).size();
-
         adjacentMatrixGenerator.print(adjacentMatrixGenerator.getAdjacent());
 
        // floyd_arraylist.print ( floyd_arraylist.Floyd ( adjacentMatrixGenerator.getAdjacent () ) );
-            floyd_arraylist.startPath ( adjacentMatrixGenerator.getAdjacent ().size () );
+        floyd_arraylist.startPath ( adjacentMatrixGenerator.getAdjacent().size());
         System.out.println ();
         System.out.println ("Macierz Sasiedztwa");
-            floyd_arraylist.print ( floyd_arraylist.infinity (  adjacentMatrixGenerator.getAdjacent () ));
-            System.out.println ("Macierz Odleglosci");
-            floyd_arraylist.print ( floyd_arraylist.Floyd ( adjacentMatrixGenerator.getAdjacent () ) );
-            System.out.println ();
+        floyd_arraylist.print ( floyd_arraylist.infinity (  adjacentMatrixGenerator.getAdjacent () ));
+        System.out.println ("Macierz Odleglosci");
+        floyd_arraylist.print ( floyd_arraylist.floyd ( adjacentMatrixGenerator.getAdjacent () ) );
+        System.out.println ();
         System.out.println ("Macierz sciezek");
         floyd_arraylist.print ( floyd_arraylist.P );
+        floyd_arraylist.choose_the_shortest ( 6,12,8, floyd_arraylist.floyd ( adjacentMatrixGenerator.getAdjacent () ) );
 
-            floyd_arraylist.choose_the_shortest ( 6,12,8, floyd_arraylist.Floyd ( adjacentMatrixGenerator.getAdjacent () ) );
+        int numberOfElementsInRow = checkInputData.getVertical().get(0).size();
+        routeGenerator.generateParcels(3, numberOfElementsInRow);
+        routeGenerator.writeParcels();
+        System.out.println(routeGenerator.getParcelsNumber());
+        floyd_arraylist.choose_the_shortest ( routeGenerator.getParcelsNumber(), floyd_arraylist.floyd ( adjacentMatrixGenerator.getAdjacent () ) );
     }
 }

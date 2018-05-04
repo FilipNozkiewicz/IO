@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 public class  RouteGenerator {
     public  ArrayList<Parcel> parcels = new ArrayList<Parcel> ();
+    public ArrayList<Integer> parcelsNumber= new ArrayList<>();
     Random random = new Random();
     Parcel parcel = new Parcel();
     Timestamp order = new Timestamp(System.currentTimeMillis()); //obecny czas
@@ -44,6 +45,20 @@ public class  RouteGenerator {
             parcels.add(new Parcel());
         }
     }
+    public void generateParcels(int numberOfParcels, int numberOfElementsInRow) {
+        driverName = "Andrzej";
+        Timestamp order = new Timestamp(System.currentTimeMillis()); //obecny czas
+        for(int i= 0; i < numberOfParcels ;i++){
+            parcel = new Parcel();
+            parcels.add(parcel);
+            parcelsNumber.add( numberOfElementsInRow * parcel.getY() + parcel.getX());
+        }
+    }
+
+    public ArrayList<Integer> getParcelsNumber() {
+        return parcelsNumber;
+    }
+
     public void writeParcels(){
        System.out.println(getOrder() + " " + getDriverName());
        for(Parcel parcel : parcels){
