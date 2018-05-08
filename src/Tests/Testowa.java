@@ -1,4 +1,5 @@
-import java.sql.Array;
+package Tests;
+
 import java.util.ArrayList;
 
 public class Testowa {
@@ -58,7 +59,7 @@ public class Testowa {
         Testowa testowa = new Testowa ();
         testowa.alokuj ();
 
-        Dijkstra_Proper dijkstra_proper = new Dijkstra_Proper ();
+        Dijkstra_Proper dijkstra_proper = new Dijkstra_Proper();
 
         for(ArrayList<Integer> x: testowa.alokuj ()){
            for(Integer  y : x){
