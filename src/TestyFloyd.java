@@ -19,6 +19,7 @@ public class TestyFloyd {
         }
         checkInputData.separate();
 
+        
         adjacentMatrixGenerator.adjacentGenerator(checkInputData.getHorizontal(), checkInputData.getVertical());
         adjacentMatrixGenerator.print(adjacentMatrixGenerator.getAdjacent());
 
