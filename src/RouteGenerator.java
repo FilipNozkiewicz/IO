@@ -1,3 +1,5 @@
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
+
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Random;
@@ -8,15 +10,40 @@ public class  RouteGenerator {
     public ArrayList<Integer> parcelsNumber= new ArrayList<>();
     Random random = new Random();
     Parcel parcel = new Parcel();
-    Timestamp order = new Timestamp(System.currentTimeMillis()); //obecny czas
+    long order = System.currentTimeMillis(); //obecny czas
     String driverName;
 
-    public Timestamp getOrder() {
+    public long getOrder() {
         return order;
     }
 
     public String getDriverName() {
         return driverName;
+    }
+
+    public void setParcels(ArrayList<Parcel> parcels) {
+        this.parcels = parcels;
+    }
+
+
+    public void setParcel(Parcel parcel) {
+        parcels.add(parcel);
+    }
+
+    public void setOrder(long order) {
+        this.order = order;
+    }
+    public void setOrder(String order) {
+        try {
+            Long temp = Long.parseLong(order);
+            this.order  = temp;
+        }catch (NumberFormatException e){
+            System.out.println("WTF BRO coś jest nie tak z setOrder w RouteGenerator krzaczy tylko przy pierwszym");
+        }
+    }
+
+    public void setDriverName(String driverName) {
+        this.driverName = driverName;
     }
 
     public ArrayList<Parcel> getParcels() {
@@ -33,21 +60,18 @@ public class  RouteGenerator {
 
     public void generateParcels(int numberOfParcels, String name) {
         driverName = name;
-        Timestamp order = new Timestamp(System.currentTimeMillis()); //obecny czas
         for(int i= 0; i < numberOfParcels ;i++){
             parcels.add(new Parcel());
         }
     }
     public void generateParcels(int numberOfParcels) {
         driverName = "Andrzej";
-        Timestamp order = new Timestamp(System.currentTimeMillis()); //obecny czas
         for(int i= 0; i < numberOfParcels ;i++){
             parcels.add(new Parcel());
         }
     }
     public void generateParcels(int numberOfParcels, int numberOfElementsInRow) {
         driverName = "Andrzej";
-        Timestamp order = new Timestamp(System.currentTimeMillis()); //obecny czas
         for(int i= 0; i < numberOfParcels ;i++){
             parcel = new Parcel();
             parcels.add(parcel);
