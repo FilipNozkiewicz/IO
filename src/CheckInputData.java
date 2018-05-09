@@ -78,18 +78,24 @@ public class CheckInputData {
         horizontal = new ArrayList<ArrayList<Integer>> (  );
         vertical = new ArrayList<ArrayList<Integer>> (  );
         ArrayList<Integer> temp = new ArrayList<>();
+        ArrayList<Integer> tempWithZero;
         try {
             for (int i = 0; i < buffer.size () ; i++){
                 if((i % 2) == 0){
-                    horizontal.add ( buffer.get ( i ) );
+                    tempWithZero = buffer.get ( i );
+                    tempWithZero.remove(tempWithZero.size() - 1);
+                    tempWithZero.add(0);
+                    horizontal.add ( tempWithZero );
                 }else{
-                    vertical.add ( buffer.get ( i ) );
+                    vertical.add ( buffer.get ( i ));
                 }
             }
+            for(int i = 0; i < buffer.get(1).size() ; i++)
+                temp.add(0);
             if(vertical.size() < horizontal.size()){
-                for(int i = 0; i < buffer.get(1).size() ; i++)
-                    temp.add(0);
                 vertical.add(temp);
+            }else {
+                horizontal.add(temp);
             }
         }catch (Exception e){
             System.out.println ("Something goes wrong , check if everything is correct");

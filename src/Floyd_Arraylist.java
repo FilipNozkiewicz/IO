@@ -7,6 +7,9 @@ public class Floyd_Arraylist {
 
     ArrayList<ArrayList<Integer>> P;
     ArrayList<ArrayList<Integer>> M;
+    int hopCount;
+    int costOfRoute;
+    ArrayList<Integer> hops;
     // ustawiam macierz sciezek jak na filmie
     public void startPath(Integer N){
         P = new ArrayList<ArrayList<Integer>> ( N );

@@ -18,7 +18,10 @@ public class TestyFloyd {
             System.out.println("there is no such a file");
         }
         checkInputData.separate();
-
+        checkInputData.print_hor();
+        System.out.println ();
+        checkInputData.print_ver();
+        System.out.println ();
 
         adjacentMatrixGenerator.adjacentGenerator(checkInputData.getHorizontal(), checkInputData.getVertical());
         adjacentMatrixGenerator.print(adjacentMatrixGenerator.getAdjacent());
@@ -36,7 +39,7 @@ public class TestyFloyd {
         floyd_arraylist.choose_the_shortest ( 6,12,8, floyd_arraylist.floyd ( adjacentMatrixGenerator.getAdjacent () ) );
 
         int numberOfElementsInRow = checkInputData.getVertical().get(0).size();
-        routeGenerator.generateParcels(3, numberOfElementsInRow);
+        routeGenerator.generateParcels(5, numberOfElementsInRow);
         routeGenerator.writeParcels();
         System.out.println(routeGenerator.getParcelsNumber());
         floyd_arraylist.choose_the_shortest ( routeGenerator.getParcelsNumber(), floyd_arraylist.floyd ( adjacentMatrixGenerator.getAdjacent () ) );

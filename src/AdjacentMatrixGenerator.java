@@ -9,7 +9,15 @@ public class AdjacentMatrixGenerator {
 
 
     public void adjacentGenerator(ArrayList<ArrayList<Integer>> hor , ArrayList<ArrayList<Integer>> ver){
-        int numberOfNeighbors = (hor.size() + 2) * ver.size(); //kwadrat maxiery, wielkosc sasiedztwa
+        int numberOfNeighbors = 0;
+        int matrixSize = hor.size() + ver.size() -1;
+
+        if(matrixSize % 2 == 0) {
+            numberOfNeighbors = (matrixSize * matrixSize / 2); //kwadrat maxiery, wielkosc sasiedztwa
+        }else {
+            numberOfNeighbors = matrixSize * (matrixSize -  (int)(matrixSize/2));
+        }
+
         int jump = hor.get(1).size();
         for(int i = 0 ; i < numberOfNeighbors; i++ ){
             adjacent.add ( i , new ArrayList<Integer>() );  // dodajemy te arraylisty

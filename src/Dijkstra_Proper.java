@@ -134,7 +134,7 @@ public class Dijkstra_Proper {
 
         }
     }
+    public static void main(String[] args) {
 
-
-
+    }
 }
