@@ -36,11 +36,12 @@ public class TestyFloyd {
         System.out.println ();
         System.out.println ("Macierz sciezek");
         floyd_arraylist.print ( floyd_arraylist.P );
-        floyd_arraylist.choose_the_shortest ( 6,12,8, floyd_arraylist.floyd ( adjacentMatrixGenerator.getAdjacent () ) );
+        //floyd_arraylist.choose_the_shortest ( 6,12,8, floyd_arraylist.floyd ( adjacentMatrixGenerator.getAdjacent () ) );
 
         int numberOfElementsInRow = checkInputData.getVertical().get(0).size();
         routeGenerator.generateParcels(5, numberOfElementsInRow);
         routeGenerator.writeParcels();
+        //routeGenerator.generateParcelsNumbers(routeGenerator.getParcels(), numberOfElementsInRow);
         System.out.println(routeGenerator.getParcelsNumber());
         floyd_arraylist.choose_the_shortest ( routeGenerator.getParcelsNumber(), floyd_arraylist.floyd ( adjacentMatrixGenerator.getAdjacent () ) );
     }

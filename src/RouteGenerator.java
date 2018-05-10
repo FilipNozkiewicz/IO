@@ -78,6 +78,10 @@ public class  RouteGenerator {
             parcelsNumber.add( numberOfElementsInRow * parcel.getY() + parcel.getX());
         }
     }
+    public  void generateParcelsNumbers(ArrayList<Parcel> parcels, int numberOfElementsInRow){
+        for (Parcel parcel : parcels)
+            parcelsNumber.add( numberOfElementsInRow * parcel.getY() + parcel.getX());
+    }
 
     public ArrayList<Integer> getParcelsNumber() {
         return parcelsNumber;

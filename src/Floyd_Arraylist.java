@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class Floyd_Arraylist {
 
@@ -154,7 +155,7 @@ public class Floyd_Arraylist {
             System.out.println ("Index out of bound exception");
         }
     }
-    public void choose_the_shortest( ArrayList<Integer> v , ArrayList<ArrayList<Integer>> M){
+  /*  public void choose_the_shortest( ArrayList<Integer> v , ArrayList<ArrayList<Integer>> M){
         Integer v1 = v.get(0) ;
         Integer v2 = v.get(1) ;
         Integer v3 = v.get(2) ;
@@ -216,8 +217,101 @@ public class Floyd_Arraylist {
         }catch (IndexOutOfBoundsException e){
             System.out.println ("Index out of bound exception");
         }
-    }
+    } */
+    public void choose_the_shortest( ArrayList<Integer> v , ArrayList<ArrayList<Integer>> M){
 
+        ArrayList<Integer> kombinacje = new ArrayList<Integer> (  );
+        HashMap<Integer , String> mapa = new HashMap<Integer, String> ( );
+        ArrayList<OurMap> ways = new ArrayList<>(); // potrzebuje stworzyć bo chce duplikaty i dodawanie po koleji
+        Integer lengthOfRoute = 0;
+        String lengthName;
+        try {
+            for(int i = 0; i< v.size(); i++){
+                for (int j = 0;j< v.size(); j++){
+                    if(j != i ){
+                        for (int k = 0;k< v.size();k++){
+                            if(k != j && k!= i) {
+                                for (int r = 0; r < v.size(); r++) {
+                                    if(r != i && r!= j && r != k) {
+                                        for (int l = 0; l < v.size(); l++) {
+                                            if(l != i && l != j && l != k && l != r) {
+                                                lengthOfRoute = M.get(0).get(v.get(i)) + M.get(v.get(i)).get(v.get(j)) + M.get(v.get(j)).get(v.get(k)) + M.get(v.get(k)).get(v.get(k)) + M.get(v.get(k)).get(v.get(l)) + M.get(v.get(l)).get(0);
+                                                lengthName = "0 -> " + String.valueOf(v.get(i)) + " -> " + String.valueOf(v.get(j)) + " -> " + String.valueOf(v.get(k)) + " -> " + String.valueOf(v.get(r)) + " -> " + String.valueOf(v.get(l)) + " -> 0";
+                                                ways.add(new OurMap(lengthOfRoute, lengthName));
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            OurMap shortestWay = ways.get(0);
+            for(OurMap o : ways){
+                if(shortestWay.getKey() > o.getKey()){
+                    shortestWay = o;
+                }
+                //shortestWay.printMap();
+                //o.printMap();
+            }
+            shortestWay.printMap();
+            /*
+            Integer v0_v1 = M.get(0).get ( v1 );
+            Integer v0_v2 = M.get(0).get ( v2 ) ;
+            Integer v0_v3 = M.get(0).get ( v3 ) ;
+            Integer v1_v2 = M.get(v1).get ( v2 );
+            Integer v1_v3 = M.get(v1).get ( v3 ) ;
+            Integer v2_v3 = M.get(v2).get ( v3 );
+
+            String mapa_kombinacji_1 = "(" + "0,0" + ")--->" + "(" + "0" + "," + v1.toString () + ")--->" + "(" + v1.toString () + "," + v2.toString () + ")--->" +
+                    "(" + v2.toString () + "," + v3.toString () + ")--->" + "(" + v3.toString () + ",0) = "
+                    + " 0-->"+ v1.toString () +"-->"+ v2.toString () + "-->"+v3.toString () + "-->0" ;
+            String mapa_kombinacji_2 = "(" + "0,0" + ")--->" + "(" + "0" + "," + v1.toString () + ")--->" + "(" + v1.toString () + "," + v3.toString () + ")--->" +
+                    "(" + v3.toString () + "," + v2.toString () + ")--->" + "(" + v2.toString () + ",0) = "
+                    + " 0-->"+ v1.toString () +"-->"+ v3.toString () + "-->"+v2.toString ()  + "-->0" ;
+            String mapa_kombinacji_3 = "(" + "0,0" + ")--->" + "(" + "0" + "," + v2.toString () + ")--->" + "(" + v2.toString () + "," + v1.toString () + ")--->" +
+                    "(" + v1.toString () + "," + v3.toString () + ")--->" + "(" + v3.toString () + ",0) = "
+                    + " 0-->"+ v2.toString () +"-->"+ v1.toString () + "-->"+v3.toString () + "-->0"  ;
+            String mapa_kombinacji_4 = "(" + "0,0" + ")--->" + "(" + "0" + "," + v2.toString () + ")--->" + "(" + v2.toString () + "," + v3.toString () + ")--->" +
+                    "(" + v3.toString () + "," + v1.toString () + ")--->" + "(" + v1.toString () + ",0) = "
+                    + " 0-->"+ v2.toString () +"-->"+ v3.toString () + "-->"+v1.toString () + "-->0";
+            String mapa_kombinacji_5 = "(" + "0,0" + ")--->" + "(" + "0" + "," + v3.toString () + ")--->" + "(" + v3.toString () + "," + v2.toString () + ")--->" +
+                    "(" + v2.toString () + "," + v1.toString () + ")--->" + "(" + v1.toString () + ",0) = "
+                    + " 0-->"+ v3.toString () +"-->"+ v2.toString () + "-->"+v1.toString () + "-->0" ;
+            String mapa_kombinacji_6 = "(" + "0,0" + ")--->" + "(" + "0" + "," + v3.toString () + ")--->" + "(" + v3.toString () + "," + v1.toString () + ")--->" +
+                    "(" + v1.toString () + "," + v2.toString () + ")--->" + "(" + v2.toString () + ",0) = "
+                    + " 0-->"+ v3.toString () +"-->"+ v1.toString () + "-->"+v2.toString () + "-->0" ;
+
+            Integer komb1 = v0_v1 + v1_v2 + v2_v3 + v0_v3;
+            Integer komb2 = v0_v1 + v1_v3 + v2_v3 + v0_v2;
+            Integer komb3 = v0_v2 + v1_v2 + v1_v3 + v0_v3;
+            Integer komb4 = v0_v2 + v2_v3 + v1_v3 + v0_v1;
+            Integer komb5 = v0_v3 + v2_v3 + v1_v2 + v0_v1;
+            Integer komb6 = v0_v3 + v1_v3 + v1_v2 + v0_v2;
+
+
+            mapa.put ( komb1 , mapa_kombinacji_1 );
+            mapa.put ( komb2 , mapa_kombinacji_2 );
+            mapa.put ( komb3 , mapa_kombinacji_3 );
+            mapa.put ( komb4 , mapa_kombinacji_4 );
+            mapa.put ( komb5 , mapa_kombinacji_5 );
+            mapa.put ( komb6 , mapa_kombinacji_6 );
+
+            Integer min = Collections.min ( mapa.keySet () );
+            Object value = mapa.get ( min );
+            System.out.println ();
+            System.out.println ("Minimum Path");
+            System.out.println ("Value " + min );
+            System.out.println (value);
+
+            */
+
+        }catch (IndexOutOfBoundsException e){
+            System.out.println ("Index out of bound exception");
+        }
+    }
     public void print(ArrayList<ArrayList<Integer>> M){   // tylko sposob wypisywania
 
         System.out.println ("\n\t");

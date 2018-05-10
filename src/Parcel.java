@@ -6,8 +6,8 @@ import java.util.Random;
 public class Parcel {
     public Point address = new Point(); //współrzędna x,y
 
-    int coordinatesX = 5;
-    int coordinatesY = 3;
+    int coordinatesX = 7;
+    int coordinatesY = 4;
 
     public static ArrayList<Parcel> parcels = new ArrayList<Parcel> ();//współrzędna x,y
 
