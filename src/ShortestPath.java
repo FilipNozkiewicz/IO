@@ -94,7 +94,7 @@ public class ShortestPath {
                 {0, 0, 2, 0, 0, 0, 6, 7, 0}
         };
         ShortestPath t = new ShortestPath();
-        t.dijkstra(graph, 3);
+        t.dijkstra(graph, 4);
     }
 
 }
