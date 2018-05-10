@@ -35,33 +35,65 @@ public class DijkstraSP_ArrayList {
 
 
         ArrayList<Integer> dist = new ArrayList<Integer> ( V );
+        ArrayList<ArrayList<Integer>> path = new ArrayList<ArrayList<Integer>> ( V );
         ArrayList<Boolean> stpSet = new ArrayList<Boolean> ( V );
+        ArrayList<Integer> ancestor = new ArrayList<> ( V );
 
         for (int i = 0 ; i < V ; i++){
 
             dist.add (  Integer.MAX_VALUE );
             stpSet.add (  false );
+            path.add ( new ArrayList<Integer> (  ) );
+            ancestor.add ( src );
 
         }
+     //   ancestor.set ( src , src );
 
         dist.set ( src , 0 );
 
-        for(int i = 0 ; i < V - 1 ; i++){  // optymalzacja - 1
+        for(int i = 0 ; i < V  ; i++){  // optymalzacja - 1
 
             Integer u = minDistance ( dist , stpSet); // znajduje wierzcholek o najmnieszej sciezce do niego
             stpSet.set ( u , true ); // odwiedzono
 
-            for (int  v = 0 ;  v < V ; v++){
+            for (int  v = 0 ;  v < V  ; v++){
 
                 if(!stpSet.get ( v ) && graph.get ( u ).get ( v ) != 0
                         && dist.get ( u ) != Integer.MAX_VALUE &&
                         dist.get ( u ) + graph.get ( u ).get ( v ) < dist.get ( v )){
                     dist.set ( v , dist.get ( u ) + graph.get ( u ).get ( v ) );
+                    ancestor.set ( v , u );
                 }
             }
         }
 
         printSolution ( dist , V );
+        System.out.println ();
+       // Collections.reverse ( ancestor );
+        for (int i = 0 ; i < V ;  i++) {
+            if (i != src){
+                int j;
+            System.out.println ( "Path = " + i );
+            j = i;
+            int hop = 0;
+            do {
+                j = ancestor.get ( j );
+                System.out.print ( "==>" + j );
+                hop++;
+
+            } while (j != src);
+            System.out.println ();
+            System.out.print ( "Ilosc hopow " + hop );
+            System.out.println ();
+            hop = 0;
+            }
+            else{
+                System.out.println ( "Path = " + i );
+
+                System.out.print ( "Ilosc hopow " + 0 );
+                System.out.println ();
+            }
+        }
     }
     ArrayList<ArrayList<Integer>> alokuj(){
 
@@ -182,7 +214,7 @@ public class DijkstraSP_ArrayList {
     public static void main(String[] args){
 
         DijkstraSP_ArrayList dijkstraSP_arrayList = new DijkstraSP_ArrayList ();
-        dijkstraSP_arrayList.dijkstra ( dijkstraSP_arrayList.alokuj () , 4 );
+        dijkstraSP_arrayList.dijkstra ( dijkstraSP_arrayList.alokuj () , 3 );
 
     }
 }
