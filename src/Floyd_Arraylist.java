@@ -41,8 +41,11 @@ public class Floyd_Arraylist {
         ArrayList<Integer> second = new ArrayList<Integer> ( N );
         ArrayList<Integer> third = new ArrayList<Integer> ( N );
         ArrayList<Integer> fourth = new ArrayList<Integer> ( N );
+        ArrayList<Integer> fifth = new ArrayList<Integer> ( N );
+        ArrayList<Integer> sixth = new ArrayList<Integer> ( N );
+        ArrayList<Integer> seventh = new ArrayList<Integer> ( N );
 
-        zero.add ( 0 );
+        /*zero.add ( 0 );
         zero.add ( 5 );
         zero.add ( 1 );
         zero.add ( 2 );
@@ -76,9 +79,88 @@ public class Floyd_Arraylist {
         M.add (1, first);
         M.add ( 2,second);
         M.add (3,third);
-        //M.add (4,fourth);
+        M.add (4,fourth); */
 
+        zero.add(0);
+        zero.add(1);
+        zero.add(4);
+        zero.add(999);
+        zero.add(999);
+        zero.add(999);
+        zero.add(999);
+        zero.add(999);
 
+        first.add ( 1 );
+        first.add ( 0 );
+        first.add ( 2 );
+        first.add ( 5 );
+        first.add ( 999 );
+        first.add ( 999 );
+        first.add ( 2 );
+        first.add ( 7 );
+
+        second.add ( 4 );
+        second.add ( 2 );
+        second.add ( 0 );
+        second.add ( 999 );
+        second.add ( 999 );
+        second.add ( 999 );
+        second.add ( 3 );
+        second.add ( 999 );
+
+        third.add ( 999 );
+        third.add ( 5 );
+        third.add ( 999 );
+        third.add ( 0 );
+        third.add ( 2 );
+        third.add ( 999 );
+        third.add ( 3 );
+        third.add ( 999 );
+
+        fourth.add ( 999 );
+        fourth.add ( 999 );
+        fourth.add ( 999 );
+        fourth.add ( 2 );
+        fourth.add ( 0 );
+        fourth.add ( 4 );
+        fourth.add ( 999 );
+        fourth.add ( 999 );
+
+        fifth.add ( 999 );
+        fifth.add ( 999 );
+        fifth.add ( 999 );
+        fifth.add ( 999 );
+        fifth.add ( 4 );
+        fifth.add ( 0 );
+        fifth.add ( 999 );
+        fifth.add ( 2 );
+
+        sixth.add ( 999 );
+        sixth.add ( 2 );
+        sixth.add ( 3 );
+        sixth.add ( 3 );
+        sixth.add ( 999 );
+        sixth.add ( 999 );
+        sixth.add ( 0 );
+        sixth.add ( 5 );
+
+        seventh.add ( 999 );
+        seventh.add ( 7 );
+        seventh.add ( 999 );
+        seventh.add ( 999 );
+        seventh.add ( 999 );
+        seventh.add ( 2 );
+        seventh.add ( 5 );
+        seventh.add ( 0 );
+
+        M.add ( zero );
+        M.add ( first );
+        M.add ( second );
+        M.add ( third );
+        M.add ( fourth );
+        M.add ( fifth );
+        M.add ( sixth );
+        M.add ( seventh );
     }
 
     public ArrayList<ArrayList<Integer>> infinity(ArrayList<ArrayList<Integer>> M){
@@ -361,12 +443,17 @@ public class Floyd_Arraylist {
         Floyd_Arraylist floyd_arraylist = new Floyd_Arraylist ();
         System.out.println ();
         System.out.println ("Adjacencies Matrix");
-        floyd_arraylist.alloc ( 4 );
+        floyd_arraylist.alloc ( 8 );
         floyd_arraylist.print ( floyd_arraylist.M);
         System.out.println ();
         System.out.println ("Shortest Path Matrix");
+
         floyd_arraylist.startPath ( 4 );
         floyd_arraylist.print ( floyd_arraylist.floyd ( floyd_arraylist.M ) );
+
+        floyd_arraylist.startPath ( 8 );
+        floyd_arraylist.print ( floyd_arraylist.floyd ( floyd_arraylist.M ) );
+
         System.out.println ("Path Matrix");
         floyd_arraylist.print ( floyd_arraylist.P );
 
