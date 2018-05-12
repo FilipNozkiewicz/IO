@@ -41,7 +41,7 @@ public class Main_To_Dijkstra {
 
         System.out.println ();
         dijkstraSP_arrayList.choose_the_shortest ( routeGenerator.getParcelsNumber(), adjacentMatrixGenerator.getAdjacent ()  );
-
+        System.out.println ();
 
     }
 }
