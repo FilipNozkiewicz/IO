@@ -193,6 +193,17 @@ public class DijkstraSP_ArrayList {
         }
         return Matrix_Distance;
     }
+    public void  SetHops(ArrayList<ArrayList<Integer>> graph){
+        Matrix_Distance = new ArrayList<ArrayList<Integer>> (  );
+        Hop_Matrix = new ArrayList<ArrayList<Integer>> (  );
+        Path_Matrix = new ArrayList<ArrayList<String>> (  );
+        for(int i = 0 ; i < V ; i++){
+            Distance = Dijkstra_With_Return ( graph , i );
+            Hop_Matrix.add ( Hop_list );
+
+        }
+
+    }
     public void print(ArrayList<ArrayList<Integer>> M){   // tylko sposob wypisywania
 
         System.out.println ("\n\t");
@@ -222,6 +233,7 @@ public class DijkstraSP_ArrayList {
         }
         System.out.println ("\n");
     }
+
     public void print_paths (ArrayList<ArrayList<String>> M){   // tylko sposob wypisywania
 
         System.out.println ("\n\t");
@@ -258,7 +270,7 @@ public class DijkstraSP_ArrayList {
         Integer hopsOfRoute = 0;
         String lengthName;
 
-        Fulfill_Distance_Matrix ( M );
+        SetHops ( M );
         System.out.println(Hop_Matrix);
         for(int i = 0; i< v.size(); i++){
             for (int j = 0;j< v.size(); j++){
@@ -415,15 +427,23 @@ public class DijkstraSP_ArrayList {
     }
     public static void main(String[] args){
 
-        DijkstraSP_ArrayList dijkstraSP_arrayList = new DijkstraSP_ArrayList ();
-        System.out.println ();
-        System.out.println ("---------------------------------Distance Matrix-----------------------------------------------------------------------------------");
-        dijkstraSP_arrayList.print ( dijkstraSP_arrayList.Fulfill_Distance_Matrix ( dijkstraSP_arrayList.alokuj () ) );
-        System.out.println ();
-        System.out.println ("--------------------------------------Hop Matrix-----------------------------------------------------------------------------------");
-        dijkstraSP_arrayList.print ( dijkstraSP_arrayList.Hop_Matrix );
-        System.out.println ();
-        System.out.println ("-------------------------------------Path Matrix-----------------------------------------------------------------------------------");
-        dijkstraSP_arrayList.print_paths ( dijkstraSP_arrayList.Path_Matrix );
+        //DijkstraSP_ArrayList dijkstraSP_arrayList = new DijkstraSP_ArrayList ();
+     //   System.out.println ();
+     //   System.out.println ("---------------------------------Distance Matrix-----------------------------------------------------------------------------------");
+     //   dijkstraSP_arrayList.print ( dijkstraSP_arrayList.Fulfill_Distance_Matrix ( dijkstraSP_arrayList.alokuj () ) );
+     //   System.out.println ();
+    //    System.out.println ("--------------------------------------Hop Matrix-----------------------------------------------------------------------------------");
+    //    dijkstraSP_arrayList.print ( dijkstraSP_arrayList.Hop_Matrix );
+    //    System.out.println ();
+    //    System.out.println ("-------------------------------------Path Matrix-----------------------------------------------------------------------------------");
+    //    dijkstraSP_arrayList.print_paths ( dijkstraSP_arrayList.Path_Matrix );
+        DijkstraSP_ArrayList dijkstraSP_arrayList = new DijkstraSP_ArrayList (  );
+        //dijkstraSP_arrayList.SetHops ( dijkstraSP_arrayList.alokuj () );
+      //  dijkstraSP_arrayList.print ( dijkstraSP_arrayList.Hop_Matrix );
+        ArrayList<Integer> p = new ArrayList<Integer> (  );
+        p.add ( 2 );
+        p.add ( 3 );
+        p.add ( 1 );
+        dijkstraSP_arrayList.choose_the_shortest ( p , dijkstraSP_arrayList.alokuj () );
     }
 }
