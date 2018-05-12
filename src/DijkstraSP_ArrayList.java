@@ -259,6 +259,8 @@ public class DijkstraSP_ArrayList {
         Integer lengthOfRoute = 0;
         String lengthName;
 
+        Fulfill_Distance_Matrix ( M );
+
         for(int i = 0; i< v.size(); i++){
             for (int j = 0;j< v.size(); j++){
                 if(j != i ){
