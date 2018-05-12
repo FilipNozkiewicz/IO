@@ -295,8 +295,8 @@ public class DijkstraSP_ArrayList {
                     System.out.print ( M.get ( i ).get ( j ) );
                     FileWrite.writefile ( M.get ( i ).get ( j ).toString ()  , "trasy.txt");
                 }
-              //  System.out.print(String.join("", Collections.nCopies(maxymalne.get ( j ) - M.get ( i ).get ( j ).length () + 2, " ")));
-           //     FileWrite.writefile ( String.join("", Collections.nCopies(maxymalne.get ( j ) - M.get ( i ).get ( j ).length () + 2, " ")) , "trasy.txt");
+                System.out.print(String.join("", Collections.nCopies(maxymalne.get ( j ) - M.get ( i ).get ( j ).length () + 2, " ")));
+                FileWrite.writefile ( String.join("", Collections.nCopies(maxymalne.get ( j ) - M.get ( i ).get ( j ).length () + 2, " ")) , "trasy.txt");
 
             }
             System.out.println ("\n");
