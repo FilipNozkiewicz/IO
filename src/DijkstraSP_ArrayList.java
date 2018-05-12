@@ -1,3 +1,5 @@
+
+
 import java.util. *;
 import java.lang. *;
 import java.io. *;
@@ -5,6 +7,11 @@ import java.io. *;
 public class DijkstraSP_ArrayList {
 
     int V = 9;
+    ArrayList<ArrayList<Integer>> Matrix_Distance;
+    ArrayList<Integer> Distance;
+    public void create(){
+        Matrix_Distance = new ArrayList<ArrayList<Integer>> (  );
+    }
 
     Integer minDistance(ArrayList<Integer> dist, ArrayList<Boolean> stpSet) {
 
@@ -68,6 +75,7 @@ public class DijkstraSP_ArrayList {
         }
 
         printSolution ( dist , V );
+
         System.out.println ();
        // Collections.reverse ( ancestor );
         for (int i = 0 ; i < V ;  i++) {
@@ -94,6 +102,79 @@ public class DijkstraSP_ArrayList {
                 System.out.println ();
             }
         }
+    }
+    public ArrayList<Integer> Dijkstra_With_Return(ArrayList<ArrayList<Integer>> graph , Integer src){
+        ArrayList<Integer> dist = new ArrayList<Integer> ( V );
+        ArrayList<ArrayList<Integer>> path = new ArrayList<ArrayList<Integer>> ( V );
+        ArrayList<Boolean> stpSet = new ArrayList<Boolean> ( V );
+        ArrayList<Integer> ancestor = new ArrayList<> ( V );
+
+        for (int i = 0 ; i < V ; i++){
+
+            dist.add (  Integer.MAX_VALUE );
+            stpSet.add (  false );
+            path.add ( new ArrayList<Integer> (  ) );
+            ancestor.add ( src );
+
+        }
+        //   ancestor.set ( src , src );
+
+        dist.set ( src , 0 );
+
+        for(int i = 0 ; i < V  ; i++){  // optymalzacja - 1
+
+            Integer u = minDistance ( dist , stpSet); // znajduje wierzcholek o najmnieszej sciezce do niego
+            stpSet.set ( u , true ); // odwiedzono
+
+            for (int  v = 0 ;  v < V  ; v++){
+
+                if(!stpSet.get ( v ) && graph.get ( u ).get ( v ) != 0
+                        && dist.get ( u ) != Integer.MAX_VALUE &&
+                        dist.get ( u ) + graph.get ( u ).get ( v ) < dist.get ( v )){
+                    dist.set ( v , dist.get ( u ) + graph.get ( u ).get ( v ) );
+                    ancestor.set ( v , u );
+                }
+            }
+        }
+        return dist;
+
+    }
+    ArrayList<ArrayList<Integer>>  Fulfill_Distance_Matrix(ArrayList<ArrayList<Integer>> graph){
+        Matrix_Distance = new ArrayList<ArrayList<Integer>> (  );
+        for(int i = 0 ; i < V ; i++){
+          Distance = Dijkstra_With_Return ( graph , i );
+          Matrix_Distance.add ( Distance );
+        }
+        return Matrix_Distance;
+    }
+    public void print(ArrayList<ArrayList<Integer>> M){   // tylko sposob wypisywania
+
+        System.out.println ("\n\t");
+        System.out.print ("\t");
+        for(int i =0 ; i< M.size () ; i++ ){
+            System.out.print (i + "|\t");
+        }
+        System.out.println ();
+        for(int i = 0 ; i < 23 ; i ++) {
+            System.out.print ("-");
+        }
+        System.out.println ();
+        for(int i = 0 ; i  < M.size () ; i++){
+            System.out.print (i + "|\t");
+            for(int j = 0 ; j < M.size () ; j++){
+                if(i == j) {
+                    System.out.print ( "-" );
+                }
+                else {
+                    System.out.print ( M.get ( i ).get ( j ) );
+                }
+                System.out.print("\t");
+
+
+            }
+            System.out.println ("\n");
+        }
+        System.out.println ("\n");
     }
     ArrayList<ArrayList<Integer>> alokuj(){
 
@@ -214,8 +295,8 @@ public class DijkstraSP_ArrayList {
     public static void main(String[] args){
 
         DijkstraSP_ArrayList dijkstraSP_arrayList = new DijkstraSP_ArrayList ();
+        dijkstraSP_arrayList.print ( dijkstraSP_arrayList.Fulfill_Distance_Matrix ( dijkstraSP_arrayList.alokuj () ) );
 
-        dijkstraSP_arrayList.dijkstra ( dijkstraSP_arrayList.alokuj () , 3 );
 
     }
 }
