@@ -271,7 +271,6 @@ public class DijkstraSP_ArrayList {
         String lengthName;
 
         SetHops ( P );
-        System.out.println(Hop_Matrix);
         for(int i = 0; i< v.size(); i++){
             for (int j = 0;j< v.size(); j++){
                 if(j != i ){

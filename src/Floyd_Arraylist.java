@@ -306,8 +306,8 @@ public class Floyd_Arraylist {
         HashMap<Integer , String> mapa = new HashMap<Integer, String> ( );
         ArrayList<OurMap> ways = new ArrayList<>(); // potrzebuje stworzyć bo chce duplikaty i dodawanie po koleji
         Integer lengthOfRoute = 0;
+        Integer hopsOfRoute = 0;
         String lengthName;
-
             for(int i = 0; i< v.size(); i++){
                 for (int j = 0;j< v.size(); j++){
                     if(j != i ){
@@ -317,9 +317,10 @@ public class Floyd_Arraylist {
                                     if(r != i && r!= j && r != k) {
                                         for (int l = 0; l < v.size(); l++) {
                                             if(l != i && l != j && l != k && l != r) {
+                                                hopsOfRoute = hopCounter(0,i) + hopCounter(i,j) + hopCounter(j,k) + hopCounter(k,r) + hopCounter(r,j) + hopCounter(j,0);
                                                 lengthOfRoute = M.get(0).get(v.get(i)) + M.get(v.get(i)).get(v.get(j)) + M.get(v.get(j)).get(v.get(k)) + M.get(v.get(k)).get(v.get(r)) + M.get(v.get(r)).get(v.get(l)) + M.get(v.get(l)).get(0);
                                                 lengthName = "0 -> " + String.valueOf(v.get(i)) + " -> " + String.valueOf(v.get(j)) + " -> " + String.valueOf(v.get(k)) + " -> " + String.valueOf(v.get(r)) + " -> " + String.valueOf(v.get(l)) + " -> 0";
-                                                ways.add(new OurMap(lengthOfRoute, lengthName));
+                                                ways.add(new OurMap(lengthOfRoute, hopsOfRoute, lengthName));
                                             }
                                         }
                                     }
@@ -474,6 +475,27 @@ public class Floyd_Arraylist {
         System.out.println ();
         System.out.print ("Ilosc hopow : " + hop);
         hop = 0;
+    }
+    public int hopCounter(Integer src , Integer dest){
+        Integer obecny_cel = P.get ( src ).get ( dest );
+        Integer hop = 0;
+        if(src != dest) {
+            hop++;
+            for (int i = 0; i < P.size (); i++) {
+                for (int j = 0; j < P.size (); j++) {
+
+                    if (obecny_cel != dest) {
+                        do {
+                            hop++;
+                            obecny_cel = P.get(obecny_cel).get(dest);
+                        } while (obecny_cel != dest);
+                    } else {
+                        break;
+                    }
+                }
+            }
+        }
+        return hop;
     }
 
     public static void main(String[] args){   // poszczegolne wywolania

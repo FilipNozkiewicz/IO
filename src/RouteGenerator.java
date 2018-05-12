@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 public class  RouteGenerator {
     public  ArrayList<Parcel> parcels = new ArrayList<Parcel> ();
-    public ArrayList<Integer> parcelsNumber= new ArrayList<>();
+    public ArrayList<Integer> parcelsNumber = new ArrayList<>();
     Random random = new Random();
     Parcel parcel = new Parcel();
     long order = System.currentTimeMillis(); //obecny czas
