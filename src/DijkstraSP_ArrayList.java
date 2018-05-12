@@ -103,11 +103,17 @@ public class DijkstraSP_ArrayList {
             }
         }
     }
+    ArrayList<ArrayList<Integer>> Hop_Matrix;
+    ArrayList<ArrayList<String>> Path_Matrix;
+    ArrayList<Integer> Hop_list;
+    ArrayList<String> Path_list;
+
     public ArrayList<Integer> Dijkstra_With_Return(ArrayList<ArrayList<Integer>> graph , Integer src){
         ArrayList<Integer> dist = new ArrayList<Integer> ( V );
         ArrayList<ArrayList<Integer>> path = new ArrayList<ArrayList<Integer>> ( V );
         ArrayList<Boolean> stpSet = new ArrayList<Boolean> ( V );
         ArrayList<Integer> ancestor = new ArrayList<> ( V );
+        Hop_list = new ArrayList<Integer> (  );
 
         for (int i = 0 ; i < V ; i++){
 
@@ -136,14 +142,37 @@ public class DijkstraSP_ArrayList {
                 }
             }
         }
+        for (int i = 0 ; i < V ;  i++) {
+            if (i != src){
+                int j;
+
+                j = i;
+                int hop = 0;
+                do {
+                    j = ancestor.get ( j );
+
+                    hop++;
+
+                } while (j != src);
+                Hop_list.add ( hop );
+                hop = 0;
+            }
+            else{
+
+                Hop_list.add ( 0 );
+            }
+        }
         return dist;
 
     }
     ArrayList<ArrayList<Integer>>  Fulfill_Distance_Matrix(ArrayList<ArrayList<Integer>> graph){
         Matrix_Distance = new ArrayList<ArrayList<Integer>> (  );
+        Hop_Matrix = new ArrayList<ArrayList<Integer>> (  );
+        Path_Matrix = new ArrayList<ArrayList<String>> (  );
         for(int i = 0 ; i < V ; i++){
           Distance = Dijkstra_With_Return ( graph , i );
           Matrix_Distance.add ( Distance );
+          Hop_Matrix.add ( Hop_list );
         }
         return Matrix_Distance;
     }
@@ -176,6 +205,7 @@ public class DijkstraSP_ArrayList {
         }
         System.out.println ("\n");
     }
+
     ArrayList<ArrayList<Integer>> alokuj(){
 
         ArrayList<ArrayList<Integer>> M  = new ArrayList<ArrayList<Integer>> ( V );
@@ -295,8 +325,12 @@ public class DijkstraSP_ArrayList {
     public static void main(String[] args){
 
         DijkstraSP_ArrayList dijkstraSP_arrayList = new DijkstraSP_ArrayList ();
+        System.out.println ();
+        System.out.println ("---------------------------------Distance Matrix-----------------------------------------------------------------------------------");
         dijkstraSP_arrayList.print ( dijkstraSP_arrayList.Fulfill_Distance_Matrix ( dijkstraSP_arrayList.alokuj () ) );
-
+        System.out.println ();
+        System.out.println ("--------------------------------------Hop Matrix-----------------------------------------------------------------------------------");
+        dijkstraSP_arrayList.print ( dijkstraSP_arrayList.Hop_Matrix );
 
     }
 }
