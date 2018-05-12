@@ -234,7 +234,7 @@ public class DijkstraSP_ArrayList {
         System.out.println ("\n");
     }
 
-    public void print_paths (ArrayList<ArrayList<String>> M){   // tylko sposob wypisywania
+    public void print_paths (ArrayList<ArrayList<String>> M) throws FileNotFoundException {   // tylko sposob wypisywania
         ArrayList<ArrayList<Integer>> wartosci = new ArrayList<ArrayList<Integer>> (  );
         ArrayList<ArrayList<Integer>> wartosci2 = new ArrayList<ArrayList<Integer>> (  );
         ArrayList<Integer> wiersz;
@@ -260,32 +260,51 @@ public class DijkstraSP_ArrayList {
         }
         ArrayList<String> odstep = new ArrayList<String > (  );
         String spacja = " ";
-        for(int i =0 ; i< M.size () ; i++ ){
+        try {
+            CleanFile.clean ( "trasy.txt" );
+        } catch (FileNotFoundException e) {
+            e.printStackTrace ();
+        }
+
+        for(Integer i =0 ; i< M.size () ; i++ ){
 
             System.out.print (i + (String.join("", Collections.nCopies(maxymalne.get ( i ), " "))));
             System.out.print("\t");
+            FileWrite.writefile ( i.toString () + String.join("", Collections.nCopies(maxymalne.get ( i ), " ")) + "\t" , "trasy.txt" );
+
+
        }
         System.out.println ();
+        FileWrite.writefile ( "\n"  , "trasy.txt");
         for(int i = 0 ; i < 23 ; i ++) {
             System.out.print ("-");
+            FileWrite.writefile ( "-" , "trasy.txt" );
         }
         System.out.println ();
-        for(int i = 0 ; i  < M.size () ; i++){
+        FileWrite.writefile ( "\n"  , "trasy.txt");
+
+        for(Integer i = 0 ; i  < M.size () ; i++){
             System.out.print (i + "|\t");
+            FileWrite.writefile ( i.toString () + "|\t" , "trasy.txt" );
             for(int j = 0 ; j < M.size () ; j++){
                 if(i == j) {
                     System.out.print ( "-" );
+                    FileWrite.writefile ( "-"  , "trasy.txt");
                 }
                 else {
                     System.out.print ( M.get ( i ).get ( j ) );
+                    FileWrite.writefile ( M.get ( i ).get ( j ).toString ()  , "trasy.txt");
                 }
                 System.out.print(String.join("", Collections.nCopies(maxymalne.get ( j ) - M.get ( i ).get ( j ).length () + 2, " ")));
-
+                FileWrite.writefile ( String.join("", Collections.nCopies(maxymalne.get ( j ) - M.get ( i ).get ( j ).length () + 2, " ")) , "trasy.txt");
 
             }
             System.out.println ("\n");
+            FileWrite.writefile ( "\n"  , "trasy.txt");
+
         }
         System.out.println ("\n");
+        FileWrite.writefile ( "\n"  , "trasy.txt");
     }
     public void choose_the_shortest( ArrayList<Integer> v , ArrayList<ArrayList<Integer>> M , ArrayList<ArrayList<Integer>> P){
 

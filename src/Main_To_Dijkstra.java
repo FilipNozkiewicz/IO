@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class Main_To_Dijkstra {
@@ -31,7 +32,11 @@ public class Main_To_Dijkstra {
         System.out.println ("Hop Matrix");
         dijkstraSP_arrayList.print( dijkstraSP_arrayList.Hop_Matrix );
         System.out.println ("Matrix Sciezek");
-        dijkstraSP_arrayList.print_paths ( dijkstraSP_arrayList.Path_Matrix );   // Moze lepiej nie bo jest jebutna :)
+        try {
+            dijkstraSP_arrayList.print_paths ( dijkstraSP_arrayList.Path_Matrix );   // Moze lepiej nie bo jest jebutna :)
+        } catch (FileNotFoundException e) {
+            e.printStackTrace ();
+        }
 
         int numberOfElementsInRow = checkInputData.getVertical().get(0).size();
         routeGenerator.generateParcels(5, numberOfElementsInRow);
