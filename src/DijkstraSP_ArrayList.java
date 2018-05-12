@@ -253,14 +253,13 @@ public class DijkstraSP_ArrayList {
     }
     public void choose_the_shortest( ArrayList<Integer> v , ArrayList<ArrayList<Integer>> M){
 
-        ArrayList<Integer> kombinacje = new ArrayList<Integer> (  );
-        HashMap<Integer , String> mapa = new HashMap<Integer, String> ( );
         ArrayList<OurMap> ways = new ArrayList<>(); // potrzebuje stworzyć bo chce duplikaty i dodawanie po koleji
         Integer lengthOfRoute = 0;
+        Integer hopsOfRoute = 0;
         String lengthName;
 
         Fulfill_Distance_Matrix ( M );
-
+        System.out.println(Hop_Matrix);
         for(int i = 0; i< v.size(); i++){
             for (int j = 0;j< v.size(); j++){
                 if(j != i ){
@@ -270,9 +269,10 @@ public class DijkstraSP_ArrayList {
                                 if(r != i && r!= j && r != k) {
                                     for (int l = 0; l < v.size(); l++) {
                                         if(l != i && l != j && l != k && l != r) {
-                                            lengthOfRoute = M.get(0).get(v.get(i)) + M.get(v.get(i)).get(v.get(j)) + M.get(v.get(j)).get(v.get(k)) + M.get(v.get(k)).get(v.get(k)) + M.get(v.get(k)).get(v.get(l)) + M.get(v.get(l)).get(0);
+                                            hopsOfRoute = Hop_Matrix.get(0).get(v.get(i)) + Hop_Matrix.get(v.get(i)).get(v.get(j)) + Hop_Matrix.get(v.get(j)).get(v.get(k)) + Hop_Matrix.get(v.get(k)).get(v.get(r)) + Hop_Matrix.get(v.get(r)).get(v.get(l)) + Hop_Matrix.get(v.get(l)).get(0) ;
+                                            lengthOfRoute = M.get(0).get(v.get(i)) + M.get(v.get(i)).get(v.get(j)) + M.get(v.get(j)).get(v.get(k)) + M.get(v.get(k)).get(v.get(r)) + M.get(v.get(r)).get(v.get(l)) + M.get(v.get(l)).get(0);
                                             lengthName = "0 -> " + String.valueOf(v.get(i)) + " -> " + String.valueOf(v.get(j)) + " -> " + String.valueOf(v.get(k)) + " -> " + String.valueOf(v.get(r)) + " -> " + String.valueOf(v.get(l)) + " -> 0";
-                                            ways.add(new OurMap(lengthOfRoute, lengthName));
+                                            ways.add(new OurMap(lengthOfRoute, hopsOfRoute, lengthName));
                                         }
                                     }
                                 }
