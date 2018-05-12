@@ -442,8 +442,6 @@ public class Floyd_Arraylist {
 
     public void printpaths(Integer src , Integer dest){
 
-
-
         System.out.println ();
         System.out.println ("Path from " + src + " to " + dest + " : ");
         Integer obecny_cel = P.get ( src ).get ( dest );
