@@ -114,6 +114,7 @@ public class DijkstraSP_ArrayList {
         ArrayList<Boolean> stpSet = new ArrayList<Boolean> ( V );
         ArrayList<Integer> ancestor = new ArrayList<> ( V );
         Hop_list = new ArrayList<Integer> (  );
+        Path_list = new ArrayList<String> (  );
 
         for (int i = 0 ; i < V ; i++){
 
@@ -121,7 +122,7 @@ public class DijkstraSP_ArrayList {
             stpSet.add (  false );
             path.add ( new ArrayList<Integer> (  ) );
             ancestor.add ( src );
-
+            Path_list.add ( "" );
         }
         //   ancestor.set ( src , src );
 
@@ -142,15 +143,24 @@ public class DijkstraSP_ArrayList {
                 }
             }
         }
-        for (int i = 0 ; i < V ;  i++) {
+        for (Integer i = 0 ; i < V ;  i++) {
             if (i != src){
-                int j;
+                Integer j;
 
                 j = i;
                 int hop = 0;
                 do {
-                    j = ancestor.get ( j );
+                    StringBuilder x = new StringBuilder();
 
+                    j = ancestor.get ( j );
+                    x.append ( " ===> " + j.toString () );
+                    x.append(Path_list.get ( i ));
+                   Path_list.set ( i , x.toString ());
+                //    String x = "==>" + j.toString ();
+              //      String y = Path_list.get ( i );
+              //      StringBuilder xy = new StringBuilder (  );
+              //      xy.append ( x ).append ( y );
+              //      Path_list.set ( i , xy.toString () );
                     hop++;
 
                 } while (j != src);
@@ -173,6 +183,7 @@ public class DijkstraSP_ArrayList {
           Distance = Dijkstra_With_Return ( graph , i );
           Matrix_Distance.add ( Distance );
           Hop_Matrix.add ( Hop_list );
+          Path_Matrix.add ( Path_list );
         }
         return Matrix_Distance;
     }
@@ -182,6 +193,35 @@ public class DijkstraSP_ArrayList {
         System.out.print ("\t");
         for(int i =0 ; i< M.size () ; i++ ){
             System.out.print (i + "|\t");
+        }
+        System.out.println ();
+        for(int i = 0 ; i < 23 ; i ++) {
+            System.out.print ("-");
+        }
+        System.out.println ();
+        for(int i = 0 ; i  < M.size () ; i++){
+            System.out.print (i + "|\t");
+            for(int j = 0 ; j < M.size () ; j++){
+                if(i == j) {
+                    System.out.print ( "-" );
+                }
+                else {
+                    System.out.print ( M.get ( i ).get ( j ) );
+                }
+                System.out.print("\t");
+
+
+            }
+            System.out.println ("\n");
+        }
+        System.out.println ("\n");
+    }
+    public void print_paths (ArrayList<ArrayList<String>> M){   // tylko sposob wypisywania
+
+        System.out.println ("\n\t");
+        System.out.print ("\t");
+        for(int i =0 ; i< M.size () ; i++ ){
+            System.out.print (i + "|\t" +"\t\t\t");
         }
         System.out.println ();
         for(int i = 0 ; i < 23 ; i ++) {
@@ -331,6 +371,8 @@ public class DijkstraSP_ArrayList {
         System.out.println ();
         System.out.println ("--------------------------------------Hop Matrix-----------------------------------------------------------------------------------");
         dijkstraSP_arrayList.print ( dijkstraSP_arrayList.Hop_Matrix );
-
+        System.out.println ();
+        System.out.println ("-------------------------------------Path Matrix-----------------------------------------------------------------------------------");
+        dijkstraSP_arrayList.print_paths ( dijkstraSP_arrayList.Path_Matrix );
     }
 }
