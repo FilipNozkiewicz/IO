@@ -235,12 +235,36 @@ public class DijkstraSP_ArrayList {
     }
 
     public void print_paths (ArrayList<ArrayList<String>> M){   // tylko sposob wypisywania
-
+        ArrayList<ArrayList<Integer>> wartosci = new ArrayList<ArrayList<Integer>> (  );
+        ArrayList<ArrayList<Integer>> wartosci2 = new ArrayList<ArrayList<Integer>> (  );
+        ArrayList<Integer> wiersz;
+        ArrayList<Integer> maxymalne = new ArrayList<Integer> (  );
         System.out.println ("\n\t");
         System.out.print ("\t");
-        for(int i =0 ; i< M.size () ; i++ ){
-            System.out.print (i + "|\t" +"\t\t\t");
+        for(Integer i = 0 ; i < M.size () ; i++){
+            wiersz = new ArrayList<Integer> (  );
+            for(Integer j = 0 ; j < M.size () ; j++){
+                wiersz.add ( M.get ( i ).get ( j ).length () );
+            }
+            wartosci.add ( wiersz );
+            wartosci2.add ( wiersz );
         }
+        for(Integer i = 0 ; i < M.size () ; i++) {
+
+            for (Integer j = 0; j < M.size (); j++) {
+                wartosci2.get ( i  ).set ( j , wartosci.get(j).get ( i ) );
+            }
+        }
+        for(Integer i = 0 ; i < M.size () ; i++) {
+            maxymalne.add ( Collections.max ( wartosci2.get ( i ) ) );
+        }
+        ArrayList<String> odstep = new ArrayList<String > (  );
+        String spacja = " ";
+        for(int i =0 ; i< M.size () ; i++ ){
+
+            System.out.print (i + (String.join("", Collections.nCopies(maxymalne.get ( i ), " "))));
+            System.out.print("\t");
+       }
         System.out.println ();
         for(int i = 0 ; i < 23 ; i ++) {
             System.out.print ("-");
@@ -255,7 +279,7 @@ public class DijkstraSP_ArrayList {
                 else {
                     System.out.print ( M.get ( i ).get ( j ) );
                 }
-                System.out.print("\t");
+                System.out.print(String.join("", Collections.nCopies(maxymalne.get ( j ) - M.get ( i ).get ( j ).length () + 2, " ")));
 
 
             }
