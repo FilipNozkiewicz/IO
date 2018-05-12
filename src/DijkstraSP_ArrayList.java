@@ -6,6 +6,7 @@ import java.io. *;
 
 public class DijkstraSP_ArrayList {
 
+
     int V = 9;
     ArrayList<ArrayList<Integer>> Matrix_Distance;
     ArrayList<Integer> Distance;
@@ -29,7 +30,12 @@ public class DijkstraSP_ArrayList {
         }
         return min_index;
     }
+    public DijkstraSP_ArrayList(Integer V){
+        this.V = V;
+    }
+    public DijkstraSP_ArrayList(){
 
+    }
     void printSolution(ArrayList<Integer> dist, Integer n) {
 
         System.out.println ( "Vertex   Distance from Source" );
