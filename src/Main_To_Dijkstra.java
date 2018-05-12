@@ -40,8 +40,8 @@ public class Main_To_Dijkstra {
         System.out.println(routeGenerator.getParcelsNumber());
 
         System.out.println ();
-        dijkstraSP_arrayList.choose_the_shortest ( routeGenerator.getParcelsNumber(), adjacentMatrixGenerator.getAdjacent ()  );
-        System.out.println ();
+        dijkstraSP_arrayList.choose_the_shortest ( routeGenerator.getParcelsNumber(), dijkstraSP_arrayList.Fulfill_Distance_Matrix ( adjacentMatrixGenerator.getAdjacent () ) , adjacentMatrixGenerator.getAdjacent () );
+
 
     }
 }

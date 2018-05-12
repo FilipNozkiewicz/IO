@@ -263,14 +263,14 @@ public class DijkstraSP_ArrayList {
         }
         System.out.println ("\n");
     }
-    public void choose_the_shortest( ArrayList<Integer> v , ArrayList<ArrayList<Integer>> M){
+    public void choose_the_shortest( ArrayList<Integer> v , ArrayList<ArrayList<Integer>> M , ArrayList<ArrayList<Integer>> P){
 
         ArrayList<OurMap> ways = new ArrayList<>(); // potrzebuje stworzyć bo chce duplikaty i dodawanie po koleji
         Integer lengthOfRoute = 0;
         Integer hopsOfRoute = 0;
         String lengthName;
 
-        SetHops ( M );
+        SetHops ( P );
         System.out.println(Hop_Matrix);
         for(int i = 0; i< v.size(); i++){
             for (int j = 0;j< v.size(); j++){
@@ -444,6 +444,6 @@ public class DijkstraSP_ArrayList {
         p.add ( 2 );
         p.add ( 3 );
         p.add ( 1 );
-        dijkstraSP_arrayList.choose_the_shortest ( p , dijkstraSP_arrayList.alokuj () );
+       // dijkstraSP_arrayList.choose_the_shortest ( p , dijkstraSP_arrayList.alokuj () );
     }
 }
