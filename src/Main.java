@@ -54,6 +54,9 @@ public class Main {
         LoadRoute loadRoute = new LoadRoute ();
         Scanner scanner = new Scanner(new File (csvFile));
         ArrayList<RouteGenerator> routeGenerators= new ArrayList<>();
+        DijkstraSP_ArrayList dijkstraSP_arrayList = new DijkstraSP_ArrayList ( adjacentMatrixGenerator.adjacent.size () );
+        dijkstraSP_arrayList.Fulfill_Distance_Matrix ( adjacentMatrixGenerator.adjacent );
+
         while (scanner.hasNext()) {
             List<String> line = loadRoute.parseLine(scanner.nextLine());
             RouteGenerator temp = new RouteGenerator();
@@ -66,14 +69,16 @@ public class Main {
         }
 
         scanner.close();
-
         for(RouteGenerator rg : routeGenerators){
             rg.generateParcelsNumbers(rg.getParcels(),numberOfElementsInRow);
             rg.writeParcels();
             System.out.println(rg.getParcelsNumber());
             floyd_arraylist.startPath ( adjacentMatrixGenerator.getAdjacent () );
+            System.out.print("Floyd => ");
             floyd_arraylist.choose_the_shortest ( rg.getParcelsNumber(), floyd_arraylist.floyd ( adjacentMatrixGenerator.getAdjacent () ) );
+            System.out.print("Dijkstra => ");
+            dijkstraSP_arrayList.choose_the_shortest ( rg.getParcelsNumber(), dijkstraSP_arrayList.Fulfill_Distance_Matrix ( adjacentMatrixGenerator.getAdjacent () ) , adjacentMatrixGenerator.getAdjacent () );
+
         }
-        floyd_arraylist.hopCounter(1,5);
     }
 }
