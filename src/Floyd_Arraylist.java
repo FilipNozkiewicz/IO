@@ -318,7 +318,7 @@ public class Floyd_Arraylist {
                                     if(r != i && r!= j && r != k) {
                                         for (int l = 0; l < v.size(); l++) {
                                             if(l != i && l != j && l != k && l != r) {
-                                                hopsOfRoute = hopCounter(0,i) + hopCounter(i,j) + hopCounter(j,k) + hopCounter(k,r) + hopCounter(r,j) + hopCounter(j,0);
+                                                hopsOfRoute = hopCounter(0,v.get(i)) + hopCounter(v.get(i),v.get(j)) + hopCounter(v.get(j),v.get(k)) + hopCounter(v.get(k),v.get(r)) + hopCounter(v.get(r),v.get(l)) + hopCounter(v.get(l),0);
                                                 lengthOfRoute = M.get(0).get(v.get(i)) + M.get(v.get(i)).get(v.get(j)) + M.get(v.get(j)).get(v.get(k)) + M.get(v.get(k)).get(v.get(r)) + M.get(v.get(r)).get(v.get(l)) + M.get(v.get(l)).get(0);
                                                 lengthName = "0 -> " + String.valueOf(v.get(i)) + " -> " + String.valueOf(v.get(j)) + " -> " + String.valueOf(v.get(k)) + " -> " + String.valueOf(v.get(r)) + " -> " + String.valueOf(v.get(l)) + " -> 0";
                                                 ways.add(new OurMap(lengthOfRoute, hopsOfRoute, lengthName));
