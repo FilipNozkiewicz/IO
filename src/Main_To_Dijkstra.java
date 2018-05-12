@@ -30,7 +30,18 @@ public class Main_To_Dijkstra {
         dijkstraSP_arrayList.print ( dijkstraSP_arrayList.Fulfill_Distance_Matrix ( adjacentMatrixGenerator.adjacent ) );
         System.out.println ("Hop Matrix");
         dijkstraSP_arrayList.print( dijkstraSP_arrayList.Hop_Matrix );
-        System.out.println ("Matrix Sciezek");
+       // System.out.println ("Matrix Sciezek");
       //  dijkstraSP_arrayList.print_paths ( dijkstraSP_arrayList.Path_Matrix );   // Moze lepiej nie bo jest jebutna :)
+
+        int numberOfElementsInRow = checkInputData.getVertical().get(0).size();
+        routeGenerator.generateParcels(5, numberOfElementsInRow);
+        routeGenerator.writeParcels();
+
+        System.out.println(routeGenerator.getParcelsNumber());
+
+        System.out.println ();
+        dijkstraSP_arrayList.choose_the_shortest ( routeGenerator.getParcelsNumber(), dijkstraSP_arrayList.Fulfill_Distance_Matrix ( adjacentMatrixGenerator.getAdjacent () ) );
+
+
     }
 }

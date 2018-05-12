@@ -251,6 +251,49 @@ public class DijkstraSP_ArrayList {
         }
         System.out.println ("\n");
     }
+    public void choose_the_shortest( ArrayList<Integer> v , ArrayList<ArrayList<Integer>> M){
+
+        ArrayList<Integer> kombinacje = new ArrayList<Integer> (  );
+        HashMap<Integer , String> mapa = new HashMap<Integer, String> ( );
+        ArrayList<OurMap> ways = new ArrayList<>(); // potrzebuje stworzyć bo chce duplikaty i dodawanie po koleji
+        Integer lengthOfRoute = 0;
+        String lengthName;
+
+        for(int i = 0; i< v.size(); i++){
+            for (int j = 0;j< v.size(); j++){
+                if(j != i ){
+                    for (int k = 0;k< v.size();k++){
+                        if(k != j && k!= i) {
+                            for (int r = 0; r < v.size(); r++) {
+                                if(r != i && r!= j && r != k) {
+                                    for (int l = 0; l < v.size(); l++) {
+                                        if(l != i && l != j && l != k && l != r) {
+                                            lengthOfRoute = M.get(0).get(v.get(i)) + M.get(v.get(i)).get(v.get(j)) + M.get(v.get(j)).get(v.get(k)) + M.get(v.get(k)).get(v.get(k)) + M.get(v.get(k)).get(v.get(l)) + M.get(v.get(l)).get(0);
+                                            lengthName = "0 -> " + String.valueOf(v.get(i)) + " -> " + String.valueOf(v.get(j)) + " -> " + String.valueOf(v.get(k)) + " -> " + String.valueOf(v.get(r)) + " -> " + String.valueOf(v.get(l)) + " -> 0";
+                                            ways.add(new OurMap(lengthOfRoute, lengthName));
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        OurMap shortestWay = ways.get(0);
+        for(OurMap o : ways){
+            if(shortestWay.getKey() > o.getKey()){
+                shortestWay = o;
+            }
+            //shortestWay.printMap();
+            //o.printMap();
+        }
+        shortestWay.printMap();
+
+
+
+    }
 
     ArrayList<ArrayList<Integer>> alokuj(){
 
