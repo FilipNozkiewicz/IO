@@ -24,19 +24,19 @@ public class Main_To_Dijkstra {
 
         adjacentMatrixGenerator.adjacentGenerator(checkInputData.getHorizontal(), checkInputData.getVertical());
       //  adjacentMatrixGenerator.print(adjacentMatrixGenerator.getAdjacent());
-        DijkstraSP_ArrayList dijkstraSP_arrayList = new DijkstraSP_ArrayList ( adjacentMatrixGenerator.adjacent.size () );
+        DijkstraSP_ArrayList dijkstraSP_arrayList = new DijkstraSP_ArrayList ( adjacentMatrixGenerator.getAdjacent().size () );
         System.out.println ("Macierz Sasiedztwa");
-        dijkstraSP_arrayList.print ( adjacentMatrixGenerator.adjacent );
+        //dijkstraSP_arrayList.print ( adjacentMatrixGenerator.adjacent );
         System.out.println ("Macierz Sciezek");
-        dijkstraSP_arrayList.print ( dijkstraSP_arrayList.Fulfill_Distance_Matrix ( adjacentMatrixGenerator.adjacent ) );
+        //dijkstraSP_arrayList.print ( dijkstraSP_arrayList.Fulfill_Distance_Matrix ( adjacentMatrixGenerator.adjacent ) );
         System.out.println ("Hop Matrix");
-        dijkstraSP_arrayList.print( dijkstraSP_arrayList.Hop_Matrix );
+        //dijkstraSP_arrayList.print( dijkstraSP_arrayList.Hop_Matrix );
         System.out.println ("Matrix Sciezek");
-        try {
-            dijkstraSP_arrayList.print_paths ( dijkstraSP_arrayList.Path_Matrix );   // Moze lepiej nie bo jest jebutna :)
-        } catch (FileNotFoundException e) {
-            e.printStackTrace ();
-        }
+        //try {
+           // dijkstraSP_arrayList.print_paths ( dijkstraSP_arrayList.Path_Matrix );   // Moze lepiej nie bo jest jebutna :)
+        //} catch (FileNotFoundException e) {
+        //    e.printStackTrace ();
+        //}
 
         int numberOfElementsInRow = checkInputData.getVertical().get(0).size();
         routeGenerator.generateParcels(5, numberOfElementsInRow);
