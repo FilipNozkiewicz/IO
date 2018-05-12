@@ -331,6 +331,8 @@ public class Floyd_Arraylist {
                     }
                 }
             }
+            System.out.println ("Ilosc hopow to " + hopsOfRoute);
+
 
             OurMap shortestWay = ways.get(0);
             for(OurMap o : ways){
@@ -341,56 +343,6 @@ public class Floyd_Arraylist {
                 //o.printMap();
             }
             shortestWay.printMap();
-            /*
-            Integer v0_v1 = M.get(0).get ( v1 );
-            Integer v0_v2 = M.get(0).get ( v2 ) ;
-            Integer v0_v3 = M.get(0).get ( v3 ) ;
-            Integer v1_v2 = M.get(v1).get ( v2 );
-            Integer v1_v3 = M.get(v1).get ( v3 ) ;
-            Integer v2_v3 = M.get(v2).get ( v3 );
-
-            String mapa_kombinacji_1 = "(" + "0,0" + ")--->" + "(" + "0" + "," + v1.toString () + ")--->" + "(" + v1.toString () + "," + v2.toString () + ")--->" +
-                    "(" + v2.toString () + "," + v3.toString () + ")--->" + "(" + v3.toString () + ",0) = "
-                    + " 0-->"+ v1.toString () +"-->"+ v2.toString () + "-->"+v3.toString () + "-->0" ;
-            String mapa_kombinacji_2 = "(" + "0,0" + ")--->" + "(" + "0" + "," + v1.toString () + ")--->" + "(" + v1.toString () + "," + v3.toString () + ")--->" +
-                    "(" + v3.toString () + "," + v2.toString () + ")--->" + "(" + v2.toString () + ",0) = "
-                    + " 0-->"+ v1.toString () +"-->"+ v3.toString () + "-->"+v2.toString ()  + "-->0" ;
-            String mapa_kombinacji_3 = "(" + "0,0" + ")--->" + "(" + "0" + "," + v2.toString () + ")--->" + "(" + v2.toString () + "," + v1.toString () + ")--->" +
-                    "(" + v1.toString () + "," + v3.toString () + ")--->" + "(" + v3.toString () + ",0) = "
-                    + " 0-->"+ v2.toString () +"-->"+ v1.toString () + "-->"+v3.toString () + "-->0"  ;
-            String mapa_kombinacji_4 = "(" + "0,0" + ")--->" + "(" + "0" + "," + v2.toString () + ")--->" + "(" + v2.toString () + "," + v3.toString () + ")--->" +
-                    "(" + v3.toString () + "," + v1.toString () + ")--->" + "(" + v1.toString () + ",0) = "
-                    + " 0-->"+ v2.toString () +"-->"+ v3.toString () + "-->"+v1.toString () + "-->0";
-            String mapa_kombinacji_5 = "(" + "0,0" + ")--->" + "(" + "0" + "," + v3.toString () + ")--->" + "(" + v3.toString () + "," + v2.toString () + ")--->" +
-                    "(" + v2.toString () + "," + v1.toString () + ")--->" + "(" + v1.toString () + ",0) = "
-                    + " 0-->"+ v3.toString () +"-->"+ v2.toString () + "-->"+v1.toString () + "-->0" ;
-            String mapa_kombinacji_6 = "(" + "0,0" + ")--->" + "(" + "0" + "," + v3.toString () + ")--->" + "(" + v3.toString () + "," + v1.toString () + ")--->" +
-                    "(" + v1.toString () + "," + v2.toString () + ")--->" + "(" + v2.toString () + ",0) = "
-                    + " 0-->"+ v3.toString () +"-->"+ v1.toString () + "-->"+v2.toString () + "-->0" ;
-
-            Integer komb1 = v0_v1 + v1_v2 + v2_v3 + v0_v3;
-            Integer komb2 = v0_v1 + v1_v3 + v2_v3 + v0_v2;
-            Integer komb3 = v0_v2 + v1_v2 + v1_v3 + v0_v3;
-            Integer komb4 = v0_v2 + v2_v3 + v1_v3 + v0_v1;
-            Integer komb5 = v0_v3 + v2_v3 + v1_v2 + v0_v1;
-            Integer komb6 = v0_v3 + v1_v3 + v1_v2 + v0_v2;
-
-
-            mapa.put ( komb1 , mapa_kombinacji_1 );
-            mapa.put ( komb2 , mapa_kombinacji_2 );
-            mapa.put ( komb3 , mapa_kombinacji_3 );
-            mapa.put ( komb4 , mapa_kombinacji_4 );
-            mapa.put ( komb5 , mapa_kombinacji_5 );
-            mapa.put ( komb6 , mapa_kombinacji_6 );
-
-            Integer min = Collections.min ( mapa.keySet () );
-            Object value = mapa.get ( min );
-            System.out.println ();
-            System.out.println ("Minimum Path");
-            System.out.println ("Value " + min );
-            System.out.println (value);
-
-            */
 
 
     }
@@ -440,7 +392,7 @@ public class Floyd_Arraylist {
         return M;   // zwracam przetworzona macierz
     }
 
-    public void printpaths(Integer src , Integer dest){
+    public Integer printpaths(Integer src , Integer dest){
 
         System.out.println ();
         System.out.println ("Path from " + src + " to " + dest + " : ");
@@ -473,7 +425,42 @@ public class Floyd_Arraylist {
         }
         System.out.println ();
         System.out.print ("Ilosc hopow : " + hop);
-        hop = 0;
+        return hop;
+    }
+   public int count_path(Integer src , Integer dest){
+
+
+
+       Integer obecny_cel = P.get ( src ).get ( dest );
+       Integer hop = 0;
+       if(src != dest) {
+           System.out.print ( src + " ==> " + obecny_cel );
+           hop++;
+
+
+           for (int i = 0; i < P.size (); i++) {
+               for (int j = 0; j < P.size (); j++) {
+
+                   if (obecny_cel != dest) {
+                       do {
+                           hop++;
+                           obecny_cel = P.get ( obecny_cel ).get ( dest );
+
+                       } while (obecny_cel != dest);
+                   } else {
+                       break;
+                   }
+
+               }
+           }
+       }else{
+
+            ;
+       }
+
+       return hop;
+
+
     }
     public int hopCounter(Integer src , Integer dest){
         Integer obecny_cel = P.get ( src ).get ( dest );
@@ -513,8 +500,14 @@ public class Floyd_Arraylist {
 
         System.out.println ("Path Matrix");
         floyd_arraylist.print ( floyd_arraylist.P );
-        floyd_arraylist.printpaths (  2 , 4);
+        floyd_arraylist.printpaths (  1 , 7);
         //floyd_arraylist.choose_the_shortest ( new ArrayList<Integer> (  ) ,floyd_arraylist.M );
+     //   System.out.println (floyd_arraylist.count_path ( 0 , 5 ));
+
+       // System.out.println (floyd_arraylist.count_path ( 5,2 ));
+        //System.out.println (floyd_arraylist.count_path ( 5,2 ));
+        System.out.println ();
+
 
     }
 }
