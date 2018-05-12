@@ -12,7 +12,8 @@ public class Floyd_Arraylist {
     int costOfRoute;
     ArrayList<Integer> hops;
     // ustawiam macierz sciezek jak na filmie
-    public void startPath(Integer N){
+    public void startPath(ArrayList<ArrayList<Integer>> M){
+        Integer N = M.size ();
         P = new ArrayList<ArrayList<Integer>> ( N );
 
        for(int i = 0 ; i < N ;  i++){
@@ -507,7 +508,7 @@ public class Floyd_Arraylist {
         System.out.println ();
         System.out.println ("Shortest Path Matrix");
 
-        floyd_arraylist.startPath ( 8 );
+        floyd_arraylist.startPath ( floyd_arraylist.M );
         floyd_arraylist.print ( floyd_arraylist.floyd ( floyd_arraylist.M ) );
 
 
@@ -515,6 +516,7 @@ public class Floyd_Arraylist {
         System.out.println ("Path Matrix");
         floyd_arraylist.print ( floyd_arraylist.P );
         floyd_arraylist.printpaths (  2 , 4);
+        floyd_arraylist.choose_the_shortest ( new ArrayList<Integer> (  ) ,floyd_arraylist.M );
 
     }
 }

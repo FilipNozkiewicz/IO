@@ -30,7 +30,7 @@ public class Main {
         //adjacentMatrixGenerator.print(adjacentMatrixGenerator.getAdjacent());
 
         // floyd_arraylist.print ( floyd_arraylist.Floyd ( adjacentMatrixGenerator.getAdjacent () ) );
-        floyd_arraylist.startPath ( adjacentMatrixGenerator.getAdjacent().size());
+        floyd_arraylist.startPath ( adjacentMatrixGenerator.getAdjacent());
         floyd_arraylist.infinity (  adjacentMatrixGenerator.getAdjacent () );
         //System.out.println ();
         //System.out.println ("Macierz Sasiedztwa");
@@ -71,6 +71,7 @@ public class Main {
             rg.generateParcelsNumbers(rg.getParcels(),numberOfElementsInRow);
             rg.writeParcels();
             System.out.println(rg.getParcelsNumber());
+            floyd_arraylist.startPath ( adjacentMatrixGenerator.getAdjacent () );
             floyd_arraylist.choose_the_shortest ( rg.getParcelsNumber(), floyd_arraylist.floyd ( adjacentMatrixGenerator.getAdjacent () ) );
         }
         floyd_arraylist.hopCounter(1,5);
