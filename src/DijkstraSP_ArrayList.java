@@ -214,6 +214,7 @@ public class DijkstraSP_ArrayList {
     public static void main(String[] args){
 
         DijkstraSP_ArrayList dijkstraSP_arrayList = new DijkstraSP_ArrayList ();
+
         dijkstraSP_arrayList.dijkstra ( dijkstraSP_arrayList.alokuj () , 3 );
 
     }

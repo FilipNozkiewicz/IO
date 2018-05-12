@@ -33,7 +33,7 @@ public class Floyd_Arraylist {
     // biore se przykladowa maciuerz do testow
     public void alloc(Integer N){
 
-        P = new ArrayList<ArrayList<Integer>> ( N );
+
         M = new ArrayList<ArrayList<Integer>> ( N );
 
         ArrayList<Integer> zero = new ArrayList<Integer> ( N );
@@ -307,7 +307,7 @@ public class Floyd_Arraylist {
         ArrayList<OurMap> ways = new ArrayList<>(); // potrzebuje stworzyć bo chce duplikaty i dodawanie po koleji
         Integer lengthOfRoute = 0;
         String lengthName;
-        try {
+
             for(int i = 0; i< v.size(); i++){
                 for (int j = 0;j< v.size(); j++){
                     if(j != i ){
@@ -390,9 +390,7 @@ public class Floyd_Arraylist {
 
             */
 
-        }catch (IndexOutOfBoundsException e){
-            System.out.println ("Index out of bound exception");
-        }
+
     }
     public void print(ArrayList<ArrayList<Integer>> M){   // tylko sposob wypisywania
 
@@ -430,13 +428,52 @@ public class Floyd_Arraylist {
                 for(int j = 0 ; j < M.size () ; j++){
                     if(M.get ( i ).get ( k ) + M.get ( k ).get ( j ) < M.get ( i ).get ( j )){ // pacze czy znaleziono dla danej iteracji mniejszy dystans
                         M.get ( i ).set ( j , M.get ( i ).get ( k ) + M.get ( k ).get ( j ) );
-                       // P.get ( i ).set ( j , k );     // jak tak to ustwiam go w macierzy M i macierzy sciezek P
+                        P.get ( i ).set ( j , k );     // jak tak to ustwiam go w macierzy M i macierzy sciezek P
                     }
                 }
             }
         }
 
+
         return M;   // zwracam przetworzona macierz
+    }
+
+    public void printpaths(Integer src , Integer dest){
+
+
+
+        System.out.println ();
+        System.out.println ("Path from " + src + " to " + dest + " : ");
+        Integer obecny_cel = P.get ( src ).get ( dest );
+        Integer hop = 0;
+        if(src != dest) {
+            System.out.print ( src + " ==> " + obecny_cel );
+            hop++;
+
+
+            for (int i = 0; i < P.size (); i++) {
+                for (int j = 0; j < P.size (); j++) {
+
+                    if (obecny_cel != dest) {
+                        do {
+                            hop++;
+                            obecny_cel = P.get ( obecny_cel ).get ( dest );
+                            System.out.print ( " ==> " + obecny_cel );
+
+                        } while (obecny_cel != dest);
+                    } else {
+                        break;
+                    }
+
+                }
+            }
+        }else{
+            System.out.print ( src + " ==> " + dest );
+
+        }
+        System.out.println ();
+        System.out.print ("Ilosc hopow : " + hop);
+        hop = 0;
     }
 
     public static void main(String[] args){   // poszczegolne wywolania
@@ -448,14 +485,14 @@ public class Floyd_Arraylist {
         System.out.println ();
         System.out.println ("Shortest Path Matrix");
 
-        floyd_arraylist.startPath ( 4 );
-        floyd_arraylist.print ( floyd_arraylist.floyd ( floyd_arraylist.M ) );
-
         floyd_arraylist.startPath ( 8 );
         floyd_arraylist.print ( floyd_arraylist.floyd ( floyd_arraylist.M ) );
 
+
+
         System.out.println ("Path Matrix");
         floyd_arraylist.print ( floyd_arraylist.P );
+        floyd_arraylist.printpaths (  2 , 4);
 
     }
 }
