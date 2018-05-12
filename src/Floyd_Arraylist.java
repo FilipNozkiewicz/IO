@@ -175,7 +175,6 @@ public class Floyd_Arraylist {
                     }
                 }
             }
-            System.out.println ("Ilosc hopow to " + hopsOfRoute);
 
 
             OurMap shortestWay = ways.get(0);
