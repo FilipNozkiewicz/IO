@@ -314,7 +314,6 @@ public class DijkstraSP_ArrayList {
         String lengthName;
 
         SetHops ( P );
-        //print(P);
         for(int i = 0; i< v.size(); i++){
             for (int j = 0;j< v.size(); j++){
                 if(j != i ){
@@ -346,6 +345,7 @@ public class DijkstraSP_ArrayList {
             //shortestWay.printMap();
             //o.printMap();
         }
+        System.out.println();
         shortestWay.printMap();
 
 

@@ -153,6 +153,7 @@ public class Floyd_Arraylist {
         Integer lengthOfRoute = 0;
         Integer hopsOfRoute = 0;
         String lengthName;
+        //System.out.println(P);
             for(int i = 0; i< v.size(); i++){
                 for (int j = 0;j< v.size(); j++){
                     if(j != i ){
@@ -177,15 +178,15 @@ public class Floyd_Arraylist {
             }
 
 
-            OurMap shortestWay = ways.get(0);
-            for(OurMap o : ways){
-                if(shortestWay.getKey() > o.getKey()){
-                    shortestWay = o;
-                }
-                //shortestWay.printMap();
-                //o.printMap();
+        OurMap shortestWay = ways.get(0);
+        for(OurMap o : ways) {
+            if (shortestWay.getKey() > o.getKey()) {
+                shortestWay = o;
             }
-            shortestWay.printMap();
+            //shortestWay.printMap();
+            // o.printMap();}
+        }
+        shortestWay.printMap();
 
 
     }

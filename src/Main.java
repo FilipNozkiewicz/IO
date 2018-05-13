@@ -37,6 +37,7 @@ public class Main {
         Scanner scanner = new Scanner(new File (csvFile));
         ArrayList<RouteGenerator> routeGenerators= new ArrayList<>();
 
+        WriteReport writeReport = new WriteReport();
 
         while (scanner.hasNext()) {
 
@@ -53,12 +54,15 @@ public class Main {
 
         scanner.close();
         for(RouteGenerator rg : routeGenerators){
+            //writeReport.write(rg,numberOfElementsInRow , adjacentMatrixGeneratorFloyd, adjacentMatrixGeneratorDijkstra);
             rg.generateParcelsNumbers(rg.getParcels(),numberOfElementsInRow);
             rg.writeParcels();
             System.out.println(rg.getParcelsNumber());
             System.out.print("Dijkstra => ");
             dijkstraSP_arrayList.choose_the_shortest ( rg.getParcelsNumber(), dijkstraSP_arrayList.Fulfill_Distance_Matrix ( adjacentMatrixGeneratorDijkstra.getAdjacent() ) , adjacentMatrixGeneratorDijkstra.getAdjacent() );
             System.out.print("Floyd => ");
+
+            System.out.println(proper_matrix);
             floyd_arraylist.choose_the_shortest ( rg.getParcelsNumber() , floyd_arraylist.floyd ( proper_matrix ) );
 
 
