@@ -40,27 +40,10 @@ public class Main {
         bellman_arraylist.aloc_patch_matrix ( bellman_arraylist.infinity ( adjacentMatrixGeneratorBellman.getAdjacent () ) ) ;
 
 
-        String csvFile = "routes.txt";
+
         LoadRoute loadRoute = new LoadRoute ();
-        Scanner scanner = new Scanner(new File (csvFile));
-        ArrayList<RouteGenerator> routeGenerators= new ArrayList<>();
+        ArrayList<RouteGenerator> routeGenerators = loadRoute.returnerOfRoutes("routes.txt");
 
-        WriteReport writeReport = new WriteReport();
-
-        while (scanner.hasNext()) {
-
-            List<String> line = loadRoute.parseLine(scanner.nextLine());
-            RouteGenerator temp = new RouteGenerator();
-            temp.setOrder(line.get(0));
-            temp.setDriverName(line.get(1));
-            for (int i = 2; i <= 10; i+=2){
-                temp.setParcel(new Parcel(Integer.parseInt(line.get(i)), Integer.parseInt(line.get(i+1))));
-            }
-            routeGenerators.add(temp);
-
-        }
-
-        scanner.close();
         for(RouteGenerator rg : routeGenerators){
             //writeReport.write(rg,numberOfElementsInRow , adjacentMatrixGeneratorFloyd, adjacentMatrixGeneratorDijkstra);
             rg.generateParcelsNumbers(rg.getParcels(),numberOfElementsInRow);

@@ -1,4 +1,6 @@
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -7,10 +9,50 @@ public class LoadRoute {
 
     private static final char DEFAULT_SEPARATOR = ',';
     private static final char DEFAULT_QUOTE = '"';
-    public RouteGenerator routeGenerator = new RouteGenerator();
 
+    public ArrayList<RouteGenerator> returnerOfRoutes(String fileName){
+
+        String csvFile = fileName;
+        LoadRoute loadRoute = new LoadRoute ();
+        Scanner scanner = null;
+        try {
+            scanner = new Scanner(new File(csvFile));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        ArrayList<RouteGenerator> routeGenerators= new ArrayList<>();
+
+        Timestamp timestampZero = new Timestamp(0);
+        while (scanner.hasNext()) {
+
+            List<String> line = loadRoute.parseLine(scanner.nextLine());
+            RouteGenerator temp = new RouteGenerator();
+
+            String tempString = line.get(0);
+            String sanitized = tempString.replaceAll("[\uFEFF-\uFFFF]", "");
+            Timestamp timestamp = new Timestamp(Long.parseLong(sanitized));
+
+            if(timestamp.after(timestampZero)) {
+                temp.setOrder(sanitized);
+                temp.setDriverName(line.get(1));
+                for (int i = 2; i <= 10; i += 2) {
+                    temp.setParcel(new Parcel(Integer.parseInt(line.get(i)), Integer.parseInt(line.get(i + 1))));
+                }
+                routeGenerators.add(temp);
+                timestampZero.setTime(timestamp.getTime());
+            }
+            else {
+                System.out.println("Paczki z timestamp: " + line.get(0) + " Kierowca: " + line.get(1));
+                System.out.print(line.get(1).toString());
+                System.out.println("Nie dowieziona za późno");
+            }
+
+        }
+
+        scanner.close();
+        return routeGenerators;
+    }
     public static void main(String[] args) throws Exception {
-
         String csvFile = "routes.txt";
 
         Scanner scanner = new Scanner(new File(csvFile));
@@ -30,6 +72,7 @@ public class LoadRoute {
         scanner.close();
 
     }
+
 
     public static List<String> parseLine(String cvsLine) {
         return parseLine(cvsLine, DEFAULT_SEPARATOR, DEFAULT_QUOTE);
