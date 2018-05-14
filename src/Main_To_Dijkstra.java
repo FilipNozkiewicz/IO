@@ -28,7 +28,7 @@ public class Main_To_Dijkstra {
         System.out.println ("Macierz Sasiedztwa");
         //dijkstraSP_arrayList.print ( adjacentMatrixGenerator.adjacent );
         System.out.println ("Macierz Sciezek");
-        //dijkstraSP_arrayList.print ( dijkstraSP_arrayList.Fulfill_Distance_Matrix ( adjacentMatrixGenerator.adjacent ) );
+        dijkstraSP_arrayList.print ( dijkstraSP_arrayList.Fulfill_Distance_Matrix ( adjacentMatrixGenerator.adjacent ) );
         System.out.println ("Hop Matrix");
         //dijkstraSP_arrayList.print( dijkstraSP_arrayList.Hop_Matrix );
         System.out.println ("Matrix Sciezek");

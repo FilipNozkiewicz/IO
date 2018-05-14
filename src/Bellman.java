@@ -2,7 +2,7 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-class Graph{
+class Graphik{
 
     // klasa do reperezentacji krawedzi w grafie
     class Edge{
@@ -16,7 +16,7 @@ class Graph{
     Edge edge[];   // graf bedzie zawieral tablice krawedzi
 
     // kontruktor graphu
-    public Graph(int v , int e){
+    public Graphik(int v , int e){
         V = v;
         E = e;
         edge = new Edge[e];
@@ -32,7 +32,7 @@ public class Bellman{
 
     /////// Function for Belman alghorithm
 
-    public void BellmanFord(Graph graph , int src){
+    public void BellmanFord(Graphik graph , int src){
 
         int V = graph.V , E = graph.E;
         int dist[] = new int[V];
@@ -95,7 +95,7 @@ public class Bellman{
 
         Bellman bellman = new Bellman ();
 
-        Graph graph = new Graph(V, E);
+        Graphik graph = new Graphik(V, E);
 
         // Dodawanie krawedzi
         // add edge 0-1 (or A-B in above figure)
