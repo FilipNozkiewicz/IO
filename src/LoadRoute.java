@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -42,12 +43,14 @@ public class LoadRoute {
                 timestampZero.setTime(timestamp.getTime());
             }
             else {
-                System.out.println("Paczki z timestamp: " + line.get(0) + " Kierowca: " + line.get(1));
-                System.out.print(line.get(1).toString());
-                System.out.println("Nie dowieziona za późno");
+                System.out.print("Paczki z timestamp: " + line.get(0) + " Kierowca: " + line.get(1));
+                System.out.println(" - Odebrana za późno");
             }
 
         }
+        //RouteGenerator temp = routeGenerators.get(0);
+        //for (int i = 0; i < routeGenerators.size(); i++){
+        //    if(temp.getOrder() <= routeGenerators.get(i).getOrder()){
 
         scanner.close();
         return routeGenerators;
