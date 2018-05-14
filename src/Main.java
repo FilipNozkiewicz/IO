@@ -11,6 +11,7 @@ public class Main {
 
         AdjacentMatrixGenerator adjacentMatrixGeneratorFloyd = new AdjacentMatrixGenerator();
         AdjacentMatrixGenerator adjacentMatrixGeneratorDijkstra = new AdjacentMatrixGenerator();
+        AdjacentMatrixGenerator adjacentMatrixGeneratorBellman = new AdjacentMatrixGenerator();
         CheckInputData checkInputData = new CheckInputData();
 
         try {
@@ -24,6 +25,7 @@ public class Main {
 
         adjacentMatrixGeneratorFloyd.adjacentGenerator(checkInputData.getHorizontal(), checkInputData.getVertical());
         adjacentMatrixGeneratorDijkstra.adjacentGenerator(checkInputData.getHorizontal(), checkInputData.getVertical());
+        adjacentMatrixGeneratorBellman.adjacentGenerator(checkInputData.getHorizontal(), checkInputData.getVertical());
 
         Floyd_Arraylist floyd_arraylist = new Floyd_Arraylist ();
         floyd_arraylist.startPath ( adjacentMatrixGeneratorFloyd.getAdjacent());
@@ -31,6 +33,12 @@ public class Main {
 
         DijkstraSP_ArrayList dijkstraSP_arrayList = new DijkstraSP_ArrayList ( adjacentMatrixGeneratorDijkstra.getAdjacent().size () );
         dijkstraSP_arrayList.Fulfill_Distance_Matrix ( adjacentMatrixGeneratorDijkstra.getAdjacent() );
+
+
+        Bellman_Arraylist bellman_arraylist = new Bellman_Arraylist ();
+        bellman_arraylist.aloc_main_matrix ( bellman_arraylist.infinity ( adjacentMatrixGeneratorBellman.getAdjacent () ) ) ;
+        bellman_arraylist.aloc_patch_matrix ( bellman_arraylist.infinity ( adjacentMatrixGeneratorBellman.getAdjacent () ) ) ;
+
 
         String csvFile = "routes.txt";
         LoadRoute loadRoute = new LoadRoute ();
@@ -59,11 +67,11 @@ public class Main {
             rg.writeParcels();
             System.out.println(rg.getParcelsNumber());
             System.out.print("Dijkstra => ");
-            dijkstraSP_arrayList.choose_the_shortest ( rg.getParcelsNumber(), dijkstraSP_arrayList.Fulfill_Distance_Matrix ( adjacentMatrixGeneratorDijkstra.getAdjacent() ) , adjacentMatrixGeneratorDijkstra.getAdjacent() );
+            dijkstraSP_arrayList.choose_the_shortest ( numberOfElementsInRow, rg.getParcelsNumber(), dijkstraSP_arrayList.Fulfill_Distance_Matrix ( adjacentMatrixGeneratorDijkstra.getAdjacent() ) , adjacentMatrixGeneratorDijkstra.getAdjacent() );
             System.out.print("Floyd => ");
-
-            System.out.println(proper_matrix);
-            floyd_arraylist.choose_the_shortest ( rg.getParcelsNumber() , floyd_arraylist.floyd ( proper_matrix ) );
+            floyd_arraylist.choose_the_shortest (numberOfElementsInRow, rg.getParcelsNumber() , floyd_arraylist.floyd ( proper_matrix ) );
+            System.out.print("Bellman => ");
+            bellman_arraylist.choose_the_shortest (numberOfElementsInRow, rg.getParcelsNumber() , bellman_arraylist.aloc_main_matrix ( adjacentMatrixGeneratorBellman.getAdjacent () )  );
 
 
         }

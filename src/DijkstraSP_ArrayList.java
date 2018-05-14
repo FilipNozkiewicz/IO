@@ -345,7 +345,58 @@ public class DijkstraSP_ArrayList {
             //shortestWay.printMap();
             //o.printMap();
         }
-        System.out.println();
+
+        shortestWay.printMap();
+
+
+
+    }
+    public String converter(int val, int xLength){
+        int x = val % xLength;
+        int y = val / xLength;
+        String temp = "(" + x + "," + y + ")";
+        return temp;
+    }
+
+    public void choose_the_shortest(int xLength, ArrayList<Integer> v , ArrayList<ArrayList<Integer>> M , ArrayList<ArrayList<Integer>> P){
+
+        ArrayList<OurMap> ways = new ArrayList<>(); // potrzebuje stworzyć bo chce duplikaty i dodawanie po koleji
+        Integer lengthOfRoute = 0;
+        Integer hopsOfRoute = 0;
+        String lengthName;
+        SetHops ( P );
+        for(int i = 0; i< v.size(); i++){
+            for (int j = 0;j< v.size(); j++){
+                if(j != i ){
+                    for (int k = 0;k< v.size();k++){
+                        if(k != j && k!= i) {
+                            for (int r = 0; r < v.size(); r++) {
+                                if(r != i && r!= j && r != k) {
+                                    for (int l = 0; l < v.size(); l++) {
+                                        if(l != i && l != j && l != k && l != r) {
+                                            hopsOfRoute = Hop_Matrix.get(0).get(v.get(i)) + Hop_Matrix.get(v.get(i)).get(v.get(j)) + Hop_Matrix.get(v.get(j)).get(v.get(k)) + Hop_Matrix.get(v.get(k)).get(v.get(r)) + Hop_Matrix.get(v.get(r)).get(v.get(l)) + Hop_Matrix.get(v.get(l)).get(0) ;
+                                            lengthOfRoute = M.get(0).get(v.get(i)) + M.get(v.get(i)).get(v.get(j)) + M.get(v.get(j)).get(v.get(k)) + M.get(v.get(k)).get(v.get(r)) + M.get(v.get(r)).get(v.get(l)) + M.get(v.get(l)).get(0);
+                                            lengthName = "0 -> " + converter(v.get(i),xLength) + " -> " + converter(v.get(j),xLength) + " -> " + converter(v.get(k),xLength) + " -> " + converter(v.get(r),xLength) + " -> " + converter(v.get(l),xLength) + " -> 0";
+                                            ways.add(new OurMap(lengthOfRoute, hopsOfRoute, lengthName));
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        OurMap shortestWay = ways.get(0);
+        for(OurMap o : ways){
+            if(shortestWay.getKey() > o.getKey()){
+                shortestWay = o;
+            }
+            //shortestWay.printMap();
+            //o.printMap();
+        }
+
         shortestWay.printMap();
 
 

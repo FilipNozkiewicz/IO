@@ -142,13 +142,10 @@ public class Floyd_Arraylist {
 
         return M;
     }
-    //// MINIMALNA SCIEZKA ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
     public void choose_the_shortest( ArrayList<Integer> v , ArrayList<ArrayList<Integer>> M){
 
-        ArrayList<Integer> kombinacje = new ArrayList<Integer> (  );
-        HashMap<Integer , String> mapa = new HashMap<Integer, String> ( );
         ArrayList<OurMap> ways = new ArrayList<>(); // potrzebuje stworzyć bo chce duplikaty i dodawanie po koleji
         Integer lengthOfRoute = 0;
         Integer hopsOfRoute = 0;
@@ -187,8 +184,53 @@ public class Floyd_Arraylist {
             // o.printMap();}
         }
         shortestWay.printMap();
+    }
+    public String converter(int val, int xLength){
+        int x = val % xLength;
+        int y = val / xLength;
+        String temp = "(" + x + "," + y + ")";
+        return temp;
+    }
+    public void choose_the_shortest(int xLength, ArrayList<Integer> v , ArrayList<ArrayList<Integer>> M){
+
+        ArrayList<OurMap> ways = new ArrayList<>(); // potrzebuje stworzyć bo chce duplikaty i dodawanie po koleji
+        Integer lengthOfRoute = 0;
+        Integer hopsOfRoute = 0;
+        String lengthName;
+        //System.out.println(P);
+        for(int i = 0; i< v.size(); i++){
+            for (int j = 0;j< v.size(); j++){
+                if(j != i ){
+                    for (int k = 0;k< v.size();k++){
+                        if(k != j && k!= i) {
+                            for (int r = 0; r < v.size(); r++) {
+                                if(r != i && r!= j && r != k) {
+                                    for (int l = 0; l < v.size(); l++) {
+                                        if(l != i && l != j && l != k && l != r) {
+                                            hopsOfRoute = hopCounter(0,v.get(i)) + hopCounter(v.get(i),v.get(j)) + hopCounter(v.get(j),v.get(k)) + hopCounter(v.get(k),v.get(r)) + hopCounter(v.get(r),v.get(l)) + hopCounter(v.get(l),0);
+                                            lengthOfRoute = M.get(0).get(v.get(i)) + M.get(v.get(i)).get(v.get(j)) + M.get(v.get(j)).get(v.get(k)) + M.get(v.get(k)).get(v.get(r)) + M.get(v.get(r)).get(v.get(l)) + M.get(v.get(l)).get(0);
+                                            lengthName = "0 -> " + converter(v.get(i),xLength) + " -> " + converter(v.get(j),xLength) + " -> " + converter(v.get(k),xLength) + " -> " + converter(v.get(r),xLength) + " -> " + converter(v.get(l),xLength) + " -> 0";
+                                            ways.add(new OurMap(lengthOfRoute, hopsOfRoute, lengthName));
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
 
+        OurMap shortestWay = ways.get(0);
+        for(OurMap o : ways) {
+            if (shortestWay.getKey() > o.getKey()) {
+                shortestWay = o;
+            }
+            //shortestWay.printMap();
+            // o.printMap();}
+        }
+        shortestWay.printMap();
     }
     public void print(ArrayList<ArrayList<Integer>> M){   // tylko sposob wypisywania
 

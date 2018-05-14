@@ -1,7 +1,7 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class Main_To_Dijkstra {
+public class Main_Dijkstra {
 
     public static void main(String[] args){
 
