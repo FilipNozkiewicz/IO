@@ -33,12 +33,12 @@ public class Main {
 
         DijkstraSP_ArrayList dijkstraSP_arrayList = new DijkstraSP_ArrayList ( adjacentMatrixGeneratorDijkstra.getAdjacent().size () );
         dijkstraSP_arrayList.Fulfill_Distance_Matrix ( adjacentMatrixGeneratorDijkstra.getAdjacent() );
-
+        dijkstraSP_arrayList.print_paths ( dijkstraSP_arrayList.Path_Matrix );
 
         Bellman_Arraylist bellman_arraylist = new Bellman_Arraylist ();
         bellman_arraylist.aloc_main_matrix ( bellman_arraylist.infinity ( adjacentMatrixGeneratorBellman.getAdjacent () ) ) ;
         bellman_arraylist.aloc_patch_matrix ( bellman_arraylist.infinity ( adjacentMatrixGeneratorBellman.getAdjacent () ) ) ;
-
+        bellman_arraylist.print_paths ( bellman_arraylist.Path_Matrix );
 
 
         LoadRoute loadRoute = new LoadRoute ();
@@ -50,10 +50,15 @@ public class Main {
             rg.writeParcels();
             System.out.println(rg.getParcelsNumber());
             System.out.print("Dijkstra => ");
+         //   dijkstraSP_arrayList.Fulfill_Distance_Matrix ( adjacentMatrixGeneratorBellman.getAdjacent () );
+         //   dijkstraSP_arrayList.print_paths ( dijkstraSP_arrayList.Path_Matrix );
+           // dijkstraSP_arrayList.print ( dijkstraSP_arrayList.Fulfill_Distance_Matrix ( dijkstraSP_arrayList.alokuj () ) );
             dijkstraSP_arrayList.choose_the_shortest ( numberOfElementsInRow, rg.getParcelsNumber(), dijkstraSP_arrayList.Fulfill_Distance_Matrix ( adjacentMatrixGeneratorDijkstra.getAdjacent() ) , adjacentMatrixGeneratorDijkstra.getAdjacent() );
             System.out.print("Floyd => ");
             floyd_arraylist.choose_the_shortest (numberOfElementsInRow, rg.getParcelsNumber() , floyd_arraylist.floyd ( proper_matrix ) );
             System.out.print("Bellman => ");
+         //   bellman_arraylist.aloc_main_matrix ( bellman_arraylist.infinity ( adjacentMatrixGeneratorBellman.getAdjacent () ) );
+          //  bellman_arraylist.print_paths ( bellman_arraylist.Path_Matrix );
             bellman_arraylist.choose_the_shortest (numberOfElementsInRow, rg.getParcelsNumber() , bellman_arraylist.aloc_main_matrix ( adjacentMatrixGeneratorBellman.getAdjacent () )  );
 
 
