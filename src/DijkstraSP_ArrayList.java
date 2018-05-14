@@ -468,25 +468,26 @@ public class DijkstraSP_ArrayList {
 
         return M;
     }
-    public static void main(String[] args){
+    public static void main(String[] args) throws FileNotFoundException {
 
-        //DijkstraSP_ArrayList dijkstraSP_arrayList = new DijkstraSP_ArrayList ();
-     //   System.out.println ();
-     //   System.out.println ("---------------------------------Distance Matrix-----------------------------------------------------------------------------------");
-     //   dijkstraSP_arrayList.print ( dijkstraSP_arrayList.Fulfill_Distance_Matrix ( dijkstraSP_arrayList.alokuj () ) );
-     //   System.out.println ();
-    //    System.out.println ("--------------------------------------Hop Matrix-----------------------------------------------------------------------------------");
-    //    dijkstraSP_arrayList.print ( dijkstraSP_arrayList.Hop_Matrix );
-    //    System.out.println ();
-    //    System.out.println ("-------------------------------------Path Matrix-----------------------------------------------------------------------------------");
-    //    dijkstraSP_arrayList.print_paths ( dijkstraSP_arrayList.Path_Matrix );
-        DijkstraSP_ArrayList dijkstraSP_arrayList = new DijkstraSP_ArrayList (  );
+        DijkstraSP_ArrayList dijkstraSP_arrayList = new DijkstraSP_ArrayList ();
+        System.out.println ();
+        System.out.println ("---------------------------------Distance Matrix-----------------------------------------------------------------------------------");
+        dijkstraSP_arrayList.print ( dijkstraSP_arrayList.Fulfill_Distance_Matrix ( dijkstraSP_arrayList.alokuj () ) );
+        System.out.println ();
+        System.out.println ("--------------------------------------Hop Matrix-----------------------------------------------------------------------------------");
+        dijkstraSP_arrayList.print ( dijkstraSP_arrayList.Hop_Matrix );
+        System.out.println ();
+        System.out.println ("-------------------------------------Path Matrix-----------------------------------------------------------------------------------");
+        dijkstraSP_arrayList.print_paths ( dijkstraSP_arrayList.Path_Matrix );
+
+      //  DijkstraSP_ArrayList dijkstraSP_arrayList = new DijkstraSP_ArrayList (  );
         //dijkstraSP_arrayList.SetHops ( dijkstraSP_arrayList.alokuj () );
       //  dijkstraSP_arrayList.print ( dijkstraSP_arrayList.Hop_Matrix );
-        ArrayList<Integer> p = new ArrayList<Integer> (  );
-        p.add ( 2 );
-        p.add ( 3 );
-        p.add ( 1 );
+    //    ArrayList<Integer> p = new ArrayList<Integer> (  );
+    //    p.add ( 2 );
+    //    p.add ( 3 );
+    //    p.add ( 1 );
        // dijkstraSP_arrayList.choose_the_shortest ( p , dijkstraSP_arrayList.alokuj () );
     }
 }
