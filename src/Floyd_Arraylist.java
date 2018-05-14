@@ -16,18 +16,18 @@ public class Floyd_Arraylist {
         Integer N = M.size ();
         P = new ArrayList<ArrayList<Integer>> ( N );
 
-       for(int i = 0 ; i < N ;  i++){
-           P.add ( new ArrayList<Integer> (  ) );
-           for(int j = 0 ; j < N ; j++){
-               P.get ( i ).add ( 0 );
-           }
-       }
-       for(int i = 0 ; i < P.size () ; i++){
-           for(int j  = 0; j < P.size() ; j++){
-               if( i != j){
-                   P.get ( i ).set ( j , j );
-               }
-           }
+        for(int i = 0 ; i < N ;  i++){
+            P.add ( new ArrayList<Integer> (  ) );
+            for(int j = 0 ; j < N ; j++){
+                P.get ( i ).add ( 0 );
+            }
+        }
+        for(int i = 0 ; i < P.size () ; i++){
+            for(int j  = 0; j < P.size() ; j++){
+                if( i != j){
+                    P.get ( i ).set ( j , j );
+                }
+            }
         }
 
     }
@@ -154,20 +154,19 @@ public class Floyd_Arraylist {
         Integer hopsOfRoute = 0;
         String lengthName;
         //System.out.println(P);
-            for(int i = 0; i< v.size(); i++){
-                for (int j = 0;j< v.size(); j++){
-                    if(j != i ){
-                        for (int k = 0;k< v.size();k++){
-                            if(k != j && k!= i) {
-                                for (int r = 0; r < v.size(); r++) {
-                                    if(r != i && r!= j && r != k) {
-                                        for (int l = 0; l < v.size(); l++) {
-                                            if(l != i && l != j && l != k && l != r) {
-                                                hopsOfRoute = hopCounter(0,v.get(i)) + hopCounter(v.get(i),v.get(j)) + hopCounter(v.get(j),v.get(k)) + hopCounter(v.get(k),v.get(r)) + hopCounter(v.get(r),v.get(l)) + hopCounter(v.get(l),0);
-                                                lengthOfRoute = M.get(0).get(v.get(i)) + M.get(v.get(i)).get(v.get(j)) + M.get(v.get(j)).get(v.get(k)) + M.get(v.get(k)).get(v.get(r)) + M.get(v.get(r)).get(v.get(l)) + M.get(v.get(l)).get(0);
-                                                lengthName = "0 -> " + String.valueOf(v.get(i)) + " -> " + String.valueOf(v.get(j)) + " -> " + String.valueOf(v.get(k)) + " -> " + String.valueOf(v.get(r)) + " -> " + String.valueOf(v.get(l)) + " -> 0";
-                                                ways.add(new OurMap(lengthOfRoute, hopsOfRoute, lengthName));
-                                            }
+        for(int i = 0; i< v.size(); i++){
+            for (int j = 0;j< v.size(); j++){
+                if(j != i ){
+                    for (int k = 0;k< v.size();k++){
+                        if(k != j && k!= i) {
+                            for (int r = 0; r < v.size(); r++) {
+                                if(r != i && r!= j && r != k) {
+                                    for (int l = 0; l < v.size(); l++) {
+                                        if(l != i && l != j && l != k && l != r) {
+                                            hopsOfRoute = hopCounter(0,v.get(i)) + hopCounter(v.get(i),v.get(j)) + hopCounter(v.get(j),v.get(k)) + hopCounter(v.get(k),v.get(r)) + hopCounter(v.get(r),v.get(l)) + hopCounter(v.get(l),0);
+                                            lengthOfRoute = M.get(0).get(v.get(i)) + M.get(v.get(i)).get(v.get(j)) + M.get(v.get(j)).get(v.get(k)) + M.get(v.get(k)).get(v.get(r)) + M.get(v.get(r)).get(v.get(l)) + M.get(v.get(l)).get(0);
+                                            lengthName = "0 -> " + String.valueOf(v.get(i)) + " -> " + String.valueOf(v.get(j)) + " -> " + String.valueOf(v.get(k)) + " -> " + String.valueOf(v.get(r)) + " -> " + String.valueOf(v.get(l)) + " -> 0";
+                                            ways.add(new OurMap(lengthOfRoute, hopsOfRoute, lengthName));
                                         }
                                     }
                                 }
@@ -176,6 +175,7 @@ public class Floyd_Arraylist {
                     }
                 }
             }
+        }
 
 
         OurMap shortestWay = ways.get(0);
@@ -211,7 +211,7 @@ public class Floyd_Arraylist {
                 else {
                     System.out.print ( M.get ( i ).get ( j ) );
                 }
-                    System.out.print("\t");
+                System.out.print("\t");
 
 
             }
@@ -220,6 +220,8 @@ public class Floyd_Arraylist {
         System.out.println ("\n");
     }
     public ArrayList<ArrayList<Integer>> floyd(ArrayList<ArrayList<Integer>> M){ // algorytm 3 petle
+
+
 
         for(int k = 0 ; k < M.size () ; k++){
             for (int i = 0 ; i < M.size () ; i++){
@@ -315,9 +317,9 @@ public class Floyd_Arraylist {
         floyd_arraylist.print ( floyd_arraylist.P );
         floyd_arraylist.printpaths (  1 , 7);
         //floyd_arraylist.choose_the_shortest ( new ArrayList<Integer> (  ) ,floyd_arraylist.M );
-     //   System.out.println (floyd_arraylist.count_path ( 0 , 5 ));
+        //   System.out.println (floyd_arraylist.count_path ( 0 , 5 ));
 
-       // System.out.println (floyd_arraylist.count_path ( 5,2 ));
+        // System.out.println (floyd_arraylist.count_path ( 5,2 ));
         //System.out.println (floyd_arraylist.count_path ( 5,2 ));
         System.out.println ();
 

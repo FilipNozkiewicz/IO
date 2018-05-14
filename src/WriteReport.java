@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class WriteReport {
-    public static void main(String[] args) {
+/*    public static void main(String[] args) {
         WriteReport writeReport = new WriteReport();
         try {
             writeReport.writingStringToFile("report.txt","line1");
@@ -37,5 +37,5 @@ public class WriteReport {
         FileWriter fw = new FileWriter(fileName,true); //the true will append the new data
         fw.write(content + "\n");//appends the string to the file
         fw.close();
-    }
+    }*/
 }
