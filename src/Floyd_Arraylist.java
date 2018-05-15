@@ -197,7 +197,7 @@ public class Floyd_Arraylist {
         Integer lengthOfRoute = 0;
         Integer hopsOfRoute = 0;
         String lengthName;
-        //System.out.println(P);
+
         for(int i = 0; i< v.size(); i++){
             for (int j = 0;j< v.size(); j++){
                 if(j != i ){
@@ -207,7 +207,7 @@ public class Floyd_Arraylist {
                                 if(r != i && r!= j && r != k) {
                                     for (int l = 0; l < v.size(); l++) {
                                         if(l != i && l != j && l != k && l != r) {
-                                            hopsOfRoute = hopCounter(0,v.get(i)) + hopCounter(v.get(i),v.get(j)) + hopCounter(v.get(j),v.get(k)) + hopCounter(v.get(k),v.get(r)) + hopCounter(v.get(r),v.get(l)) + hopCounter(v.get(l),0);
+                                            //hopsOfRoute = hopCounter(0,v.get(i)) + hopCounter(v.get(i),v.get(j)) + hopCounter(v.get(j),v.get(k)) + hopCounter(v.get(k),v.get(r)) + hopCounter(v.get(r),v.get(l)) + hopCounter(v.get(l),0);
                                             lengthOfRoute = M.get(0).get(v.get(i)) + M.get(v.get(i)).get(v.get(j)) + M.get(v.get(j)).get(v.get(k)) + M.get(v.get(k)).get(v.get(r)) + M.get(v.get(r)).get(v.get(l)) + M.get(v.get(l)).get(0);
                                             lengthName = "0 -> " + converter(v.get(i),xLength) + " -> " + converter(v.get(j),xLength) + " -> " + converter(v.get(k),xLength) + " -> " + converter(v.get(r),xLength) + " -> " + converter(v.get(l),xLength) + " -> 0";
                                             ways.add(new OurMap(lengthOfRoute, hopsOfRoute, lengthName));
