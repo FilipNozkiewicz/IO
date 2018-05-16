@@ -496,6 +496,7 @@ public class Bellman_Arraylist {
         bellman_arraylist.print ( bellman_arraylist.Hop_Matrix );
         System.out.println ("Paths Matrix");
         bellman_arraylist.print_paths ( bellman_arraylist.Path_Matrix );
+        System.out.println ();
 
 
 
