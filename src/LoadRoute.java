@@ -28,16 +28,36 @@ public class LoadRoute {
 
             List<String> line = loadRoute.parseLine(scanner.nextLine());
             RouteGenerator temp = new RouteGenerator();
+            int x,y;
 
             String tempString = line.get(0);
             String sanitized = tempString.replaceAll("[\uFEFF-\uFFFF]", "");
-            Timestamp timestamp = new Timestamp(Long.parseLong(sanitized));
+            Timestamp timestamp = new Timestamp(System.nanoTime());
+            try {
+                timestamp.setTime(Long.parseLong(sanitized));
+            }catch (NumberFormatException e){
+                System.out.println("Zły format Timestamp: " + sanitized );
+                continue;
+            }
 
             if(timestamp.after(timestampZero)) {
+
                 temp.setOrder(sanitized);
                 temp.setDriverName(line.get(1));
                 for (int i = 2; i <= 10; i += 2) {
-                    temp.setParcel(new Parcel(Integer.parseInt(line.get(i)), Integer.parseInt(line.get(i + 1))));
+                    if(line.size() > i) {
+                        try {
+                            x = Integer.parseInt(line.get(i));
+                            y = Integer.parseInt(line.get(i +1 ));
+                        }catch (NumberFormatException e){
+                            System.out.println("Zły format paczki dla Timestamp: " + sanitized);
+                            continue;
+                        }
+                        temp.setParcel(new Parcel(x, y));
+                    }
+                    else{
+                        temp.setParcel(new Parcel(0,0));
+                    }
                 }
                 routeGenerators.add(temp);
                 timestampZero.setTime(timestamp.getTime());
@@ -56,24 +76,12 @@ public class LoadRoute {
         return routeGenerators;
     }
     public static void main(String[] args) throws Exception {
-        String csvFile = "routes.txt";
+        LoadRoute loadRoute  = new LoadRoute();
+        ArrayList<RouteGenerator> routeGenerators = loadRoute.returnerOfRoutes("routes.txt");
 
-        Scanner scanner = new Scanner(new File(csvFile));
-        while (scanner.hasNext()) {
-            List<String> line = parseLine(scanner.nextLine());
-            RouteGenerator routeGenerator = new RouteGenerator();
-            routeGenerator.setOrder(line.get(0));
-            routeGenerator.setDriverName(line.get(1));
-            for (int i = 2; i <= 10; i+=2){
-                routeGenerator.setParcel(new Parcel(Integer.parseInt(line.get(i)), Integer.parseInt(line.get(i+1))));
-            }
-
-            routeGenerator.writeParcels();
-
+        for(RouteGenerator rg : routeGenerators){
+            rg.writeParcels();
         }
-
-        scanner.close();
-
     }
 
 
