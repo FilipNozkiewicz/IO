@@ -77,7 +77,7 @@ public class LoadRoute {
     }
     public static void main(String[] args) throws Exception {
         LoadRoute loadRoute  = new LoadRoute();
-        ArrayList<RouteGenerator> routeGenerators = loadRoute.returnerOfRoutes("routes.txt");
+        ArrayList<RouteGenerator> routeGenerators = loadRoute.returnerOfRoutes("DataInputGroupWT1115.txt");
 
         for(RouteGenerator rg : routeGenerators){
             rg.writeParcels();
@@ -158,7 +158,7 @@ public class LoadRoute {
 
                     curVal = new StringBuffer();
                     startCollectChar = false;
-                } else if ((ch == '\r') || (ch == '(') || (ch == ')'))  {
+                } else if ((ch == '\r') || (ch == '(') || (ch == ')') || (ch == ';'))  {
                     //ignore LF characters
                     continue;
                 } else if (ch == '\n') {
