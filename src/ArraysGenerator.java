@@ -23,7 +23,7 @@ public class ArraysGenerator {
             vertical.add ( i , new ArrayList<Integer>() );
             for(int j = 0 ; j < b ; j++ ) {
                 if (j == a - 1) {
-                    horizonatal.get(i).add(j, 0);// nastepnie do elementow dodanej arraylisty dodajemy kolejne elementy
+                    horizonatal.get(i).add(j, random.nextInt(weight) + 1);// nastepnie do elementow dodanej arraylisty dodajemy kolejne elementy
                 } else{
                     horizonatal.get(i).add(j, random.nextInt(weight) + 1);// nastepnie do elementow dodanej arraylisty dodajemy kolejne elementy
                 }
@@ -34,6 +34,14 @@ public class ArraysGenerator {
                 }
             }
         }
+    }
+    public ArrayList<ArrayList<Integer>> generuj(Integer N){
+
+        ArrayList<ArrayList<Integer>>  M = new ArrayList<ArrayList<Integer>> (  );
+       // ArrayList<>
+
+
+        return M;
     }
 
     public ArrayList<ArrayList<Integer>> getHorizonatal() {
@@ -71,7 +79,7 @@ public class ArraysGenerator {
     public static void main(String[] args){
 
         ArraysGenerator arraysGenerator = new ArraysGenerator ();
-        int placeLimit = 49; // żeby można było zmienić ilości by szybciej się zapisywał
+        int placeLimit = 19; // żeby można było zmienić ilości by szybciej się zapisywał
         arraysGenerator.matrix ( placeLimit,placeLimit );
         arraysGenerator.print (arraysGenerator.getHorizonatal());
 

@@ -217,13 +217,85 @@ public class Floyyd {
     }
     ArrayList<ArrayList<Integer>> Hop_Matrix;
     ArrayList<ArrayList<String>> String_Path_Matrix;
+
     public void count_paths(){
+
+      //  Hop_Matrix = new ArrayList<ArrayList<Integer>> (  );
+        String_Path_Matrix = new ArrayList<ArrayList<String>> (  );
+        Integer V = Path_Matrix.size ();
+
+        for(int k =0 ; k <  Path_Matrix.size()  ; k++){
+
+            Path_list = new ArrayList<String> (  );
+            for(int w = 0 ; w < Path_Matrix.size () ; w++){
+                Path_list.add ( "" );
+            }
+            for(int i = 0 ;  i < Path_Matrix.size () ; i++){
+
+                int src = k;
+                if(i != src){
+                    Integer j = i;
+                    int hop = 0;
+                    do{
+
+                        StringBuilder x = new StringBuilder ();
+
+                        j = Path_Matrix.get ( k ).get ( j );
+                        x.append ( " ===> " + j.toString () );
+                        x.append ( Path_list.get ( i ) );
+                        Path_list.set ( i, x.toString () );
+                    }while (j != src);
+            //        Hop_list.add ( hop );
+                    hop = 0;
+                } else {
+
+                  //  Hop_list.add ( 0 );
+                }
+            }
+
+      //      Hop_Matrix.add ( Hop_list );
+            String_Path_Matrix.add ( Path_list );
+
+        }
+    }
+    public void counthop(){
+
+        Hop_Matrix = new ArrayList<ArrayList<Integer>> (  );
+        for(int k = 0 ;  k < Path_Matrix.size () ; k++){ // for each vertex
+            Hop_list = new ArrayList<Integer> (  );
+            int src = k;
+            for(int i = 0 ;  i < Path_Matrix.size () ; i++){
+
+                if(i != src){
+                    Integer j = i;
+                    int hop = 0;
+                    do{
+
+                        j = Path_Matrix.get ( k ).get ( j );
+                    hop += 1;
+                    }while (j != src);
+                    Hop_list.add ( hop );
+                    hop = 0;
+                } else {
+
+                    Hop_list.add ( 0 );
+                }
+            }
+
+            Hop_Matrix.add ( Hop_list );
+
+            }
+
+        }
+
+
+    public void count_paths2(){
         Hop_Matrix = new ArrayList<ArrayList<Integer>> (  );
         String_Path_Matrix = new ArrayList<ArrayList<String>> (  );
 
-        Integer V = Path_Matrix.size ();
+        Integer V = Distance_Matrix.size ();
 
-        for(int k = 0 ; k < Path_Matrix.size () ; k++) {
+        for(int k = 0 ; k < Distance_Matrix.size () ; k++) {
             Hop_list = new ArrayList<Integer> (  );
             Integer src = k;
             Path_list = new ArrayList<String> (  );

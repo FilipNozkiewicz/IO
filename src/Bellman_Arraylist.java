@@ -2,8 +2,11 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 
+
+
 class Graph{
 
+    public  Integer INF = 9999;
     Integer V , E ;    // deklaracjavierzcholkow i edgy
     ArrayList<Edge> edge_list;
 
@@ -16,7 +19,7 @@ class Graph{
             for(Integer j = 0 ; j < M.size (); j++ ){
 
                 if(i != j ){
-                    if(M.get ( i ).get ( j ) != Integer.MAX_VALUE  ){
+                    if(M.get ( i ).get ( j ) != INF ){
                         Edge edge = new Edge (i , j , M.get ( i ).get ( j ));
                         edge_list.add ( edge );
                         this.E ++;
@@ -29,6 +32,7 @@ class Graph{
 
 }
 class Edge{
+    public  Integer INF = 9999;
     Integer src , dest , weight;
     Edge(Integer src , Integer dest ,Integer weight){
         this.src = src;
@@ -39,6 +43,7 @@ class Edge{
 
 public class Bellman_Arraylist {
 
+    public  Integer INF = 9999;
     public ArrayList<Integer> ancestors;
     public ArrayList<Integer> distances;
     public ArrayList<Integer> Hop_list;
@@ -62,11 +67,14 @@ public class Bellman_Arraylist {
         ArrayList<Integer> pred = new ArrayList<Integer> (  );
 
         for(Integer i = 0 ; i < V ; i ++){
-            dist.add ( Integer.MAX_VALUE );
-            pred.add ( Integer.MAX_VALUE );
+            dist.add ( INF );
+            pred.add ( INF );
+           // pred.add ( 0 );
             Path_list.add ( "" );
 
         }
+
+       pred.set ( src , src );
         dist.set ( src , 0 );
         for(Integer i = 0 ; i < V ; i++){
             for(Integer j = 0 ;  j < E; j++){
@@ -75,7 +83,7 @@ public class Bellman_Arraylist {
                 Integer v = graph.edge_list.get ( j ).dest;
                 Integer weight = graph.edge_list.get ( j ).weight;
 
-                if((dist.get ( u ) != Integer.MAX_VALUE) && (dist.get ( u ) + weight < dist.get ( v ))){
+                if((dist.get ( u ) != INF) && (dist.get ( u ) + weight < dist.get ( v ))){
                     dist.set ( v , dist.get ( u ) + weight );
                     pred.set ( v , u );
                 }
@@ -89,7 +97,7 @@ public class Bellman_Arraylist {
             Integer v = graph.edge_list.get ( i ).dest;
             Integer weight = graph.edge_list.get ( i ).weight;
 
-            if(dist.get ( u ) != Integer.MAX_VALUE && dist.get ( u ) + weight < dist.get ( v )){
+            if(dist.get ( u ) != INF && dist.get ( u ) + weight < dist.get ( v )){
                 System.out.println ("Negative cycles detected");
             }
 
@@ -131,7 +139,7 @@ public class Bellman_Arraylist {
         for(int i = 0 ; i < M.size () ; i++){
             for(int j = 0 ; j < M.size () ; j++){
                 if((i != j) && M.get ( i ).get ( j ) == 0){
-                    M.get ( i ).set ( j , Integer.MAX_VALUE );
+                    M.get ( i ).set ( j , INF );
                 }
             }
         }
