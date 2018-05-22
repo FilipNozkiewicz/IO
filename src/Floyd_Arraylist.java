@@ -222,7 +222,7 @@ public class Floyd_Arraylist {
         }
 
 
-        
+
 
         OurMap shortestWay = ways.get(0);
         for(OurMap o : ways) {

@@ -122,7 +122,7 @@ public class CheckInputData {
     public static void main(String[] args) throws IOException {
         // SPRAWDZENIE POPRAWnOSCI
         CheckInputData check_input_data = new CheckInputData();
-        check_input_data.read ( "data.txt" );
+        check_input_data.read ( "DataInputGroupWT1115_MAP.txt" );
         check_input_data.print ();
         check_input_data.separate ();
         System.out.println ("VERICALLY: ");
