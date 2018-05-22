@@ -1,4 +1,5 @@
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -64,6 +65,12 @@ public class ArraysGenerator {
     }
     public void writeFile(String text) { // dopisuje i tworzy plik, działa - ale nie używamy narazie albo wcale
         try {
+            CleanFile.clean ( "coordinates.txt" );
+        } catch (FileNotFoundException e) {
+            e.printStackTrace ();
+        }
+
+        try {
             BufferedWriter writer =
                     new BufferedWriter(new FileWriter("coordinates.txt", true)); // to robi magie całą
             writer.flush();
@@ -75,13 +82,35 @@ public class ArraysGenerator {
         }
 
     }
+    int linia = 13;
+
+    Character cc = (char)linia;
+    public void write_to_file(Integer N){
+
+        try {
+            CleanFile.clean ( "coordinate.txt" );
+        } catch (FileNotFoundException e) {
+            e.printStackTrace ();
+        }
+        for(int i = 0 ; i < N ; i++){
+            for(int j = 0 ; j < N ; j++){
+                Integer Random_Int =random.nextInt ( 9 )  + 1;
+                FileWrite.writefile ( Random_Int.toString () , "coordinate.txt" );
+
+            }
+            FileWrite.writefile ( cc.toString ()  , "coordinate.txt");
+        }
+
+    }
 
     public static void main(String[] args){
 
+    //    ArraysGenerator arraysGenerator = new ArraysGenerator ();
+      //  int placeLimit = 20; // żeby można było zmienić ilości by szybciej się zapisywał
+        //arraysGenerator.matrix ( placeLimit,placeLimit );
+       // arraysGenerator.print (arraysGenerator.getHorizonatal());
         ArraysGenerator arraysGenerator = new ArraysGenerator ();
-        int placeLimit = 19; // żeby można było zmienić ilości by szybciej się zapisywał
-        arraysGenerator.matrix ( placeLimit,placeLimit );
-        arraysGenerator.print (arraysGenerator.getHorizonatal());
+        arraysGenerator.write_to_file ( 15 );
 
     }
 }

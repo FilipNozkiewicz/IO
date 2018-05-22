@@ -15,7 +15,7 @@ public class Main {
         CheckInputData checkInputData = new CheckInputData();
 
         try {
-            checkInputData.read("data.txt");
+            checkInputData.read("coordinate.txt");
         } catch (IOException e) {
             System.out.println("there is no such a file");
         }
@@ -46,8 +46,8 @@ public class Main {
 
     //    floyyd.print_paths ( floyyd.String_Path_Matrix );
 
-     // Bellman_Arraylist bellman_arraylist = new Bellman_Arraylist ();
-    //   bellman_arraylist.aloc_main_matrix ( bellman_arraylist.infinity ( adjacentMatrixGeneratorBellman.getAdjacent () ) ) ;
+      Bellman_Arraylist bellman_arraylist = new Bellman_Arraylist ();
+      bellman_arraylist.aloc_main_matrix ( bellman_arraylist.infinity ( adjacentMatrixGeneratorBellman.getAdjacent () ) ) ;
       // bellman_arraylist.aloc_patch_matrix ( bellman_arraylist.infinity ( adjacentMatrixGeneratorBellman.getAdjacent () ) ) ;
     //   bellman_arraylist.print_paths ( bellman_arraylist.Path_Matrix );
 
@@ -65,9 +65,9 @@ public class Main {
           System.out.print("Floyd => ");
           //   floyd_arraylist.choose_the_shortest (numberOfElementsInRow, rg.getParcelsNumber() , floyd_arraylist.floyd ( proper_matrix ) );
            floyyd.choose_the_shortest ( numberOfElementsInRow , rg.getParcelsNumber () , floyyd.Distance_Matrix );
-         //   System.out.print("Bellman => ");
-           // bellman_arraylist.aloc_main_matrix ( bellman_arraylist.infinity ( adjacentMatrixGeneratorBellman.getAdjacent () ) ); // bellman_arraylist.print_paths ( bellman_arraylist.Path_Matrix );
-          //bellman_arraylist.choose_the_shortest (numberOfElementsInRow, rg.getParcelsNumber() , bellman_arraylist.aloc_main_matrix ( adjacentMatrixGeneratorBellman.getAdjacent () )  );
+            System.out.print("Bellman => ");
+            bellman_arraylist.aloc_main_matrix ( bellman_arraylist.infinity ( adjacentMatrixGeneratorBellman.getAdjacent () ) ); // bellman_arraylist.print_paths ( bellman_arraylist.Path_Matrix );
+          bellman_arraylist.choose_the_shortest (numberOfElementsInRow, rg.getParcelsNumber() , bellman_arraylist.aloc_main_matrix ( adjacentMatrixGeneratorBellman.getAdjacent () )  );
 
 
         }
