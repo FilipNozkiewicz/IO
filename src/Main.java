@@ -15,7 +15,7 @@ public class Main {
         CheckInputData checkInputData = new CheckInputData();
 
         try {
-            checkInputData.read("coordinate.txt");
+            checkInputData.read("data.txt");
         } catch (IOException e) {
             System.out.println("there is no such a file");
         }
