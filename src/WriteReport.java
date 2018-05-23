@@ -1,4 +1,5 @@
 import java.io.*;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class WriteReport {
@@ -6,7 +7,7 @@ public class WriteReport {
     ArrayList<Integer> allHopCounts = new ArrayList<>();
     ArrayList<Integer> allRouteCosts = new ArrayList<>();
     ArrayList<Driver> drivers = new ArrayList<>();
-    int meanHopCounts, meanRouteCosts;
+    ArrayList<String> dates = new ArrayList<>();
 
 
     public static void main(String[] args) {
@@ -14,15 +15,17 @@ public class WriteReport {
         ArrayList<RouteGenerator> routeGenerators = loadRoute.returnerOfRoutes("DataInputGroupWT1115.txt");
         WriteReport writeReport = new WriteReport();
 
-        int i = 0;
         for(RouteGenerator rg : routeGenerators){
             writeReport.getAllRouteGenerators().add(rg);
         }
-        System.out.println( writeReport.getDrivers().size());
+        System.out.println("Wszystkie daty w pliku - return stringa i do txt");
+        writeReport.makeTimeList();
+        System.out.println("Wszyscy kierowcy i ilość w pliku - return stringa i do txt");
         writeReport.makeDriversList();
 
+
         try {
-            writeReport.writingStringToFile("report.txt","xxx");
+            writeReport.writingStringToFile("report.txt","LOL");
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -36,6 +39,23 @@ public class WriteReport {
     public ArrayList<RouteGenerator> getAllRouteGenerators() {
         return allRouteGenerators;
     }
+    public void makeTimeList(){
+        Timestamp timestamp = new Timestamp(allRouteGenerators.get(1).order);
+        dates.add(timestamp.toString().substring(0,10));
+        for(RouteGenerator rg : allRouteGenerators){
+            timestamp = new Timestamp(rg.getOrder());
+            String date = timestamp.toString().substring(0,10);
+            for (String s : dates){
+                if(!s.equals(date)){
+                    dates.add(date);
+                }
+
+            }
+        }
+        for (String s : dates){
+            System.out.println(s);
+        }
+    }
 
 
     public void makeDriversList(){
@@ -44,12 +64,16 @@ public class WriteReport {
             }
             for( int i = 0; i < drivers.size(); i++){
                 for(int j = i + 1; j< drivers.size() - 1; j++){
-                    if (drivers.get(i).getName().equals(drivers.get(j).getName())){
-                        drivers.remove(i);
+                    if (drivers.get(i).getName().equals(drivers.get(j).getName())) {
+                        drivers.get(i).setHowManyTimesThereIs(drivers.get(i).getHowManyTimesThereIs()+1);
+                        drivers.remove(j);
                     }
                 }
             }
-            System.out.println( getDrivers().size());
+
+            for (Driver driver : drivers){
+                System.out.println(driver.getName() + "  " + driver.getHowManyTimesThereIs());
+            }
     }
     public  int meanCreator(ArrayList<Integer> temp){
         int sum = 0;
