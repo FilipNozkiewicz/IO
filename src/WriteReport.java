@@ -9,11 +9,15 @@ public class WriteReport {
     ArrayList<Driver> drivers = new ArrayList<>();
     ArrayList<String> dates = new ArrayList<>();
 
+    public  WriteReport(){
+
+
+    }
 
     public static void main(String[] args) {
-        LoadRoute loadRoute = new LoadRoute ();
+       LoadRoute loadRoute = new LoadRoute ();
         ArrayList<RouteGenerator> routeGenerators = loadRoute.returnerOfRoutes("DataInputGroupWT1115.txt");
-        WriteReport writeReport = new WriteReport();
+        WriteReport writeReport = new WriteReport(33);
 
         for(RouteGenerator rg : routeGenerators){
             writeReport.getAllRouteGenerators().add(rg);
@@ -21,9 +25,9 @@ public class WriteReport {
             writeReport.getAllRouteCosts().add(3);
         }
         writeReport.makeTimeList();
-        writeReport.writeTimeToFile("report.txt");
+   //     writeReport.writeTimeToFile("Main_Report.txt");
         writeReport.makeDriversList();
-        writeReport.writeDriversToFile("report.txt");
+        writeReport.writeDriversToFile(33);
         writeReport.writeHopsRoutesToFile("report.txt", "dijkstra");
     }
 
@@ -54,13 +58,14 @@ public class WriteReport {
         return allRouteCosts;
     }
 
-    public void writeDriversToFile(String fileName){
+    public void writeDriversToFile(Integer N){
+        String fileName = "Main_Report_" + N.toString () + ".txt";
         String stringDriver;
         try {
-            writingStringToFile(fileName, "Wykaz kierowców: ");
+            writingStringToFile(fileName, "\nDrivers List: ");
             for (Driver driver : drivers){
                 stringDriver = "";
-                stringDriver = driver.getName() + " ilość tras: " + driver.getHowManyTimesThereIs();
+                stringDriver = driver.getName() + " routes number: " + driver.getHowManyTimesThereIs();
                 writingStringToFile(fileName, stringDriver);
             }
             writingStringToFile(fileName, " ");
@@ -70,15 +75,19 @@ public class WriteReport {
         }
     }
 
-    public void writeTimeToFile(String fileName){
+    public void writeTimeToFile(Integer N){
+        String file_name = "Main_Report_" + N.toString () + ".txt";
         try {
-            writingStringToFile(fileName, "Wszystkie daty: ");
+       //     writingStringToFile(fileName, "Wszystkie daty: ");
+            FileWrite.writefile ( "\nAll the dates\n" , file_name );
             for(String date : dates) {
-                    writingStringToFile(fileName, date);
+           //         writingStringToFile(fileName, date);
+                FileWrite.writefile ( date , file_name );
             }
-            writingStringToFile(fileName, " ");
+         //   writingStringToFile(fileName, " ");
+            FileWrite.writefile ( "\n" , file_name );
             }
-        catch (IOException e) {
+        catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -95,6 +104,11 @@ public class WriteReport {
 
             }
         }
+    }
+    public void write_paths(Integer N , ArrayList<ArrayList<String>> S){
+
+       // String file_name = "Main_Report_" + N.toString () + ".txt";
+      //  FileWrite.writefile (  , file_name );
     }
 
 
@@ -126,5 +140,68 @@ public class WriteReport {
         fw.write(content + "\n");//appends the string to the file
         fw.close();
     }
+    public String file_name;
+    public WriteReport(Integer N){
+        this.file_name = "Main_Report_" +  N.toString () + ".txt";
+        try{
+            CleanFile.clean ( file_name  );
+        }catch (Exception e){
+            System.out.println ("There is no such a file");
+        }
+        FileWrite.writefile ( "------------------------------------------------MAIN REPORT --------------------------------------------------------------------" , file_name );
+    }
+
+    public void write_hop_dist_time(Integer counter , Integer hop_dikstra , Integer hop_bellman , Integer hop_floyyd ,
+                                    Integer dis_dijkstra  , Integer dis_bellman , Integer dis_floyd , long time_dijkstra , long time_belllman , long time_floyd  , Integer N ) throws FileNotFoundException {
+
+        String file_name = "Main_Report_" + N.toString () + ".txt";
+        FileWrite.writefile ( "|Floyd|"  , file_name);
+        FileWrite.writefile ( "\n" , file_name );
+        FileWrite.writefile ( "-------------------------------------------------------------------------------" , file_name );
+        FileWrite.writefile ( "\n" , file_name );
+        FileWrite.writefile ( "Average Distance: " + dis_floyd/counter + " " + "\nAverage Hop Count: " + hop_floyyd/counter  , file_name   );
+        FileWrite.writefile ( "\n" , file_name );
+     //   FileWrite.writefile (  "Time for Alghorithm: " + time_floyd + " miliseconds" , file_name);
+        FileWrite.writefile ( "\n" , file_name );
+        FileWrite.writefile ( "-------------------------------------------------------------------------------" , file_name );
+        FileWrite.writefile ( "\n" , file_name );
+
+        FileWrite.writefile ( "Dijkstra"  , file_name);
+        FileWrite.writefile ( "\n" , file_name );
+        FileWrite.writefile ( "-------------------------------------------------------------------------------" , file_name );
+        FileWrite.writefile ( "\n" , file_name );
+        FileWrite.writefile ( "Average Distance: " + dis_dijkstra/counter + " " + "\nAverage Hop Count: " + hop_dikstra/counter  , file_name   );
+        FileWrite.writefile ( "\n" , file_name );
+       // FileWrite.writefile (  "Time for Alghorithm: " + time_dijkstra + " miliseconds" , file_name);
+        FileWrite.writefile ( "\n" , file_name );
+        FileWrite.writefile ( "-------------------------------------------------------------------------------" , file_name );
+        FileWrite.writefile ( "\n" , file_name );
+
+        FileWrite.writefile ( "Bellman-Ford"  , file_name);
+        FileWrite.writefile ( "\n" , file_name );
+        FileWrite.writefile ( "-------------------------------------------------------------------------------" , file_name );
+        FileWrite.writefile ( "\n" , file_name );
+        FileWrite.writefile ( "Average Distance: " + dis_bellman/counter + " " + "\nAverage Hop Count: " + hop_bellman/counter  , file_name   );
+        FileWrite.writefile ( "\n" , file_name );
+        //FileWrite.writefile (  "Time for Alghorithm: " + time_belllman + " miliseconds" , file_name);
+        FileWrite.writefile ( "\n" , file_name );
+        FileWrite.writefile ( "-------------------------------------------------------------------------------" , file_name );
+        FileWrite.writefile ( "\n" , file_name );
+
+    }
+    public void write_time(long dijkstra , long bellman , long floyd , Integer N ){
+
+        String file_name = "Main_Report_" + N.toString () + ".txt";
+        FileWrite.writefile ( "Floyd\n" , file_name);
+        FileWrite.writefile (  "Time for Alghorithm: " + floyd + " miliseconds" , file_name);
+        FileWrite.writefile ( "\n" , file_name );
+        FileWrite.writefile ( "Dijkstra\n" , file_name);
+        FileWrite.writefile (  "Time for Alghorithm: " + dijkstra + " miliseconds" , file_name);
+        FileWrite.writefile ( "\n" , file_name );
+        FileWrite.writefile ( "Bellman\n" , file_name);
+        FileWrite.writefile (  "Time for Alghorithm: " + bellman + " miliseconds" , file_name);
+        FileWrite.writefile ( "\n" , file_name );
+    }
 
 }
+

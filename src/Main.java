@@ -14,9 +14,9 @@ public class Main {
         AdjacentMatrixGenerator adjacentMatrixGeneratorBellman = new AdjacentMatrixGenerator();
         CheckInputData checkInputData = new CheckInputData();
         ArraysGenerator arraysGenerator = new ArraysGenerator ();
-        arraysGenerator.write_to_file ( 10 );
+        arraysGenerator.write_to_file ( 20 );
         try {
-            checkInputData.read("data.txt");
+            checkInputData.read("coordinate.txt");
         } catch (IOException e) {
             System.out.println("there is no such a file");
         }
@@ -61,49 +61,87 @@ public class Main {
         ArrayList<ArrayList<Integer>> matrix_adj = adjacentMatrixGeneratorDijkstra.getAdjacent ();
         ArrayList<ArrayList<Integer>> matrix_dist = dijkstraSP_arrayList.Fulfill_Distance_Matrix ( matrix_adj );
         dijkstraSP_arrayList.SetHops ( matrix_adj );
+        WriteReport writeReport;
 
-
+        Integer N = 0;
+        Integer divider = 0;
+        writeReport = new WriteReport ( N );
       for(RouteGenerator rg : routeGenerators){
           counter++;
-           // writeReport.write(rg,numberOfElementsInRow , adjacentMatrixGeneratorFloyd, adjacentMatrixGeneratorDijkstra);
-            rg.generateParcelsNumbers(rg.getParcels(),numberOfElementsInRow);
-         //   rg.writeParcels();
-        //    System.out.println(rg.getParcelsNumber());
-       //     System.out.print("Dijkstra => ");
-          try {
-              dijkstraSP_arrayList.choose_the_shortest ( numberOfElementsInRow, rg.getParcelsNumber (), matrix_dist, matrix_adj );
-          }catch (Exception e){
-              System.out.println ("Bad Coordinates");
-              System.exit ( 1 );
-          }
-         // System.out.print("Floyd => ");
-            try {
-                floyyd.choose_the_shortest ( numberOfElementsInRow, rg.getParcelsNumber (), floyyd.Distance_Matrix );
-            }catch (Exception e){
-                System.out.println ("Bad Coordinates");
-                System.exit ( 1 );
-            }
-       //    System.out.print("Bellman => ");
-      //       // bellman_arraylist.print_paths ( bellman_arraylist.Path_Matrix );
-          try {
-              bellman_arraylist.choose_the_shortest ( numberOfElementsInRow, rg.getParcelsNumber (), bel_matrix );
-          }catch (Exception e){
-              System.out.println ("Bad Coordinates");
-              System.exit ( 1 );
-          }
+          divider++;
+
+            writeReport.getAllRouteCosts ();
+          writeReport.getAllRouteGenerators().add(rg);
+
+              //     writeReport.write(rg,numberOfElementsInRow , adjacentMatrixGeneratorFloyd, adjacentMatrixGeneratorDijkstra);
+              rg.generateParcelsNumbers ( rg.getParcels (), numberOfElementsInRow );
+              //   rg.writeParcels();
+              //    System.out.println(rg.getParcelsNumber());
+              //     System.out.print("Dijkstra => ");
+              try {
+                  dijkstraSP_arrayList.choose_the_shortest ( numberOfElementsInRow, rg.getParcelsNumber (), matrix_dist, matrix_adj );
+              } catch (Exception e) {
+                  System.out.println ( "Bad Coordinates" );
+                  System.exit ( 1 );
+              }
+              // System.out.print("Floyd => ");
+              try {
+                  floyyd.choose_the_shortest ( numberOfElementsInRow, rg.getParcelsNumber (), floyyd.Distance_Matrix );
+              } catch (Exception e) {
+                  System.out.println ( "Bad Coordinates" );
+                  System.exit ( 1 );
+              }
+              //    System.out.print("Bellman => ");
+              //       // bellman_arraylist.print_paths ( bellman_arraylist.Path_Matrix );
+              try {
+                  bellman_arraylist.choose_the_shortest ( numberOfElementsInRow, rg.getParcelsNumber (), bel_matrix );
+              } catch (Exception e) {
+                  System.out.println ( "Bad Coordinates" );
+                  System.exit ( 1 );
+              }
+              if(counter % 100 == 0){
 
 
-        }
-        System.out.println ("Floyd");
+               //   WriteReport write_real_report = new WriteReport (N);
+                  writeReport.makeTimeList();
+                  //     writeReport.writeTimeToFile("Main_Report.txt");
+                  writeReport.makeDriversList();
+                  writeReport.writeTimeToFile ( N );
+                  writeReport.writeDriversToFile(N);
+
+                  writeReport.write_hop_dist_time ( divider , dijkstraSP_arrayList.hop_sum , bellman_arraylist.hop_sum , floyyd.hop_sum
+                          , dijkstraSP_arrayList.distance_sum , bellman_arraylist.distance_sum , floyyd.distance_sum , dijkstra_time , bellman_time , floyd_time, N );
+                  writeReport.write_time ( dijkstra_time , bellman_time , floyd_time  , N);
+                  writeReport.
+                  N++;
+                  dijkstraSP_arrayList.hop_sum = 0;
+                  floyyd.hop_sum = 0;
+                  bellman_arraylist.hop_sum = 0;
+                  dijkstraSP_arrayList.distance_sum = 0;
+                  floyyd.distance_sum = 0;
+                  bellman_arraylist.distance_sum = 0;
+
+
+                  writeReport = new WriteReport ( N );
+                    divider = 0;
+                  }
+
+
+      }
+    /*    System.out.println ("Floyd");
         System.out.println ("Average Distance: " + floyyd.distance_sum/counter + " Average Hop count: " + floyyd.hop_sum/counter);
         System.out.println ("Real Time " + floyd_time + " miliseconds");
-       System.out.println ("Dijkstra");
+        System.out.println ("Dijkstra");
         System.out.println ("Average Distance: " + dijkstraSP_arrayList.distance_sum/counter + " Average Hop count: " + dijkstraSP_arrayList.hop_sum/counter);
         System.out.println ("Real Time " + dijkstra_time + " miliseconds");
         System.out.println ("Bellman");
         System.out.println ("Average Distance: " + bellman_arraylist.distance_sum/counter + " Average Hop count: " + bellman_arraylist.hop_sum/counter);
         System.out.println ("Real Time " + bellman_time  + " miliseconds");
-        System.out.println ("Total Path: " + floyyd.path_sum);
+        System.out.println ("Total Path: " + floyyd.path_sum); */
+      //  WriteReport write_real_report = new WriteReport ();
+
+        //write_real_report.write_hop_dist_time ( counter , dijkstraSP_arrayList.hop_sum , bellman_arraylist.hop_sum , floyyd.hop_sum
+          //      , dijkstraSP_arrayList.distance_sum , bellman_arraylist.distance_sum , floyyd.distance_sum , dijkstra_time , bellman_time , floyd_time );
 
     }
 }

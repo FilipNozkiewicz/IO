@@ -1,0 +1,122 @@
+------------------------------------------------MAIN REPORT --------------------------------------------------------------------
+All the dates
+1970-01-18
+
+Drivers List: 
+RWDEPGBPAOZO routes number: 1
+LCTCZESJPEUC routes number: 1
+FNDTRUBPVWIJ routes number: 2
+CHRYYXSBODQF routes number: 1
+UNPSXRBWKXPR routes number: 1
+YAPFJGUOUOGF routes number: 1
+HZGNIXWMOOTF routes number: 1
+FRPYHEARLCFT routes number: 1
+AQIEUSXQZWTY routes number: 1
+SRGQYWBXONUP routes number: 1
+LPVODRGOJUAI routes number: 2
+ERQZNPEGAOTR routes number: 2
+DSZUBAVVOUKJ routes number: 1
+HRKXOWTQNCLK routes number: 1
+TAKPAILNPHHC routes number: 2
+ULCMWPCXJSPE routes number: 1
+LVSXTCTTMYLK routes number: 1
+VJAIETUJREPX routes number: 1
+REWVUWPVQGVQ routes number: 1
+KOLJWAAYBQNL routes number: 1
+FCGPSWZWYIFE routes number: 2
+NQHUSQRAWRBT routes number: 1
+ICXEGPBJHPCF routes number: 1
+IYSMZAQSDWYT routes number: 1
+SLTLDQUKCWXP routes number: 1
+ZQPHYUYIXUIK routes number: 1
+ZOMFFVJFXFIC routes number: 1
+QTVAPYBGUPDI routes number: 1
+URXZVVUNCAXL routes number: 2
+OEOEFPQTYUFQ routes number: 1
+CBZOHHCAHEBI routes number: 2
+OJHHIJDSAWAQ routes number: 1
+QVGIMSPUQJQS routes number: 1
+SWQGEMDGZTUZ routes number: 1
+WAFBOZEAITIY routes number: 1
+VXBREEIJDWRF routes number: 1
+GPXRCIAAZOVS routes number: 1
+CTQHHLJTGWEO routes number: 1
+QPTAIUBJRDYT routes number: 1
+GMBNVZSQHENA routes number: 1
+EFINBNURIIQS routes number: 1
+CMTCSVXGZTQB routes number: 1
+AOIOSFXXGWLN routes number: 1
+IBSJZJMSOLOE routes number: 1
+QSGWQWVMMQSC routes number: 1
+EVHEWZNIDENF routes number: 1
+EBRLIJCQKIFG routes number: 1
+ZMSAKOPSZXJJ routes number: 1
+MKXAYAFCXXHQ routes number: 1
+ZVLOMKETXRTZ routes number: 1
+RMLIBTUFIBWU routes number: 1
+CHZHIUOIWQWT routes number: 1
+TOMUNECKHHOM routes number: 1
+IQQSXZUXBHKS routes number: 1
+AUEZLDWTAJLA routes number: 1
+XITNEWCWHLJX routes number: 1
+ULYBRSVASNTV routes number: 1
+VSSHMKTIZFZH routes number: 1
+GMZLHULUHVEH routes number: 1
+BNQGDVKQRJEH routes number: 2
+AOLVYHDSLPEW routes number: 1
+IVUGQSILHYZZ routes number: 1
+ORZWNIPKOVZW routes number: 1
+FAVLMNHANQFL routes number: 1
+OODYXFLCETMK routes number: 1
+RXURNAAVTZZG routes number: 1
+ZPYCNVPTRUEB routes number: 1
+KATEMLGAPCUD routes number: 1
+SPFDBPJIPYPF routes number: 1
+SKRTBYLAFKMW routes number: 1
+PFEKHXOLJDUK routes number: 1
+NQHMTFQGHGMQ routes number: 1
+OYPKTEEHRYVK routes number: 1
+QDESZDPHFMOY routes number: 1
+MNRJGYZPWSVR routes number: 1
+ICAMXAUFBZSN routes number: 1
+CTJJDGFGECUG routes number: 1
+KFBQREMKHPKT routes number: 1
+AZUWDTPLUGVJ routes number: 1
+HVXXJXKIRUEE routes number: 1
+RQMEXEIGTZRY routes number: 1
+ZMIQKYCWAGHD routes number: 1
+AWLWPMCLHKBU routes number: 1
+JTXOETVNNMUW routes number: 1
+BEJUEFSBHPIO routes number: 1
+HRSYXOTTDFTE routes number: 1
+LGWDJBQYWNRH routes number: 1
+CVSWZRKDNEJE routes number: 1
+SVEOLBOTWAUI routes number: 1
+NPMEODXNTGWH routes number: 1
+NCQMZSEUDJVM routes number: 1
+PTIIBLVDPFMF routes number: 1
+ 
+|Floyd|
+-------------------------------------------------------------------------------
+Average Distance: 114 
+Average Hop Count: 27
+
+-------------------------------------------------------------------------------
+Dijkstra
+-------------------------------------------------------------------------------
+Average Distance: 114 
+Average Hop Count: 28
+
+-------------------------------------------------------------------------------
+Bellman-Ford
+-------------------------------------------------------------------------------
+Average Distance: 114 
+Average Hop Count: 28
+
+-------------------------------------------------------------------------------
+Floyd
+Time for Alghorithm: 281 miliseconds
+Dijkstra
+Time for Alghorithm: 438 miliseconds
+Bellman
+Time for Alghorithm: 17502 miliseconds
