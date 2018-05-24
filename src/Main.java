@@ -14,7 +14,7 @@ public class Main {
         AdjacentMatrixGenerator adjacentMatrixGeneratorBellman = new AdjacentMatrixGenerator();
         CheckInputData checkInputData = new CheckInputData();
         ArraysGenerator arraysGenerator = new ArraysGenerator ();
-        arraysGenerator.write_to_file ( 21 );
+        arraysGenerator.write_to_file ( 20 );
         try {
             checkInputData.read("coordinate.txt");
         } catch (IOException e) {
@@ -82,14 +82,14 @@ public class Main {
         }
         System.out.println ("Floyd");
         System.out.println ("Average Distance: " + floyyd.distance_sum/counter + " Average Hop count: " + floyyd.hop_sum/counter);
-        System.out.println ("Real Time " + floyd_time);
+        System.out.println ("Real Time " + floyd_time + " miliseconds");
        System.out.println ("Dijkstra");
         System.out.println ("Average Distance: " + dijkstraSP_arrayList.distance_sum/counter + " Average Hop count: " + dijkstraSP_arrayList.hop_sum/counter);
-        System.out.println ("Real Time " + dijkstra_time );
+        System.out.println ("Real Time " + dijkstra_time + " miliseconds");
         System.out.println ("Bellman");
         System.out.println ("Average Distance: " + bellman_arraylist.distance_sum/counter + " Average Hop count: " + bellman_arraylist.hop_sum/counter);
-        System.out.println ("Real Time " + bellman_time );
-     //   System.out.println ("Total Path: " + floyyd.path_sum);
+        System.out.println ("Real Time " + bellman_time  + " miliseconds");
+        System.out.println ("Total Path: " + floyyd.path_sum);
 
     }
 }
