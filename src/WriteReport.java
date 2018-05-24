@@ -17,6 +17,8 @@ public class WriteReport {
 
         for(RouteGenerator rg : routeGenerators){
             writeReport.getAllRouteGenerators().add(rg);
+            writeReport.getAllHopCounts().add(3);
+            writeReport.getAllRouteCosts().add(3);
         }
         writeReport.makeTimeList();
         writeReport.writeTimeToFile("report.txt");
@@ -43,6 +45,15 @@ public class WriteReport {
     public ArrayList<RouteGenerator> getAllRouteGenerators() {
         return allRouteGenerators;
     }
+
+    public ArrayList<Integer> getAllHopCounts() {
+        return allHopCounts;
+    }
+
+    public ArrayList<Integer> getAllRouteCosts() {
+        return allRouteCosts;
+    }
+
     public void writeDriversToFile(String fileName){
         String stringDriver;
         try {
