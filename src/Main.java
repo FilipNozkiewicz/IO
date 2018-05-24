@@ -14,9 +14,9 @@ public class Main {
         AdjacentMatrixGenerator adjacentMatrixGeneratorBellman = new AdjacentMatrixGenerator();
         CheckInputData checkInputData = new CheckInputData();
         ArraysGenerator arraysGenerator = new ArraysGenerator ();
-        arraysGenerator.write_to_file ( 20 );
+        arraysGenerator.write_to_file ( 10 );
         try {
-            checkInputData.read("coordinate.txt");
+            checkInputData.read("data.txt");
         } catch (IOException e) {
             System.out.println("there is no such a file");
         }
@@ -70,13 +70,27 @@ public class Main {
          //   rg.writeParcels();
         //    System.out.println(rg.getParcelsNumber());
        //     System.out.print("Dijkstra => ");
-           dijkstraSP_arrayList.choose_the_shortest ( numberOfElementsInRow, rg.getParcelsNumber(), matrix_dist , matrix_adj );
+          try {
+              dijkstraSP_arrayList.choose_the_shortest ( numberOfElementsInRow, rg.getParcelsNumber (), matrix_dist, matrix_adj );
+          }catch (Exception e){
+              System.out.println ("Bad Coordinates");
+              System.exit ( 1 );
+          }
          // System.out.print("Floyd => ");
-
-           floyyd.choose_the_shortest ( numberOfElementsInRow , rg.getParcelsNumber () , floyyd.Distance_Matrix );
+            try {
+                floyyd.choose_the_shortest ( numberOfElementsInRow, rg.getParcelsNumber (), floyyd.Distance_Matrix );
+            }catch (Exception e){
+                System.out.println ("Bad Coordinates");
+                System.exit ( 1 );
+            }
        //    System.out.print("Bellman => ");
       //       // bellman_arraylist.print_paths ( bellman_arraylist.Path_Matrix );
-         bellman_arraylist.choose_the_shortest (numberOfElementsInRow, rg.getParcelsNumber() , bel_matrix  );
+          try {
+              bellman_arraylist.choose_the_shortest ( numberOfElementsInRow, rg.getParcelsNumber (), bel_matrix );
+          }catch (Exception e){
+              System.out.println ("Bad Coordinates");
+              System.exit ( 1 );
+          }
 
 
         }
