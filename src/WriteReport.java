@@ -22,10 +22,22 @@ public class WriteReport {
         writeReport.writeTimeToFile("report.txt");
         writeReport.makeDriversList();
         writeReport.writeDriversToFile("report.txt");
+        writeReport.writeHopsRoutesToFile("report.txt", "dijkstra");
     }
 
-    public ArrayList<Driver> getDrivers() {
-        return drivers;
+    public void writeHopsRoutesToFile(String fileName, String algType){
+        Integer hops = meanCreator(allHopCounts);
+        Integer cost = meanCreator(allRouteCosts);
+
+        try {
+            writingStringToFile(fileName, "Sredni czas dla " + algType + ":");
+            writingStringToFile(fileName, cost.toString() );
+            writingStringToFile(fileName, "Srednia długość dla " + algType + ":");
+            writingStringToFile(fileName, hops.toString() );
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public ArrayList<RouteGenerator> getAllRouteGenerators() {
@@ -96,6 +108,7 @@ public class WriteReport {
         }
         return  sum/temp.size();
     }
+
     public void writingStringToFile(String fileName, String content)
             throws IOException {
         FileWriter fw = new FileWriter(fileName,true); //the true will append the new data
