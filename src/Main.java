@@ -112,7 +112,7 @@ public class Main {
                   writeReport.write_hop_dist_time ( divider , dijkstraSP_arrayList.hop_sum , bellman_arraylist.hop_sum , floyyd.hop_sum
                           , dijkstraSP_arrayList.distance_sum , bellman_arraylist.distance_sum , floyyd.distance_sum , dijkstra_time , bellman_time , floyd_time, N );
                   writeReport.write_time ( dijkstra_time , bellman_time , floyd_time  , N);
-                  
+
                   N++;
                   dijkstraSP_arrayList.hop_sum = 0;
                   floyyd.hop_sum = 0;
