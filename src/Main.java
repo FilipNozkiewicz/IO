@@ -27,31 +27,33 @@ public class Main {
         adjacentMatrixGeneratorFloyd.adjacentGenerator(checkInputData.getHorizontal(), checkInputData.getVertical());
         adjacentMatrixGeneratorDijkstra.adjacentGenerator(checkInputData.getHorizontal(), checkInputData.getVertical());
         adjacentMatrixGeneratorBellman.adjacentGenerator(checkInputData.getHorizontal(), checkInputData.getVertical());
-
-        Floyd_Arraylist floyd_arraylist = new Floyd_Arraylist ();
-       floyd_arraylist.startPath ( adjacentMatrixGeneratorFloyd.getAdjacent());
-     //   ArrayList<ArrayList<Integer>> proper_matrix = floyd_arraylist.infinity ( adjacentMatrixGeneratorFloyd.getAdjacent () );
+        long startTime , stopTime , floyd_time , dijkstra_time , bellman_time;
 
 
-      DijkstraSP_ArrayList dijkstraSP_arrayList = new DijkstraSP_ArrayList ( adjacentMatrixGeneratorDijkstra.getAdjacent().size () );
-        dijkstraSP_arrayList.Fulfill_Distance_Matrix ( adjacentMatrixGeneratorDijkstra.getAdjacent() );
+
+        startTime = System.currentTimeMillis ();
+            DijkstraSP_ArrayList dijkstraSP_arrayList = new DijkstraSP_ArrayList ( adjacentMatrixGeneratorDijkstra.getAdjacent().size () );
+            dijkstraSP_arrayList.Fulfill_Distance_Matrix ( adjacentMatrixGeneratorDijkstra.getAdjacent() );
       //  dijkstraSP_arrayList.print_paths ( dijkstraSP_arrayList.Path_Matrix );
        // dijkstraSP_arrayList.print ( dijkstraSP_arrayList.Hop_Matrix );
+        dijkstra_time = System.currentTimeMillis () - startTime;
 
-       Floyyd floyyd = new Floyyd ();
-        floyyd.floyd ( floyyd.conv_to_inf (  adjacentMatrixGeneratorFloyd.getAdjacent ()) );
+        startTime = System.currentTimeMillis ();
+            Floyyd floyyd = new Floyyd ();
+            floyyd.floyd ( floyyd.conv_to_inf (  adjacentMatrixGeneratorFloyd.getAdjacent ()) );
         //floyyd.count_paths2 ();
        // floyyd.print ( floyyd.Path_Matrix );
-        floyyd.count_paths ();
-        floyyd.counthop ();
+            floyyd.count_paths ();
+            floyyd.counthop ();
+         floyd_time = System.currentTimeMillis () - startTime;
 
     //    floyyd.print_paths ( floyyd.String_Path_Matrix );
-
-      Bellman_Arraylist bellman_arraylist = new Bellman_Arraylist ();
-    ArrayList<ArrayList<Integer>> bel_matrix =  bellman_arraylist.aloc_main_matrix ( bellman_arraylist.infinity ( adjacentMatrixGeneratorBellman.getAdjacent () ) ) ;
+        startTime = System.currentTimeMillis ();
+            Bellman_Arraylist bellman_arraylist = new Bellman_Arraylist ();
+             ArrayList<ArrayList<Integer>> bel_matrix =  bellman_arraylist.aloc_main_matrix ( bellman_arraylist.infinity ( adjacentMatrixGeneratorBellman.getAdjacent () ) ) ;
 
     //   bellman_arraylist.print_paths ( bellman_arraylist.Path_Matrix );
-
+        bellman_time = System.currentTimeMillis () - startTime;
 
         LoadRoute loadRoute = new LoadRoute ();
         ArrayList<RouteGenerator> routeGenerators = loadRoute.returnerOfRoutes("DataInputGroupWT1115.txt");
@@ -80,10 +82,13 @@ public class Main {
         }
         System.out.println ("Floyd");
         System.out.println ("Average Distance: " + floyyd.distance_sum/counter + " Average Hop count: " + floyyd.hop_sum/counter);
+        System.out.println ("Real Time " + floyd_time);
        System.out.println ("Dijkstra");
         System.out.println ("Average Distance: " + dijkstraSP_arrayList.distance_sum/counter + " Average Hop count: " + dijkstraSP_arrayList.hop_sum/counter);
+        System.out.println ("Real Time " + dijkstra_time );
         System.out.println ("Bellman");
         System.out.println ("Average Distance: " + bellman_arraylist.distance_sum/counter + " Average Hop count: " + bellman_arraylist.hop_sum/counter);
+        System.out.println ("Real Time " + bellman_time );
      //   System.out.println ("Total Path: " + floyyd.path_sum);
 
     }
