@@ -1,6 +1,14 @@
 import java.io.*;
+import java.sql.Timestamp;
 
 public class FileWrite{
+
+    public static void main(String[] args) throws Exception {
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        System.out.println(System.currentTimeMillis());
+        System.out.println(timestamp);
+
+    }
 
     public static void writefile(String string , String file) {
         File fl = new File(file);

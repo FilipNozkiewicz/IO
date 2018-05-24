@@ -15,7 +15,7 @@ public class Main {
         CheckInputData checkInputData = new CheckInputData();
 
         try {
-            checkInputData.read("data.txt");
+            checkInputData.read("DataInputGroupWT1115_MAP.txt");
         } catch (IOException e) {
             System.out.println("there is no such a file");
         }
@@ -53,7 +53,7 @@ public class Main {
 
 
         LoadRoute loadRoute = new LoadRoute ();
-        ArrayList<RouteGenerator> routeGenerators = loadRoute.returnerOfRoutes("routes.txt");
+        ArrayList<RouteGenerator> routeGenerators = loadRoute.returnerOfRoutes("DataInputGroupWT1115.txt");
 
       for(RouteGenerator rg : routeGenerators){
             //writeReport.write(rg,numberOfElementsInRow , adjacentMatrixGeneratorFloyd, adjacentMatrixGeneratorDijkstra);
