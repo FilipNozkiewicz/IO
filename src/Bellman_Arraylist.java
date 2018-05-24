@@ -446,6 +446,9 @@ public class Bellman_Arraylist {
         String temp = "(" + x + "," + y + ")";
         return temp;
     }
+    Integer distance_sum = 0;
+    Integer hop_sum = 0;
+    String path_sum = "";
     public void choose_the_shortest(int xLength, ArrayList<Integer> v , ArrayList<ArrayList<Integer>> M ){
 
         ArrayList<OurMap> ways = new ArrayList<>(); // potrzebuje stworzyć bo chce duplikaty i dodawanie po koleji
@@ -485,7 +488,10 @@ public class Bellman_Arraylist {
             //shortestWay.printMap();
             //o.printMap();
         }
-        shortestWay.printMap();
+        distance_sum += shortestWay.key;
+        hop_sum += shortestWay.extraKey;
+        path_sum = path_sum +  "==>" + shortestWay.value;
+      //  shortestWay.printMap();
 
 
 

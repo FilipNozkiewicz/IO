@@ -191,7 +191,7 @@ public class DijkstraSP_ArrayList {
         }
         return Matrix_Distance;
     }
-    public void  SetHops(ArrayList<ArrayList<Integer>> graph){
+    public void SetHops(ArrayList<ArrayList<Integer>> graph){
         Matrix_Distance = new ArrayList<ArrayList<Integer>> (  );
         Hop_Matrix = new ArrayList<ArrayList<Integer>> (  );
         Path_Matrix = new ArrayList<ArrayList<String>> (  );
@@ -311,7 +311,7 @@ public class DijkstraSP_ArrayList {
         Integer hopsOfRoute = 0;
         String lengthName;
 
-        SetHops ( P );
+     //   SetHops ( P );
         for(int i = 0; i< v.size(); i++){
             for (int j = 0;j< v.size(); j++){
                 if(j != i ){
@@ -355,14 +355,16 @@ public class DijkstraSP_ArrayList {
         String temp = "(" + x + "," + y + ")";
         return temp;
     }
-
+    Integer distance_sum = 0;
+    Integer hop_sum = 0;
+    String path_sum = "";
     public void choose_the_shortest(int xLength, ArrayList<Integer> v , ArrayList<ArrayList<Integer>> M , ArrayList<ArrayList<Integer>> P){
 
         ArrayList<OurMap> ways = new ArrayList<>(); // potrzebuje stworzyć bo chce duplikaty i dodawanie po koleji
         Integer lengthOfRoute = 0;
         Integer hopsOfRoute = 0;
         String lengthName;
-        SetHops ( P );
+  //      SetHops ( P );
         for(int i = 0; i< v.size(); i++){
             for (int j = 0;j< v.size(); j++){
                 if(j != i ){
@@ -394,8 +396,10 @@ public class DijkstraSP_ArrayList {
             //shortestWay.printMap();
             //o.printMap();
         }
-
-        shortestWay.printMap();
+       distance_sum += shortestWay.key;
+        hop_sum += shortestWay.extraKey;
+        path_sum = path_sum +  "==>" + shortestWay.value;
+       // shortestWay.printMap();
 
 
 

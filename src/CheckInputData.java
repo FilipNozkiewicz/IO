@@ -28,6 +28,7 @@ public class CheckInputData {
                     ) );
         }catch (IOException e){
             System.out.println ("there is no such a file");
+            System.exit ( 1 );
         }
         buffer = new ArrayList<ArrayList<Integer>> (  );
         buffer.add ( new ArrayList<Integer> (  ) );
@@ -57,7 +58,8 @@ public class CheckInputData {
             if(((c != 10) && (c != 13)) && ((c < 48) || (c > 57)) ){ // jesli dane wejsciowe sa zle
                 System.out.println ("Not Valid input data"); // to prerwanie petli bo nie da sie tego zrobic
                 buffer = null;
-                break;
+                System.exit ( 1 );
+
             }
         }
     }
@@ -71,6 +73,7 @@ public class CheckInputData {
             }
         }catch (Exception e){
             System.out.println ("We can not read a data");
+            System.exit ( 1 );
         }
 
     }
@@ -99,6 +102,7 @@ public class CheckInputData {
             }
         }catch (Exception e){
             System.out.println ("Something goes wrong , check if everything is correct");
+            System.exit ( 1 );
         }
     }
     // tylko wypisania

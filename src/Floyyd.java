@@ -419,6 +419,10 @@ public class Floyyd {
         String temp = "(" + x + "," + y + ")";
         return temp;
     }
+    Integer distance_sum = 0;
+    Integer hop_sum = 0;
+    String path_sum = "";
+    Integer couter = 0;
     public void choose_the_shortest(int xLength, ArrayList<Integer> v , ArrayList<ArrayList<Integer>> M ){
 
         ArrayList<OurMap> ways = new ArrayList<>(); // potrzebuje stworzyć bo chce duplikaty i dodawanie po koleji
@@ -451,16 +455,21 @@ public class Floyyd {
         }
 
         OurMap shortestWay = ways.get(0);
+
         for(OurMap o : ways){
+
             if(shortestWay.getKey() > o.getKey()){
                 shortestWay = o;
+
             }
             //shortestWay.printMap();
             //o.printMap();
-        }
-        shortestWay.printMap();
-
-
+            }
+        distance_sum += shortestWay.key;
+        hop_sum += shortestWay.extraKey;
+        path_sum = path_sum +  "==>" + shortestWay.value;
+    //    System.out.println (path_sum);
+        //shortestWay.printMap();
 
     }
 
