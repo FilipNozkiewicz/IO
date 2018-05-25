@@ -3,16 +3,18 @@ public class OurMap {
     String value;
     Integer extraKey;
 
-    OurMap( Integer key, String value){
+    OurMap(Integer key, String value) {
         this.key = key;
         this.value = value;
         this.extraKey = 0;
     }
-    OurMap(Integer key,Integer extraKey, String value){
+
+    OurMap(Integer key, Integer extraKey, String value) {
         this.extraKey = extraKey;
         this.key = key;
         this.value = value;
     }
+
     public Integer getKey() {
         return key;
     }
@@ -36,7 +38,8 @@ public class OurMap {
     public void setValue(String value) {
         this.value = value;
     }
-    public void printMap(){
+
+    public void printMap() {
         System.out.println("Koszt: " + key + " Ilość Hopów: " + extraKey + " Droga: " + value);
     }
 }

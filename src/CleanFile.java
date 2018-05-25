@@ -3,9 +3,9 @@ import java.io.PrintWriter;
 
 public class CleanFile {
 
-    public  static  void  clean(String file) throws FileNotFoundException {
-        PrintWriter writer = new PrintWriter ( file );
-        writer.print ( "" );
-        writer.close ();
+    public static void clean(String file) throws FileNotFoundException {
+        PrintWriter writer = new PrintWriter(file);
+        writer.print("");
+        writer.close();
     }
 }

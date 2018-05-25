@@ -1,6 +1,6 @@
-import java.util. *;
-import java.lang. *;
-import java.io. *;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class DijkstraSP_ArrayList {
 
@@ -8,8 +8,9 @@ public class DijkstraSP_ArrayList {
     int V = 9;
     ArrayList<ArrayList<Integer>> Matrix_Distance;
     ArrayList<Integer> Distance;
-    public void create(){
-        Matrix_Distance = new ArrayList<ArrayList<Integer>> (  );
+
+    public void create() {
+        Matrix_Distance = new ArrayList<ArrayList<Integer>>();
     }
 
     Integer minDistance(ArrayList<Integer> dist, ArrayList<Boolean> stpSet) {
@@ -20,135 +21,139 @@ public class DijkstraSP_ArrayList {
         Integer min_index = -1;
 
         for (int v = 0; v < V; v++) {
-            if (stpSet.get ( v ) == false && dist.get ( v ) <= min) {
+            if (stpSet.get(v) == false && dist.get(v) <= min) {
 
-                min = dist.get ( v );
+                min = dist.get(v);
                 min_index = v;
             }
         }
         return min_index;
     }
-    public DijkstraSP_ArrayList(Integer V){
+
+    public DijkstraSP_ArrayList(Integer V) {
         this.V = V;
     }
-    public DijkstraSP_ArrayList(){
+
+    public DijkstraSP_ArrayList() {
 
     }
+
     void printSolution(ArrayList<Integer> dist, Integer n) {
 
-        System.out.println ( "Vertex   Distance from Source" );
-        for (int i = 0; i < dist.size (); i++) {
+        System.out.println("Vertex   Distance from Source");
+        for (int i = 0; i < dist.size(); i++) {
 
-            System.out.println ( i + "===>" + dist.get ( i ) );
+            System.out.println(i + "===>" + dist.get(i));
         }
     }
-    void dijkstra(ArrayList<ArrayList<Integer>> graph , Integer src){
+
+    void dijkstra(ArrayList<ArrayList<Integer>> graph, Integer src) {
 
 
-        ArrayList<Integer> dist = new ArrayList<Integer> ( V );
-        ArrayList<ArrayList<Integer>> path = new ArrayList<ArrayList<Integer>> ( V );
-        ArrayList<Boolean> stpSet = new ArrayList<Boolean> ( V );
-        ArrayList<Integer> ancestor = new ArrayList<> ( V );
+        ArrayList<Integer> dist = new ArrayList<Integer>(V);
+        ArrayList<ArrayList<Integer>> path = new ArrayList<ArrayList<Integer>>(V);
+        ArrayList<Boolean> stpSet = new ArrayList<Boolean>(V);
+        ArrayList<Integer> ancestor = new ArrayList<>(V);
 
-        for (int i = 0 ; i < V ; i++){
+        for (int i = 0; i < V; i++) {
 
-            dist.add (  Integer.MAX_VALUE );
-            stpSet.add (  false );
-            path.add ( new ArrayList<Integer> (  ) );
-            ancestor.add ( src );
+            dist.add(Integer.MAX_VALUE);
+            stpSet.add(false);
+            path.add(new ArrayList<Integer>());
+            ancestor.add(src);
 
         }
         //   ancestor.set ( src , src );
 
-        dist.set ( src , 0 );
+        dist.set(src, 0);
 
-        for(int i = 0 ; i < V  ; i++){  // optymalzacja - 1
+        for (int i = 0; i < V; i++) {  // optymalzacja - 1
 
-            Integer u = minDistance ( dist , stpSet); // znajduje wierzcholek o najmnieszej sciezce do niego
-            stpSet.set ( u , true ); // odwiedzono
+            Integer u = minDistance(dist, stpSet); // znajduje wierzcholek o najmnieszej sciezce do niego
+            stpSet.set(u, true); // odwiedzono
 
-            for (int  v = 0 ;  v < V  ; v++){
+            for (int v = 0; v < V; v++) {
 
-                if(!stpSet.get ( v ) && graph.get ( u ).get ( v ) != 0
-                        && dist.get ( u ) != Integer.MAX_VALUE &&
-                        dist.get ( u ) + graph.get ( u ).get ( v ) < dist.get ( v )){
-                    dist.set ( v , dist.get ( u ) + graph.get ( u ).get ( v ) );
-                    ancestor.set ( v , u );
+                if (!stpSet.get(v) && graph.get(u).get(v) != 0
+                        && dist.get(u) != Integer.MAX_VALUE &&
+                        dist.get(u) + graph.get(u).get(v) < dist.get(v)) {
+                    dist.set(v, dist.get(u) + graph.get(u).get(v));
+                    ancestor.set(v, u);
                 }
             }
         }
 
-        printSolution ( dist , V );
+        printSolution(dist, V);
 
-        System.out.println ();
+        System.out.println();
         // Collections.reverse ( ancestor );
-        for (int i = 0 ; i < V ;  i++) {
-            if (i != src){
+        for (int i = 0; i < V; i++) {
+            if (i != src) {
                 int j;
-                System.out.println ( "Path = " + i );
+                System.out.println("Path = " + i);
                 j = i;
                 int hop = 0;
                 do {
-                    j = ancestor.get ( j );
-                    System.out.print ( "==>" + j );
+                    j = ancestor.get(j);
+                    System.out.print("==>" + j);
                     hop++;
 
                 } while (j != src);
-                System.out.println ();
-                System.out.print ( "Ilosc hopow " + hop );
-                System.out.println ();
+                System.out.println();
+                System.out.print("Ilosc hopow " + hop);
+                System.out.println();
                 hop = 0;
-            }
-            else{
-                System.out.println ( "Path = " + i );
+            } else {
+                System.out.println("Path = " + i);
 
-                System.out.print ( "Ilosc hopow " + 0 );
-                System.out.println ();
+                System.out.print("Ilosc hopow " + 0);
+                System.out.println();
             }
         }
     }
+
     ArrayList<ArrayList<Integer>> Hop_Matrix;
     ArrayList<ArrayList<String>> Path_Matrix;
     ArrayList<Integer> Hop_list;
     ArrayList<String> Path_list;
 
-    public ArrayList<Integer> Dijkstra_With_Return(ArrayList<ArrayList<Integer>> graph , Integer src){
-        ArrayList<Integer> dist = new ArrayList<Integer> ( V );
-        ArrayList<ArrayList<Integer>> path = new ArrayList<ArrayList<Integer>> ( V );
-        ArrayList<Boolean> stpSet = new ArrayList<Boolean> ( V );
-        ArrayList<Integer> ancestor = new ArrayList<> ( V );
-        Hop_list = new ArrayList<Integer> (  );
-        Path_list = new ArrayList<String> (  );
+    public ArrayList<Integer> Dijkstra_With_Return(ArrayList<ArrayList<Integer>> graph, Integer src) {
+        ArrayList<Integer> dist = new ArrayList<Integer>(V);
+        ArrayList<ArrayList<Integer>> path = new ArrayList<ArrayList<Integer>>(V);
+        ArrayList<Boolean> stpSet = new ArrayList<Boolean>(V);
+        ArrayList<Integer> ancestor = new ArrayList<>(V);
+        Hop_list = new ArrayList<Integer>();
+        Path_list = new ArrayList<String>();
 
-        for (int i = 0 ; i < V ; i++){
+        for (int i = 0; i < V; i++) {
 
-            dist.add (  Integer.MAX_VALUE );
-            stpSet.add (  false );
-            path.add ( new ArrayList<Integer> (  ) );
-            ancestor.add ( src );
-            Path_list.add ( "" );
+            dist.add(Integer.MAX_VALUE);
+            stpSet.add(false);
+            path.add(new ArrayList<Integer>());
+            ancestor.add(src);
+            Path_list.add("");
         }
         //   ancestor.set ( src , src );
 
-        dist.set ( src , 0 );
+        dist.set(src, 0);
 
-        for(int i = 0 ; i < V  ; i++){  // optymalzacja - 1
+        for (int i = 0; i < V; i++) {  // optymalzacja - 1
 
-            Integer u = minDistance ( dist , stpSet); // znajduje wierzcholek o najmnieszej sciezce do niego
-            stpSet.set ( u , true ); // odwiedzono
+            Integer u = minDistance(dist, stpSet); // znajduje wierzcholek o najmnieszej sciezce do niego
+            stpSet.set(u, true); // odwiedzono
 
-            for (int  v = 0 ;  v < V  ; v++){
+            for (int v = 0; v < V; v++) {
 
-                if(!stpSet.get ( v ) && graph.get ( u ).get ( v ) != 0
-                        && dist.get ( u ) != Integer.MAX_VALUE &&
-                        dist.get ( u ) + graph.get ( u ).get ( v ) < dist.get ( v )){
-                    dist.set ( v , dist.get ( u ) + graph.get ( u ).get ( v ) );
-                    ancestor.set ( v , u );
+                if (!stpSet.get(v) && graph.get(u).get(v) != 0
+                        && dist.get(u) != Integer.MAX_VALUE &&
+                        dist.get(u) + graph.get(u).get(v) < dist.get(v)) {
+                    dist.set(v, dist.get(u) + graph.get(u).get(v));
+                    ancestor.set(v, u);
                 }
             }
         }
-        for (Integer i = 0 ; i < V ;  i++) {
-            if (i != src){
+        for (Integer i = 0; i < V; i++) {
+            if (i != src) {
                 Integer j;
 
                 j = i;
@@ -156,10 +161,10 @@ public class DijkstraSP_ArrayList {
                 do {
                     StringBuilder x = new StringBuilder();
 
-                    j = ancestor.get ( j );
-                    x.append ( " ===> " + j.toString () );
-                    x.append(Path_list.get ( i ));
-                    Path_list.set ( i , x.toString ());
+                    j = ancestor.get(j);
+                    x.append(" ===> " + j.toString());
+                    x.append(Path_list.get(i));
+                    Path_list.set(i, x.toString());
                     //    String x = "==>" + j.toString ();
                     //      String y = Path_list.get ( i );
                     //      StringBuilder xy = new StringBuilder (  );
@@ -168,160 +173,161 @@ public class DijkstraSP_ArrayList {
                     hop++;
 
                 } while (j != src);
-                Hop_list.add ( hop );
+                Hop_list.add(hop);
                 hop = 0;
-            }
-            else{
+            } else {
 
-                Hop_list.add ( 0 );
+                Hop_list.add(0);
             }
         }
         return dist;
 
     }
-    ArrayList<ArrayList<Integer>>  Fulfill_Distance_Matrix(ArrayList<ArrayList<Integer>> graph){
-        Matrix_Distance = new ArrayList<ArrayList<Integer>> (  );
-        Hop_Matrix = new ArrayList<ArrayList<Integer>> (  );
-        Path_Matrix = new ArrayList<ArrayList<String>> (  );
-        for(int i = 0 ; i < V ; i++){
-            Distance = Dijkstra_With_Return ( graph , i );
-            Matrix_Distance.add ( Distance );
-            Hop_Matrix.add ( Hop_list );
-            Path_Matrix.add ( Path_list );
+
+    ArrayList<ArrayList<Integer>> Fulfill_Distance_Matrix(ArrayList<ArrayList<Integer>> graph) {
+        Matrix_Distance = new ArrayList<ArrayList<Integer>>();
+        Hop_Matrix = new ArrayList<ArrayList<Integer>>();
+        Path_Matrix = new ArrayList<ArrayList<String>>();
+        for (int i = 0; i < V; i++) {
+            Distance = Dijkstra_With_Return(graph, i);
+            Matrix_Distance.add(Distance);
+            Hop_Matrix.add(Hop_list);
+            Path_Matrix.add(Path_list);
         }
         return Matrix_Distance;
     }
-    public void SetHops(ArrayList<ArrayList<Integer>> graph){
-        Matrix_Distance = new ArrayList<ArrayList<Integer>> (  );
-        Hop_Matrix = new ArrayList<ArrayList<Integer>> (  );
-        Path_Matrix = new ArrayList<ArrayList<String>> (  );
-        for(int i = 0 ; i < V ; i++){
-            Distance = Dijkstra_With_Return ( graph , i );
-            Hop_Matrix.add ( Hop_list );
+
+    public void SetHops(ArrayList<ArrayList<Integer>> graph) {
+        Matrix_Distance = new ArrayList<ArrayList<Integer>>();
+        Hop_Matrix = new ArrayList<ArrayList<Integer>>();
+        Path_Matrix = new ArrayList<ArrayList<String>>();
+        for (int i = 0; i < V; i++) {
+            Distance = Dijkstra_With_Return(graph, i);
+            Hop_Matrix.add(Hop_list);
 
         }
 
     }
-    public void print(ArrayList<ArrayList<Integer>> M){   // tylko sposob wypisywania
 
-        System.out.println ("\n\t");
-        System.out.print ("\t");
-        for(int i =0 ; i< M.size () ; i++ ){
-            System.out.print (i + "|\t");
+    public void print(ArrayList<ArrayList<Integer>> M) {   // tylko sposob wypisywania
+
+        System.out.println("\n\t");
+        System.out.print("\t");
+        for (int i = 0; i < M.size(); i++) {
+            System.out.print(i + "|\t");
         }
-        System.out.println ();
-        for(int i = 0 ; i < 23 ; i ++) {
-            System.out.print ("-");
+        System.out.println();
+        for (int i = 0; i < 23; i++) {
+            System.out.print("-");
         }
-        System.out.println ();
-        for(int i = 0 ; i  < M.size () ; i++){
-            System.out.print (i + "|\t");
-            for(int j = 0 ; j < M.size () ; j++){
-                if(i == j) {
-                    System.out.print ( "-" );
-                }
-                else {
-                    System.out.print ( M.get ( i ).get ( j ) );
+        System.out.println();
+        for (int i = 0; i < M.size(); i++) {
+            System.out.print(i + "|\t");
+            for (int j = 0; j < M.size(); j++) {
+                if (i == j) {
+                    System.out.print("-");
+                } else {
+                    System.out.print(M.get(i).get(j));
                 }
                 System.out.print("\t");
 
 
             }
-            System.out.println ("\n");
+            System.out.println("\n");
         }
-        System.out.println ("\n");
+        System.out.println("\n");
     }
 
-    public void print_paths (ArrayList<ArrayList<String>> M) throws FileNotFoundException {   // tylko sposob wypisywania
-        ArrayList<ArrayList<Integer>> wartosci = new ArrayList<ArrayList<Integer>> (  );
-        ArrayList<ArrayList<Integer>> wartosci2 = new ArrayList<ArrayList<Integer>> (  );
+    public void print_paths(ArrayList<ArrayList<String>> M) throws FileNotFoundException {   // tylko sposob wypisywania
+        ArrayList<ArrayList<Integer>> wartosci = new ArrayList<ArrayList<Integer>>();
+        ArrayList<ArrayList<Integer>> wartosci2 = new ArrayList<ArrayList<Integer>>();
         ArrayList<Integer> wiersz;
-        ArrayList<Integer> maxymalne = new ArrayList<Integer> (  );
-        System.out.println ("\n\t");
-        System.out.print ("\t");
-        for(Integer i = 0 ; i < M.size () ; i++){
-            wiersz = new ArrayList<Integer> (  );
-            for(Integer j = 0 ; j < M.size () ; j++){
-                wiersz.add ( M.get ( i ).get ( j ).length () );
+        ArrayList<Integer> maxymalne = new ArrayList<Integer>();
+        System.out.println("\n\t");
+        System.out.print("\t");
+        for (Integer i = 0; i < M.size(); i++) {
+            wiersz = new ArrayList<Integer>();
+            for (Integer j = 0; j < M.size(); j++) {
+                wiersz.add(M.get(i).get(j).length());
             }
-            wartosci.add ( wiersz );
-            wartosci2.add ( wiersz );
+            wartosci.add(wiersz);
+            wartosci2.add(wiersz);
         }
-        for(Integer i = 0 ; i < M.size () ; i++) {
+        for (Integer i = 0; i < M.size(); i++) {
 
-            for (Integer j = 0; j < M.size (); j++) {
-                wartosci2.get ( i  ).set ( j , wartosci.get(j).get ( i ) );
+            for (Integer j = 0; j < M.size(); j++) {
+                wartosci2.get(i).set(j, wartosci.get(j).get(i));
             }
         }
-        for(Integer i = 0 ; i < M.size () ; i++) {
-            maxymalne.add ( Collections.max ( wartosci2.get ( i ) ) );
+        for (Integer i = 0; i < M.size(); i++) {
+            maxymalne.add(Collections.max(wartosci2.get(i)));
         }
-        ArrayList<String> odstep = new ArrayList<String > (  );
+        ArrayList<String> odstep = new ArrayList<String>();
         String spacja = " ";
         try {
-            CleanFile.clean ( "trasy.txt" );
+            CleanFile.clean("trasy.txt");
         } catch (FileNotFoundException e) {
-            e.printStackTrace ();
+            e.printStackTrace();
         }
 
-        for(Integer i =0 ; i< M.size () ; i++ ){
+        for (Integer i = 0; i < M.size(); i++) {
 
-         //   System.out.print (i + (String.join("", Collections.nCopies(maxymalne.get ( i ), " "))));
-        //    System.out.print("\t");
-            FileWrite.writefile ( i.toString () + String.join("", Collections.nCopies(maxymalne.get ( i ), " ")) + "\t" , "trasy.txt" );
+            //   System.out.print (i + (String.join("", Collections.nCopies(maxymalne.get ( i ), " "))));
+            //    System.out.print("\t");
+            FileWrite.writefile(i.toString() + String.join("", Collections.nCopies(maxymalne.get(i), " ")) + "\t", "trasy.txt");
 
 
         }
-      //  System.out.println ();
-        FileWrite.writefile ( "\n"  , "trasy.txt");
-        for(int i = 0 ; i < 23 ; i ++) {
-       //     System.out.print ("-");
-            FileWrite.writefile ( "-" , "trasy.txt" );
+        //  System.out.println ();
+        FileWrite.writefile("\n", "trasy.txt");
+        for (int i = 0; i < 23; i++) {
+            //     System.out.print ("-");
+            FileWrite.writefile("-", "trasy.txt");
         }
-    //    System.out.println ();
-        FileWrite.writefile ( "\n"  , "trasy.txt");
+        //    System.out.println ();
+        FileWrite.writefile("\n", "trasy.txt");
 
-        for(Integer i = 0 ; i  < M.size () ; i++){
-         //   System.out.print (i + "|\t");
-            FileWrite.writefile ( i.toString () + "|\t" , "trasy.txt" );
-            for(int j = 0 ; j < M.size () ; j++){
-                if(i == j) {
-              //      System.out.print ( "-" );
-                    FileWrite.writefile ( "-"  , "trasy.txt");
+        for (Integer i = 0; i < M.size(); i++) {
+            //   System.out.print (i + "|\t");
+            FileWrite.writefile(i.toString() + "|\t", "trasy.txt");
+            for (int j = 0; j < M.size(); j++) {
+                if (i == j) {
+                    //      System.out.print ( "-" );
+                    FileWrite.writefile("-", "trasy.txt");
+                } else {
+                    //       System.out.print ( M.get ( i ).get ( j ) );
+                    FileWrite.writefile(M.get(i).get(j).toString(), "trasy.txt");
                 }
-                else {
-             //       System.out.print ( M.get ( i ).get ( j ) );
-                    FileWrite.writefile ( M.get ( i ).get ( j ).toString ()  , "trasy.txt");
-                }
-             //   System.out.print(String.join("", Collections.nCopies(maxymalne.get ( j ) - M.get ( i ).get ( j ).length () + 2, " ")));
-                FileWrite.writefile ( String.join("", Collections.nCopies(maxymalne.get ( j ) - M.get ( i ).get ( j ).length () + 2, " ")) , "trasy.txt");
+                //   System.out.print(String.join("", Collections.nCopies(maxymalne.get ( j ) - M.get ( i ).get ( j ).length () + 2, " ")));
+                FileWrite.writefile(String.join("", Collections.nCopies(maxymalne.get(j) - M.get(i).get(j).length() + 2, " ")), "trasy.txt");
 
             }
-         //   System.out.println ("\n");
-            FileWrite.writefile ( "\n"  , "trasy.txt");
+            //   System.out.println ("\n");
+            FileWrite.writefile("\n", "trasy.txt");
 
         }
-     //   System.out.println ("\n");
-        FileWrite.writefile ( "\n"  , "trasy.txt");
+        //   System.out.println ("\n");
+        FileWrite.writefile("\n", "trasy.txt");
     }
-    public void choose_the_shortest( ArrayList<Integer> v , ArrayList<ArrayList<Integer>> M , ArrayList<ArrayList<Integer>> P){
+
+    public void choose_the_shortest(ArrayList<Integer> v, ArrayList<ArrayList<Integer>> M, ArrayList<ArrayList<Integer>> P) {
 
         ArrayList<OurMap> ways = new ArrayList<>(); // potrzebuje stworzyć bo chce duplikaty i dodawanie po koleji
         Integer lengthOfRoute = 0;
         Integer hopsOfRoute = 0;
         String lengthName;
 
-     //   SetHops ( P );
-        for(int i = 0; i< v.size(); i++){
-            for (int j = 0;j< v.size(); j++){
-                if(j != i ){
-                    for (int k = 0;k< v.size();k++){
-                        if(k != j && k!= i) {
+        //   SetHops ( P );
+        for (int i = 0; i < v.size(); i++) {
+            for (int j = 0; j < v.size(); j++) {
+                if (j != i) {
+                    for (int k = 0; k < v.size(); k++) {
+                        if (k != j && k != i) {
                             for (int r = 0; r < v.size(); r++) {
-                                if(r != i && r!= j && r != k) {
+                                if (r != i && r != j && r != k) {
                                     for (int l = 0; l < v.size(); l++) {
-                                        if(l != i && l != j && l != k && l != r) {
-                                            hopsOfRoute = Hop_Matrix.get(0).get(v.get(i)) + Hop_Matrix.get(v.get(i)).get(v.get(j)) + Hop_Matrix.get(v.get(j)).get(v.get(k)) + Hop_Matrix.get(v.get(k)).get(v.get(r)) + Hop_Matrix.get(v.get(r)).get(v.get(l)) + Hop_Matrix.get(v.get(l)).get(0) ;
+                                        if (l != i && l != j && l != k && l != r) {
+                                            hopsOfRoute = Hop_Matrix.get(0).get(v.get(i)) + Hop_Matrix.get(v.get(i)).get(v.get(j)) + Hop_Matrix.get(v.get(j)).get(v.get(k)) + Hop_Matrix.get(v.get(k)).get(v.get(r)) + Hop_Matrix.get(v.get(r)).get(v.get(l)) + Hop_Matrix.get(v.get(l)).get(0);
                                             lengthOfRoute = M.get(0).get(v.get(i)) + M.get(v.get(i)).get(v.get(j)) + M.get(v.get(j)).get(v.get(k)) + M.get(v.get(k)).get(v.get(r)) + M.get(v.get(r)).get(v.get(l)) + M.get(v.get(l)).get(0);
                                             lengthName = "0 -> " + String.valueOf(v.get(i)) + " -> " + String.valueOf(v.get(j)) + " -> " + String.valueOf(v.get(k)) + " -> " + String.valueOf(v.get(r)) + " -> " + String.valueOf(v.get(l)) + " -> 0";
                                             ways.add(new OurMap(lengthOfRoute, hopsOfRoute, lengthName));
@@ -336,8 +342,8 @@ public class DijkstraSP_ArrayList {
         }
 
         OurMap shortestWay = ways.get(0);
-        for(OurMap o : ways){
-            if(shortestWay.getKey() > o.getKey()){
+        for (OurMap o : ways) {
+            if (shortestWay.getKey() > o.getKey()) {
                 shortestWay = o;
             }
             //shortestWay.printMap();
@@ -347,36 +353,38 @@ public class DijkstraSP_ArrayList {
         shortestWay.printMap();
 
 
-
     }
-    public String converter(int val, int xLength){
+
+    public String converter(int val, int xLength) {
         int x = val % xLength;
         int y = val / xLength;
         String temp = "(" + x + "," + y + ")";
         return temp;
     }
+
     Integer distance_sum = 0;
     Integer hop_sum = 0;
     String path_sum = "";
-    public void choose_the_shortest(int xLength, ArrayList<Integer> v , ArrayList<ArrayList<Integer>> M , ArrayList<ArrayList<Integer>> P){
+
+    public void choose_the_shortest(int xLength, ArrayList<Integer> v, ArrayList<ArrayList<Integer>> M, ArrayList<ArrayList<Integer>> P) {
 
         ArrayList<OurMap> ways = new ArrayList<>(); // potrzebuje stworzyć bo chce duplikaty i dodawanie po koleji
         Integer lengthOfRoute = 0;
         Integer hopsOfRoute = 0;
         String lengthName;
-  //      SetHops ( P );
-        for(int i = 0; i< v.size(); i++){
-            for (int j = 0;j< v.size(); j++){
-                if(j != i ){
-                    for (int k = 0;k< v.size();k++){
-                        if(k != j && k!= i) {
+        //      SetHops ( P );
+        for (int i = 0; i < v.size(); i++) {
+            for (int j = 0; j < v.size(); j++) {
+                if (j != i) {
+                    for (int k = 0; k < v.size(); k++) {
+                        if (k != j && k != i) {
                             for (int r = 0; r < v.size(); r++) {
-                                if(r != i && r!= j && r != k) {
+                                if (r != i && r != j && r != k) {
                                     for (int l = 0; l < v.size(); l++) {
-                                        if(l != i && l != j && l != k && l != r) {
-                                            hopsOfRoute = Hop_Matrix.get(0).get(v.get(i)) + Hop_Matrix.get(v.get(i)).get(v.get(j)) + Hop_Matrix.get(v.get(j)).get(v.get(k)) + Hop_Matrix.get(v.get(k)).get(v.get(r)) + Hop_Matrix.get(v.get(r)).get(v.get(l)) + Hop_Matrix.get(v.get(l)).get(0) ;
+                                        if (l != i && l != j && l != k && l != r) {
+                                            hopsOfRoute = Hop_Matrix.get(0).get(v.get(i)) + Hop_Matrix.get(v.get(i)).get(v.get(j)) + Hop_Matrix.get(v.get(j)).get(v.get(k)) + Hop_Matrix.get(v.get(k)).get(v.get(r)) + Hop_Matrix.get(v.get(r)).get(v.get(l)) + Hop_Matrix.get(v.get(l)).get(0);
                                             lengthOfRoute = M.get(0).get(v.get(i)) + M.get(v.get(i)).get(v.get(j)) + M.get(v.get(j)).get(v.get(k)) + M.get(v.get(k)).get(v.get(r)) + M.get(v.get(r)).get(v.get(l)) + M.get(v.get(l)).get(0);
-                                            lengthName = "0 -> " + converter(v.get(i),xLength) + " -> " + converter(v.get(j),xLength) + " -> " + converter(v.get(k),xLength) + " -> " + converter(v.get(r),xLength) + " -> " + converter(v.get(l),xLength) + " -> 0";
+                                            lengthName = "0 -> " + converter(v.get(i), xLength) + " -> " + converter(v.get(j), xLength) + " -> " + converter(v.get(k), xLength) + " -> " + converter(v.get(r), xLength) + " -> " + converter(v.get(l), xLength) + " -> 0";
                                             ways.add(new OurMap(lengthOfRoute, hopsOfRoute, lengthName));
                                         }
                                     }
@@ -389,150 +397,150 @@ public class DijkstraSP_ArrayList {
         }
 
         OurMap shortestWay = ways.get(0);
-        for(OurMap o : ways){
-            if(shortestWay.getKey() > o.getKey()){
+        for (OurMap o : ways) {
+            if (shortestWay.getKey() > o.getKey()) {
                 shortestWay = o;
             }
             //shortestWay.printMap();
             //o.printMap();
         }
-       distance_sum += shortestWay.key;
+        distance_sum += shortestWay.key;
         hop_sum += shortestWay.extraKey;
-        path_sum = path_sum +  "==>" + shortestWay.value;
-       // shortestWay.printMap();
-
+        path_sum = path_sum + "==>" + shortestWay.value;
+        // shortestWay.printMap();
 
 
     }
 
-    ArrayList<ArrayList<Integer>> alokuj(){
+    ArrayList<ArrayList<Integer>> alokuj() {
 
-        ArrayList<ArrayList<Integer>> M  = new ArrayList<ArrayList<Integer>> ( V );
-        ArrayList<Integer> zero = new ArrayList<> ( 9 );
-        ArrayList<Integer> one = new ArrayList<> ( 9 );
-        ArrayList<Integer> two = new ArrayList<> ( 9 );
-        ArrayList<Integer> three = new ArrayList<> ( 9 );
-        ArrayList<Integer> four = new ArrayList<> ( 9 );
-        ArrayList<Integer> five = new ArrayList<> ( 9 );
-        ArrayList<Integer> six = new ArrayList<> ( 9 );
-        ArrayList<Integer> seven = new ArrayList<> ( 9 );
-        ArrayList<Integer> eight = new ArrayList<> ( 9 );
+        ArrayList<ArrayList<Integer>> M = new ArrayList<ArrayList<Integer>>(V);
+        ArrayList<Integer> zero = new ArrayList<>(9);
+        ArrayList<Integer> one = new ArrayList<>(9);
+        ArrayList<Integer> two = new ArrayList<>(9);
+        ArrayList<Integer> three = new ArrayList<>(9);
+        ArrayList<Integer> four = new ArrayList<>(9);
+        ArrayList<Integer> five = new ArrayList<>(9);
+        ArrayList<Integer> six = new ArrayList<>(9);
+        ArrayList<Integer> seven = new ArrayList<>(9);
+        ArrayList<Integer> eight = new ArrayList<>(9);
 
 
-        zero.add ( 0 );
-        zero.add ( 4 );
-        zero.add ( 0 );
-        zero.add ( 0 );
-        zero.add ( 0 );
-        zero.add ( 0 );
-        zero.add ( 0 );
-        zero.add ( 8 );
-        zero.add ( 0 );
+        zero.add(0);
+        zero.add(4);
+        zero.add(0);
+        zero.add(0);
+        zero.add(0);
+        zero.add(0);
+        zero.add(0);
+        zero.add(8);
+        zero.add(0);
 
-        one.add ( 4 );
-        one.add ( 0 );
-        one.add ( 8 );
-        one.add ( 0 );
-        one.add ( 0 );
-        one.add ( 0 );
-        one.add ( 0 );
-        one.add ( 11 );
-        one.add ( 0 );
+        one.add(4);
+        one.add(0);
+        one.add(8);
+        one.add(0);
+        one.add(0);
+        one.add(0);
+        one.add(0);
+        one.add(11);
+        one.add(0);
 
-        two.add ( 0 );
-        two.add ( 8 );
-        two.add ( 0 );
-        two.add ( 7 );
-        two.add ( 0 );
-        two.add ( 4 );
-        two.add ( 0 );
-        two.add ( 0 );
-        two.add ( 2 );
+        two.add(0);
+        two.add(8);
+        two.add(0);
+        two.add(7);
+        two.add(0);
+        two.add(4);
+        two.add(0);
+        two.add(0);
+        two.add(2);
 
-        three.add ( 0 );
-        three.add ( 0 );
-        three.add ( 7 );
-        three.add ( 0 );
-        three.add ( 9 );
-        three.add ( 14 );
-        three.add ( 0 );
-        three.add ( 0 );
-        three.add ( 0 );
+        three.add(0);
+        three.add(0);
+        three.add(7);
+        three.add(0);
+        three.add(9);
+        three.add(14);
+        three.add(0);
+        three.add(0);
+        three.add(0);
 
-        four.add ( 0 );
-        four.add ( 0 );
-        four.add ( 0 );
-        four.add ( 9 );
-        four.add ( 0 );
-        four.add ( 10 );
-        four.add ( 0 );
-        four.add ( 0 );
-        four.add ( 0 );
+        four.add(0);
+        four.add(0);
+        four.add(0);
+        four.add(9);
+        four.add(0);
+        four.add(10);
+        four.add(0);
+        four.add(0);
+        four.add(0);
 
-        five.add ( 0 );
-        five.add ( 0 );
-        five.add ( 4 );
-        five.add ( 14 );
-        five.add ( 10);
-        five.add ( 0 );
-        five.add ( 2 );
-        five.add ( 0 );
-        five.add ( 0 );
+        five.add(0);
+        five.add(0);
+        five.add(4);
+        five.add(14);
+        five.add(10);
+        five.add(0);
+        five.add(2);
+        five.add(0);
+        five.add(0);
 
-        six.add ( 0 );
-        six.add ( 0 );
-        six.add ( 0 );
-        six.add ( 0 );
-        six.add ( 0 );
-        six.add ( 2 );
-        six.add ( 0 );
-        six.add ( 1 );
-        six.add ( 6 );
+        six.add(0);
+        six.add(0);
+        six.add(0);
+        six.add(0);
+        six.add(0);
+        six.add(2);
+        six.add(0);
+        six.add(1);
+        six.add(6);
 
-        seven.add ( 8 );
-        seven.add ( 11 );
-        seven.add ( 0 );
-        seven.add ( 0 );
-        seven.add ( 0 );
-        seven.add ( 0 );
-        seven.add ( 1 );
-        seven.add ( 0 );
-        seven.add ( 7 );
+        seven.add(8);
+        seven.add(11);
+        seven.add(0);
+        seven.add(0);
+        seven.add(0);
+        seven.add(0);
+        seven.add(1);
+        seven.add(0);
+        seven.add(7);
 
-        eight.add ( 0 );
-        eight.add ( 0 );
-        eight.add ( 2 );
-        eight.add ( 0 );
-        eight.add ( 0 );
-        eight.add ( 0 );
-        eight.add ( 6 );
-        eight.add ( 7 );
-        eight.add ( 0 );
+        eight.add(0);
+        eight.add(0);
+        eight.add(2);
+        eight.add(0);
+        eight.add(0);
+        eight.add(0);
+        eight.add(6);
+        eight.add(7);
+        eight.add(0);
 
-        M.add ( zero );
-        M.add ( one );
-        M.add ( two );
-        M.add ( three );
-        M.add ( four );
-        M.add ( five );
-        M.add ( six );
-        M.add ( seven );
-        M.add ( eight );
+        M.add(zero);
+        M.add(one);
+        M.add(two);
+        M.add(three);
+        M.add(four);
+        M.add(five);
+        M.add(six);
+        M.add(seven);
+        M.add(eight);
 
         return M;
     }
+
     public static void main(String[] args) throws FileNotFoundException {
 
-        DijkstraSP_ArrayList dijkstraSP_arrayList = new DijkstraSP_ArrayList ();
-        System.out.println ();
-        System.out.println ("---------------------------------Distance Matrix-----------------------------------------------------------------------------------");
-        dijkstraSP_arrayList.print ( dijkstraSP_arrayList.Fulfill_Distance_Matrix ( dijkstraSP_arrayList.alokuj () ) );
-        System.out.println ();
-        System.out.println ("--------------------------------------Hop Matrix-----------------------------------------------------------------------------------");
-        dijkstraSP_arrayList.print ( dijkstraSP_arrayList.Hop_Matrix );
-        System.out.println ();
-        System.out.println ("-------------------------------------Path Matrix-----------------------------------------------------------------------------------");
-        dijkstraSP_arrayList.print_paths ( dijkstraSP_arrayList.Path_Matrix );
+        DijkstraSP_ArrayList dijkstraSP_arrayList = new DijkstraSP_ArrayList();
+        System.out.println();
+        System.out.println("---------------------------------Distance Matrix-----------------------------------------------------------------------------------");
+        dijkstraSP_arrayList.print(dijkstraSP_arrayList.Fulfill_Distance_Matrix(dijkstraSP_arrayList.alokuj()));
+        System.out.println();
+        System.out.println("--------------------------------------Hop Matrix-----------------------------------------------------------------------------------");
+        dijkstraSP_arrayList.print(dijkstraSP_arrayList.Hop_Matrix);
+        System.out.println();
+        System.out.println("-------------------------------------Path Matrix-----------------------------------------------------------------------------------");
+        dijkstraSP_arrayList.print_paths(dijkstraSP_arrayList.Path_Matrix);
 
         //  DijkstraSP_ArrayList dijkstraSP_arrayList = new DijkstraSP_ArrayList (  );
         //dijkstraSP_arrayList.SetHops ( dijkstraSP_arrayList.alokuj () );

@@ -2,7 +2,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -11,58 +10,56 @@ public class LoadRoute {
     private static final char DEFAULT_SEPARATOR = ',';
     private static final char DEFAULT_QUOTE = '"';
 
-    public ArrayList<RouteGenerator> returnerOfRoutes(String fileName){
+    public ArrayList<RouteGenerator> returnerOfRoutes(String fileName) {
 
         String csvFile = fileName;
-        LoadRoute loadRoute = new LoadRoute ();
+        LoadRoute loadRoute = new LoadRoute();
         Scanner scanner = null;
         try {
             scanner = new Scanner(new File(csvFile));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        ArrayList<RouteGenerator> routeGenerators= new ArrayList<>();
+        ArrayList<RouteGenerator> routeGenerators = new ArrayList<>();
 
         Timestamp timestampZero = new Timestamp(0);
         while (scanner.hasNext()) {
 
             List<String> line = loadRoute.parseLine(scanner.nextLine());
             RouteGenerator temp = new RouteGenerator();
-            int x,y;
+            int x, y;
 
             String tempString = line.get(0);
             String sanitized = tempString.replaceAll("[\uFEFF-\uFFFF]", "");
             Timestamp timestamp = new Timestamp(System.nanoTime());
             try {
                 timestamp.setTime(Long.parseLong(sanitized));
-            }catch (NumberFormatException e){
-                System.out.println("Zły format Timestamp: " + sanitized );
+            } catch (NumberFormatException e) {
+                System.out.println("Zły format Timestamp: " + sanitized);
                 continue;
             }
 
-            if(timestamp.after(timestampZero)) {
+            if (timestamp.after(timestampZero)) {
 
                 temp.setOrder(sanitized);
                 temp.setDriverName(line.get(1));
                 for (int i = 2; i <= 10; i += 2) {
-                    if(line.size() > i) {
+                    if (line.size() > i) {
                         try {
                             x = Integer.parseInt(line.get(i));
-                            y = Integer.parseInt(line.get(i +1 ));
-                        }catch (NumberFormatException e){
+                            y = Integer.parseInt(line.get(i + 1));
+                        } catch (NumberFormatException e) {
                             System.out.println("Zły format paczki dla Timestamp: " + sanitized);
                             continue;
                         }
                         temp.setParcel(new Parcel(x, y));
-                    }
-                    else{
-                        temp.setParcel(new Parcel(0,0));
+                    } else {
+                        temp.setParcel(new Parcel(0, 0));
                     }
                 }
                 routeGenerators.add(temp);
                 timestampZero.setTime(timestamp.getTime());
-            }
-            else {
+            } else {
                 System.out.print("Paczki z timestamp: " + line.get(0) + " Kierowca: " + line.get(1));
                 System.out.println(" - Odebrana za późno");
             }
@@ -75,11 +72,12 @@ public class LoadRoute {
         scanner.close();
         return routeGenerators;
     }
+
     public static void main(String[] args) throws Exception {
-        LoadRoute loadRoute  = new LoadRoute();
+        LoadRoute loadRoute = new LoadRoute();
         ArrayList<RouteGenerator> routeGenerators = loadRoute.returnerOfRoutes("DataInputGroupWT1115.txt");
 
-        for(RouteGenerator rg : routeGenerators){
+        for (RouteGenerator rg : routeGenerators) {
             rg.writeParcels();
         }
     }
@@ -158,7 +156,7 @@ public class LoadRoute {
 
                     curVal = new StringBuffer();
                     startCollectChar = false;
-                } else if ((ch == '\r') || (ch == '(') || (ch == ')') || (ch == ';'))  {
+                } else if ((ch == '\r') || (ch == '(') || (ch == ')') || (ch == ';')) {
                     //ignore LF characters
                     continue;
                 } else if (ch == '\n') {

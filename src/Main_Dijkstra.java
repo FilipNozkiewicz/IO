@@ -1,9 +1,8 @@
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class Main_Dijkstra {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         AdjacentMatrixGenerator adjacentMatrixGenerator = new AdjacentMatrixGenerator();
         CheckInputData checkInputData = new CheckInputData();
@@ -18,22 +17,22 @@ public class Main_Dijkstra {
 
         checkInputData.separate();
         checkInputData.print_hor();
-        System.out.println ();
+        System.out.println();
         checkInputData.print_ver();
-        System.out.println ();
+        System.out.println();
 
         adjacentMatrixGenerator.adjacentGenerator(checkInputData.getHorizontal(), checkInputData.getVertical());
-      //  adjacentMatrixGenerator.print(adjacentMatrixGenerator.getAdjacent());
-        DijkstraSP_ArrayList dijkstraSP_arrayList = new DijkstraSP_ArrayList ( adjacentMatrixGenerator.getAdjacent().size () );
-        System.out.println ("Macierz Sasiedztwa");
+        //  adjacentMatrixGenerator.print(adjacentMatrixGenerator.getAdjacent());
+        DijkstraSP_ArrayList dijkstraSP_arrayList = new DijkstraSP_ArrayList(adjacentMatrixGenerator.getAdjacent().size());
+        System.out.println("Macierz Sasiedztwa");
         //dijkstraSP_arrayList.print ( adjacentMatrixGenerator.adjacent );
-        System.out.println ("Macierz Sciezek");
-        dijkstraSP_arrayList.print ( dijkstraSP_arrayList.Fulfill_Distance_Matrix ( adjacentMatrixGenerator.adjacent ) );
-        System.out.println ("Hop Matrix");
+        System.out.println("Macierz Sciezek");
+        dijkstraSP_arrayList.print(dijkstraSP_arrayList.Fulfill_Distance_Matrix(adjacentMatrixGenerator.getAdjacent()));
+        System.out.println("Hop Matrix");
         //dijkstraSP_arrayList.print( dijkstraSP_arrayList.Hop_Matrix );
-        System.out.println ("Matrix Sciezek");
+        System.out.println("Matrix Sciezek");
         //try {
-           // dijkstraSP_arrayList.print_paths ( dijkstraSP_arrayList.Path_Matrix );   // Moze lepiej nie bo jest jebutna :)
+        // dijkstraSP_arrayList.print_paths ( dijkstraSP_arrayList.Path_Matrix );   // Moze lepiej nie bo jest jebutna :)
         //} catch (FileNotFoundException e) {
         //    e.printStackTrace ();
         //}
@@ -44,8 +43,8 @@ public class Main_Dijkstra {
 
         System.out.println(routeGenerator.getParcelsNumber());
 
-        System.out.println ();
-        dijkstraSP_arrayList.choose_the_shortest ( routeGenerator.getParcelsNumber(), dijkstraSP_arrayList.Fulfill_Distance_Matrix ( adjacentMatrixGenerator.getAdjacent () ) , adjacentMatrixGenerator.getAdjacent () );
+        System.out.println();
+        dijkstraSP_arrayList.choose_the_shortest(routeGenerator.getParcelsNumber(), dijkstraSP_arrayList.Fulfill_Distance_Matrix(adjacentMatrixGenerator.getAdjacent()), adjacentMatrixGenerator.getAdjacent());
 
 
     }
