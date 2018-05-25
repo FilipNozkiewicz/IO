@@ -100,25 +100,25 @@ KEFFFLDBSAHC routes number: 1
  
 |Floyd|
 -------------------------------------------------------------------------------
-Average Distance: 114 
+Average Distance: 96 
 Average Hop Count: 27
 
 -------------------------------------------------------------------------------
 Dijkstra
 -------------------------------------------------------------------------------
-Average Distance: 113 
+Average Distance: 96 
 Average Hop Count: 28
 
 -------------------------------------------------------------------------------
 Bellman-Ford
 -------------------------------------------------------------------------------
-Average Distance: 113 
+Average Distance: 96 
 Average Hop Count: 28
 
 -------------------------------------------------------------------------------
 Floyd
-Time for Alghorithm: 281 miliseconds
+Time for Alghorithm: 354 miliseconds
 Dijkstra
-Time for Alghorithm: 438 miliseconds
+Time for Alghorithm: 522 miliseconds
 Bellman
-Time for Alghorithm: 17502 miliseconds
+Time for Alghorithm: 31682 miliseconds

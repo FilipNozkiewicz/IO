@@ -95,25 +95,25 @@ VECHUYMSLMBQ routes number: 1
  
 |Floyd|
 -------------------------------------------------------------------------------
-Average Distance: 118 
+Average Distance: 99 
 Average Hop Count: 28
 
 -------------------------------------------------------------------------------
 Dijkstra
 -------------------------------------------------------------------------------
-Average Distance: 118 
+Average Distance: 99 
 Average Hop Count: 29
 
 -------------------------------------------------------------------------------
 Bellman-Ford
 -------------------------------------------------------------------------------
-Average Distance: 118 
+Average Distance: 99 
 Average Hop Count: 29
 
 -------------------------------------------------------------------------------
 Floyd
-Time for Alghorithm: 281 miliseconds
+Time for Alghorithm: 354 miliseconds
 Dijkstra
-Time for Alghorithm: 438 miliseconds
+Time for Alghorithm: 522 miliseconds
 Bellman
-Time for Alghorithm: 17502 miliseconds
+Time for Alghorithm: 31682 miliseconds

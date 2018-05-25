@@ -96,25 +96,25 @@ RKUNMYIUNUZT routes number: 1
  
 |Floyd|
 -------------------------------------------------------------------------------
-Average Distance: 117 
-Average Hop Count: 28
+Average Distance: 101 
+Average Hop Count: 29
 
 -------------------------------------------------------------------------------
 Dijkstra
 -------------------------------------------------------------------------------
-Average Distance: 117 
-Average Hop Count: 29
+Average Distance: 101 
+Average Hop Count: 30
 
 -------------------------------------------------------------------------------
 Bellman-Ford
 -------------------------------------------------------------------------------
-Average Distance: 117 
-Average Hop Count: 29
+Average Distance: 101 
+Average Hop Count: 30
 
 -------------------------------------------------------------------------------
 Floyd
-Time for Alghorithm: 281 miliseconds
+Time for Alghorithm: 354 miliseconds
 Dijkstra
-Time for Alghorithm: 438 miliseconds
+Time for Alghorithm: 522 miliseconds
 Bellman
-Time for Alghorithm: 17502 miliseconds
+Time for Alghorithm: 31682 miliseconds
