@@ -10,8 +10,10 @@ public class LoadRoute {
     private static final char DEFAULT_SEPARATOR = ',';
     private static final char DEFAULT_QUOTE = '"';
 
-    public ArrayList<RouteGenerator> returnerOfRoutes(String fileName) {
+    public ArrayList<RouteGenerator> returnerOfRoutes(String fileName) throws FileNotFoundException {
 
+        String file_name = "Bad_Routes_Report.txt";
+        CleanFile.clean ( file_name  );
         String csvFile = fileName;
         LoadRoute loadRoute = new LoadRoute();
         Scanner scanner = null;
@@ -62,6 +64,9 @@ public class LoadRoute {
             } else {
                 System.out.print("Paczki z timestamp: " + line.get(0) + " Kierowca: " + line.get(1));
                 System.out.println(" - Odebrana za późno");
+
+
+                FileWrite.writefile ( "Paczki z timestamp: " + line.get(0) + " Kierowca: " + line.get(1) + " - Odebrana za późno\n" , file_name );
             }
 
         }

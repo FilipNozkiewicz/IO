@@ -113,8 +113,8 @@ Average Hop Count: 30
 
 -------------------------------------------------------------------------------
 Floyd
-Time for Alghorithm: 354 miliseconds
+Time for Alghorithm: 410 miliseconds
 Dijkstra
-Time for Alghorithm: 522 miliseconds
+Time for Alghorithm: 642 miliseconds
 Bellman
-Time for Alghorithm: 31682 miliseconds
+Time for Alghorithm: 21290 miliseconds

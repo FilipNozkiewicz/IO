@@ -12,7 +12,7 @@ public class WriteReport {
     ArrayList<String> dates = new ArrayList<>();
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         LoadRoute loadRoute = new LoadRoute();
         ArrayList<RouteGenerator> routeGenerators = loadRoute.returnerOfRoutes("DataInputGroupWT1115.txt");
         WriteReport writeReport = new WriteReport(33);

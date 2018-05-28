@@ -13,7 +13,7 @@ public class Main {
         ArraysGenerator arraysGenerator = new ArraysGenerator();
         arraysGenerator.write_to_file(20);
         try {
-            checkInputData.read("DataInputGroupWT1115_MAP.txt");
+            checkInputData.read("data.txt");
         } catch (IOException e) {
             System.out.println("there is no such a file");
         }
@@ -52,7 +52,7 @@ public class Main {
         bellman_time = System.currentTimeMillis() - startTime;
 
         LoadRoute loadRoute = new LoadRoute();
-        ArrayList<RouteGenerator> routeGenerators = loadRoute.returnerOfRoutes("DataInputGroupWT1115.txt");
+        ArrayList<RouteGenerator> routeGenerators = loadRoute.returnerOfRoutes("routes.txt");
         Integer counter = 0;
         ArrayList<ArrayList<Integer>> matrix_adj = adjacentMatrixGeneratorDijkstra.getAdjacent();
         ArrayList<ArrayList<Integer>> matrix_dist = dijkstraSP_arrayList.Fulfill_Distance_Matrix(matrix_adj);
@@ -124,20 +124,7 @@ public class Main {
 
 
         }
-    /*    System.out.println ("Floyd");
-        System.out.println ("Average Distance: " + floyyd.distance_sum/counter + " Average Hop count: " + floyyd.hop_sum/counter);
-        System.out.println ("Real Time " + floyd_time + " miliseconds");
-        System.out.println ("Dijkstra");
-        System.out.println ("Average Distance: " + dijkstraSP_arrayList.distance_sum/counter + " Average Hop count: " + dijkstraSP_arrayList.hop_sum/counter);
-        System.out.println ("Real Time " + dijkstra_time + " miliseconds");
-        System.out.println ("Bellman");
-        System.out.println ("Average Distance: " + bellman_arraylist.distance_sum/counter + " Average Hop count: " + bellman_arraylist.hop_sum/counter);
-        System.out.println ("Real Time " + bellman_time  + " miliseconds");
-        System.out.println ("Total Path: " + floyyd.path_sum); */
-        //  WriteReport write_real_report = new WriteReport ();
 
-        //write_real_report.write_hop_dist_time ( counter , dijkstraSP_arrayList.hop_sum , bellman_arraylist.hop_sum , floyyd.hop_sum
-        //      , dijkstraSP_arrayList.distance_sum , bellman_arraylist.distance_sum , floyyd.distance_sum , dijkstra_time , bellman_time , floyd_time );
 
     }
 }
