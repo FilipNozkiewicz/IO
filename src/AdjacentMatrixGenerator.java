@@ -86,36 +86,4 @@ public class AdjacentMatrixGenerator {
     public ArrayList<ArrayList<Integer>> getAdjacent() {
         return adjacent;
     }
-
-    public static void main(String[] args) {
-
-
-        // ArraysGenerator arraysGenerator = new ArraysGenerator ();
-        // int placeLimit = 4; // żeby można było zmienić ilości by szybciej się zapisywał
-        // arraysGenerator.matrix ( placeLimit,placeLimit );
-        // arraysGenerator.print(arraysGenerator.getHorizonatal());
-        // System.out.println();
-        // arraysGenerator.print(arraysGenerator.getVertical());
-        // System.out.println();
-
-        AdjacentMatrixGenerator adjacentMatrixGenerator = new AdjacentMatrixGenerator();
-        // adjacentMatrixGenerator.adjacentGenerator(arraysGenerator.getHorizonatal(),arraysGenerator.getVertical());
-        //  adjacentMatrixGenerator.print(adjacentMatrixGenerator.getAdjacent());
-
-
-        CheckInputData checkInputData = new CheckInputData();
-        try {
-            checkInputData.read("data.txt");
-        } catch (IOException e) {
-            System.out.println("there is no such a file");
-        }
-        checkInputData.separate();
-        System.out.println();
-        checkInputData.print_hor();
-        System.out.println();
-        checkInputData.print_ver();
-        System.out.println();
-        adjacentMatrixGenerator.adjacentGenerator(checkInputData.getHorizontal(), checkInputData.getVertical());
-        adjacentMatrixGenerator.print(adjacentMatrixGenerator.getAdjacent());
-    }
 }
