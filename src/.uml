@@ -8,8 +8,8 @@
     <node x="173.13759426847656" y="168.0">Driver</node>
     <node x="36.5" y="79.0">RouteGenerator</node>
     <node x="259.44592760180996" y="357.0">ArraysGenerator</node>
-    <node x="126.08780165912509" y="357.0">WriteReport</node>
     <node x="860.8871606334841" y="357.0">AdjacentMatrixGenerator</node>
+    <node x="126.08780165912509" y="357.0">WriteReport</node>
     <node x="603.6749622926092" y="168.0">OurMap</node>
     <node x="899.3169683257919" y="168.0">CheckInputData</node>
     <node x="54.0" y="0.0">Parcel</node>
@@ -18,210 +18,15 @@
     <node x="777.0878016591251" y="168.0">Graph</node>
     <node x="457.7166289592759" y="168.0">CleanFile</node>
     <node x="529.8871606334841" y="357.0">DijkstraSP_ArrayList</node>
-    <node x="780.0878016591251" y="79.0">Edge</node>
     <node x="451.63716063348414" y="506.0">Main</node>
+    <node x="780.0878016591251" y="79.0">Edge</node>
   </nodes>
   <notes />
-  <edges>
-    <edge source="Main" target="CheckInputData">
-      <point x="35.29411764705878" y="-14.5" />
-      <point x="524.431278280543" y="486.0" />
-      <point x="1051.3871606334842" y="486.0" />
-      <point x="1051.3871606334842" y="337.0" />
-      <point x="1015.6919683257919" y="337.0" />
-      <point x="49.875" y="14.5" />
-    </edge>
-    <edge source="WriteReport" target="FileWrite">
-      <point x="37.0" y="-14.5" />
-      <point x="218.5878016591251" y="267.0" />
-      <point x="294.5165346907993" y="267.0" />
-      <point x="-37.60000000000002" y="14.5" />
-    </edge>
-    <edge source="WriteReport" target="LoadRoute">
-      <point x="-49.33333333333337" y="-14.5" />
-      <point x="132.25446832579172" y="337.0" />
-      <point x="101.76259426847656" y="337.0" />
-      <point x="13.125" y="14.5" />
-    </edge>
-    <edge source="Bellman_Arraylist" target="CleanFile">
-      <point x="-34.750000000000014" y="-14.5" />
-      <point x="735.6371606334841" y="237.0" />
-      <point x="544.1166289592759" y="237.0" />
-      <point x="38.400000000000034" y="14.5" />
-    </edge>
-    <edge source="Floyyd" target="FileWrite">
-      <point x="-31.125" y="-14.5" />
-      <point x="422.82092760180996" y="277.0" />
-      <point x="332.1165346907993" y="277.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="LoadRoute" target="RouteGenerator">
-      <point x="35.0" y="-14.5" />
-      <point x="123.63759426847656" y="148.0" />
-      <point x="102.0" y="148.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="WriteReport" target="CleanFile">
-      <point x="49.33333333333337" y="-14.5" />
-      <point x="230.92113499245846" y="287.0" />
-      <point x="467.31662895927593" y="287.0" />
-      <point x="-38.39999999999998" y="14.5" />
-    </edge>
-    <edge source="Main" target="DijkstraSP_ArrayList">
-      <point x="8.823529411764753" y="-14.5" />
-      <point x="497.9606900452489" y="426.0" />
-      <point x="643.1371606334841" y="426.0" />
-      <point x="37.75" y="14.5" />
-    </edge>
-    <edge source="Floyyd" target="CleanFile">
-      <point x="-10.375" y="-14.5" />
-      <point x="443.57092760180996" y="307.0" />
-      <point x="505.7166289592759" y="307.0" />
-      <point x="0.0" y="14.5" />
-    </edge>
-    <edge source="Main" target="ArraysGenerator">
-      <point x="-8.823529411764753" y="-14.5" />
-      <point x="480.3136312217194" y="426.0" />
-      <point x="359.19592760180996" y="426.0" />
-      <point x="33.25" y="14.5" />
-    </edge>
-    <edge source="Graph" target="Edge">
-      <point x="-26.66666666666667" y="-14.5" />
-      <point x="790.4211349924585" y="148.0" />
-      <point x="792.4211349924585" y="148.0" />
-      <point x="-24.666666666666668" y="14.5" />
-    </edge>
-    <edge source="AdjacentMatrixGenerator" target="CheckInputData">
-      <point x="-44.999999999999886" y="-14.5" />
-      <point x="905.8871606334842" y="337.0" />
-      <point x="949.1919683257919" y="337.0" />
-      <point x="-16.625" y="14.5" />
-    </edge>
-    <edge source="ArraysGenerator" target="CleanFile">
-      <point x="33.25" y="-14.5" />
-      <point x="359.19592760180996" y="297.0" />
-      <point x="486.5166289592759" y="297.0" />
-      <point x="-19.19999999999999" y="14.5" />
-    </edge>
-    <edge source="RouteGenerator" target="Parcel">
-      <point x="16.375" y="-14.5" />
-      <point x="118.375" y="59.0" />
-      <point x="110.0" y="59.0" />
-      <point x="16.0" y="14.5" />
-    </edge>
-    <edge source="DijkstraSP_ArrayList" target="OurMap">
-      <point x="18.875" y="-14.5" />
-      <point x="624.2621606334841" y="337.0" />
-      <point x="642.0082956259425" y="337.0" />
-      <point x="-7.666666666666657" y="14.5" />
-    </edge>
-    <edge source="Bellman_Arraylist" target="FileWrite">
-      <point x="-57.916666666666686" y="-14.5" />
-      <point x="712.4704939668175" y="247.0" />
-      <point x="369.71653469079934" y="247.0" />
-      <point x="37.60000000000002" y="14.5" />
-    </edge>
-    <edge source="ArraysGenerator" target="FileWrite">
-      <point x="-33.25" y="-14.5" />
-      <point x="292.69592760180996" y="277.0" />
-      <point x="313.31653469079924" y="277.0" />
-      <point x="-18.80000000000001" y="14.5" />
-    </edge>
-    <edge source="Floyyd" target="OurMap">
-      <point x="31.125" y="-14.5" />
-      <point x="485.07092760180996" y="327.0" />
-      <point x="626.6749622926092" y="327.0" />
-      <point x="-23.0" y="14.5" />
-    </edge>
-    <edge source="Main" target="LoadRoute">
-      <point x="-30.882352941176464" y="-14.5" />
-      <point x="458.2548076923077" y="476.0" />
-      <point x="56.16323529411767" y="476.0" />
-      <point x="56.16323529411767" y="337.0" />
-      <point x="49.26259426847656" y="337.0" />
-      <point x="-39.375" y="14.5" />
-    </edge>
-    <edge source="DijkstraSP_ArrayList" target="CleanFile">
-      <point x="-18.875" y="-14.5" />
-      <point x="586.5121606334841" y="257.0" />
-      <point x="524.916628959276" y="257.0" />
-      <point x="19.200000000000045" y="14.5" />
-    </edge>
-    <edge source="Main" target="WriteReport">
-      <point x="-22.058823529411825" y="-14.5" />
-      <point x="467.0783371040723" y="456.0" />
-      <point x="153.8378016591251" y="456.0" />
-      <point x="-27.75" y="14.5" />
-    </edge>
-    <edge source="Main" target="Bellman_Arraylist">
-      <point x="17.64705882352939" y="-14.5" />
-      <point x="506.78421945701353" y="446.0" />
-      <point x="805.1371606334841" y="446.0" />
-      <point x="34.75" y="14.5" />
-    </edge>
-    <edge source="Main" target="Floyyd">
-      <point x="-4.4117647058823195" y="-14.5" />
-      <point x="484.7253959276018" y="416.0" />
-      <point x="433.19592760180996" y="416.0" />
-      <point x="-20.75" y="14.5" />
-    </edge>
-    <edge source="DijkstraSP_ArrayList" target="FileWrite">
-      <point x="-56.625" y="-14.5" />
-      <point x="548.7621606334841" y="267.0" />
-      <point x="350.91653469079927" y="267.0" />
-      <point x="18.799999999999955" y="14.5" />
-    </edge>
-    <edge source="Main" target="RouteGenerator">
-      <point x="-35.29411764705878" y="-14.5" />
-      <point x="453.84304298642536" y="486.0" />
-      <point x="25.637594268476562" y="486.0" />
-      <point x="25.637594268476562" y="148.0" />
-      <point x="49.60000000000002" y="148.0" />
-      <point x="-52.39999999999998" y="14.5" />
-    </edge>
-    <edge source="LoadRoute" target="Parcel">
-      <point x="-35.0" y="-14.5" />
-      <point x="53.63759426847656" y="138.0" />
-      <point x="26.0" y="138.0" />
-      <point x="26.0" y="49.0" />
-      <point x="62.0" y="49.0" />
-      <point x="-32.0" y="14.5" />
-    </edge>
-    <edge source="Main" target="AdjacentMatrixGenerator">
-      <point x="30.882352941176464" y="-14.5" />
-      <point x="520.0195135746606" y="476.0" />
-      <point x="995.8871606334841" y="476.0" />
-      <point x="45.0" y="14.5" />
-    </edge>
-    <edge source="WriteReport" target="RouteGenerator">
-      <point x="-12.333333333333371" y="-14.5" />
-      <point x="169.25446832579172" y="337.0" />
-      <point x="162.63759426847656" y="337.0" />
-      <point x="162.63759426847656" y="128.0" />
-      <point x="154.39999999999998" y="128.0" />
-      <point x="52.39999999999998" y="14.5" />
-    </edge>
-    <edge source="WriteReport" target="Driver">
-      <point x="24.66666666666663" y="-14.5" />
-      <point x="206.25446832579172" y="257.0" />
-      <point x="238.97092760180993" y="257.0" />
-      <point x="26.33333333333337" y="14.5" />
-    </edge>
-    <edge source="Bellman_Arraylist" target="OurMap">
-      <point x="-11.583333333333343" y="-14.5" />
-      <point x="758.8038273001507" y="227.0" />
-      <point x="672.6749622926092" y="227.0" />
-      <point x="23.0" y="14.5" />
-    </edge>
-    <edge source="Bellman_Arraylist" target="Graph">
-      <point x="34.75" y="-14.5" />
-      <point x="805.1371606334841" y="337.0" />
-      <point x="797.0878016591251" y="337.0" />
-      <point x="-20.0" y="14.5" />
-    </edge>
-  </edges>
+  <edges />
   <settings layout="Hierarchic Group" zoom="1.0" x="552.0" y="348.0" />
-  <SelectedNodes />
+  <SelectedNodes>
+    <node>FileWrite</node>
+  </SelectedNodes>
   <Categories />
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>

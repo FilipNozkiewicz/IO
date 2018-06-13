@@ -98,25 +98,25 @@ PTIIBLVDPFMF routes number: 1
  
 |Floyd|
 -------------------------------------------------------------------------------
-Average Distance: 97 
+Average Distance: 99 
 Average Hop Count: 28
 
 -------------------------------------------------------------------------------
 Dijkstra
 -------------------------------------------------------------------------------
-Average Distance: 97 
-Average Hop Count: 28
+Average Distance: 99 
+Average Hop Count: 29
 
 -------------------------------------------------------------------------------
 Bellman-Ford
 -------------------------------------------------------------------------------
-Average Distance: 97 
-Average Hop Count: 28
+Average Distance: 99 
+Average Hop Count: 29
 
 -------------------------------------------------------------------------------
 Floyd
-Time for Alghorithm: 410 miliseconds
+Time for Alghorithm: 291 miliseconds
 Dijkstra
-Time for Alghorithm: 642 miliseconds
+Time for Alghorithm: 480 miliseconds
 Bellman
-Time for Alghorithm: 21290 miliseconds
+Time for Alghorithm: 20009 miliseconds

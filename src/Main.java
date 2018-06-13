@@ -13,7 +13,7 @@ public class Main {
         ArraysGenerator arraysGenerator = new ArraysGenerator();
         arraysGenerator.write_to_file(20);
         try {
-            checkInputData.read("data.txt");
+            checkInputData.read("DataInputGroupWT1115_MAPxd.txt");
         } catch (IOException e) {
             System.out.println("there is no such a file");
         }
@@ -52,7 +52,7 @@ public class Main {
         bellman_time = System.currentTimeMillis() - startTime;
 
         LoadRoute loadRoute = new LoadRoute();
-        ArrayList<RouteGenerator> routeGenerators = loadRoute.returnerOfRoutes("routes.txt");
+        ArrayList<RouteGenerator> routeGenerators = loadRoute.returnerOfRoutes("DataInputGroupWT1115xd.txt");
         Integer counter = 0;
         ArrayList<ArrayList<Integer>> matrix_adj = adjacentMatrixGeneratorDijkstra.getAdjacent();
         ArrayList<ArrayList<Integer>> matrix_dist = dijkstraSP_arrayList.Fulfill_Distance_Matrix(matrix_adj);
