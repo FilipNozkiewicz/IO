@@ -5,11 +5,11 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class WriteReport {
-    ArrayList<RouteGenerator> allRouteGenerators = new ArrayList<>();
-    ArrayList<Integer> allHopCounts = new ArrayList<>();
-    ArrayList<Integer> allRouteCosts = new ArrayList<>();
-    ArrayList<Driver> drivers = new ArrayList<>();
-    ArrayList<String> dates = new ArrayList<>();
+    private ArrayList<RouteGenerator> allRouteGenerators = new ArrayList<>();
+    private ArrayList<Integer> allHopCounts = new ArrayList<>();
+    private ArrayList<Integer> allRouteCosts = new ArrayList<>();
+    private ArrayList<Driver> drivers = new ArrayList<>();
+    private ArrayList<String> dates = new ArrayList<>();
 
 
     public static void main(String[] args) throws FileNotFoundException {
@@ -99,12 +99,6 @@ public class WriteReport {
 
             }
         }
-    }
-
-    public void write_paths(Integer N, ArrayList<ArrayList<String>> S) {
-
-        // String file_name = "Main_Report_" + N.toString () + ".txt";
-        //  FileWrite.writefile (  , file_name );
     }
 
 
