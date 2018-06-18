@@ -1,6 +1,8 @@
 import java.io.IOException;
 import java.util.ArrayList;
 
+// Klasa poczatkowa zawiera instrukcje dzialan macierzowych z uzyciem ArrayListy
+
 public class AdjacentMatrixGenerator {
     // zasada jest taka ze tworze arrayliste arraylist i daje jej jakis typ zmiennej
     private ArrayList<ArrayList<Integer>> adjacent = new ArrayList<ArrayList<Integer>>(); // miasta/ vertykalne

@@ -3,8 +3,10 @@
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
-
+/////////////////////////////////////////////////TO JEST WLASCIWY FLOYD ////////////////////////////////////////////////
 public class Floyyd {
+
+
 
     ArrayList<ArrayList<Integer>> Distance_Matrix;
     ArrayList<ArrayList<Integer>> Path_Matrix;
@@ -12,7 +14,7 @@ public class Floyyd {
     public ArrayList<String> Path_list;
     final int INF = 9999;
 
-    public void floyd(ArrayList<ArrayList<Integer>> M) {
+    public void floyd(ArrayList<ArrayList<Integer>> M) {  // realizuje algorytm floyda
 
         //    Hop_Matrix = new ArrayList<ArrayList<Integer>> (  );
         ArrayList<ArrayList<Integer>> dist = M;
@@ -40,6 +42,7 @@ public class Floyyd {
                 }
             }
         }
+        //////////// ALGORYTM ZAIMPLEMENTOWANY jelsi chce sie zobaczyc dzialanie to skorzystac z jakiegos zrodla informacji
         for (int k = 0; k < M.size(); k++) {
             for (int i = 0; i < M.size(); i++) {
                 for (int j = 0; j < M.size(); j++) {
@@ -61,7 +64,7 @@ public class Floyyd {
 
     }
 
-    public void print(ArrayList<ArrayList<Integer>> M) {   // tylko sposob wypisywania
+    public void print(ArrayList<ArrayList<Integer>> M) {
 
         System.out.println("\n\t");
         System.out.print("\t");
@@ -91,7 +94,7 @@ public class Floyyd {
     }
 
     public ArrayList<ArrayList<Integer>> alokuj() {
-
+        // przykladowe dane testowe
         ArrayList<ArrayList<Integer>> M = new ArrayList<ArrayList<Integer>>();
 
         ArrayList<Integer> zero = new ArrayList<Integer>();
@@ -220,6 +223,8 @@ public class Floyyd {
     ArrayList<ArrayList<Integer>> Hop_Matrix;
     ArrayList<ArrayList<String>> String_Path_Matrix;
 
+
+
     public void count_paths() {
 
         //  Hop_Matrix = new ArrayList<ArrayList<Integer>> (  );
@@ -262,7 +267,7 @@ public class Floyyd {
     }
 
     public void counthop() {
-
+        // zliczanie hopow czylli posczegolnych pelnych tras
         Hop_Matrix = new ArrayList<ArrayList<Integer>>();
         for (int k = 0; k < Path_Matrix.size(); k++) { // for each vertex
             Hop_list = new ArrayList<Integer>();
@@ -293,6 +298,7 @@ public class Floyyd {
 
 
     public void count_paths2() {
+        // zliczanie trasy na podstawie macierzy sciezek oraz tworzenie mapy
         Hop_Matrix = new ArrayList<ArrayList<Integer>>();
         String_Path_Matrix = new ArrayList<ArrayList<String>>();
 
@@ -332,7 +338,7 @@ public class Floyyd {
                         //      Path_list.set ( i , xy.toString () );
                         hop++;
 
-                    } while (j != src);
+                    } while (j != src);  // proste dopoki nie jestem na zrodle to dodaje kolejny punkt do trasy
                     Hop_list.add(hop);
                     hop = 0;
                 } else {
@@ -344,7 +350,7 @@ public class Floyyd {
             String_Path_Matrix.add(Path_list);
         }
     }
-
+    // (printowanie sciezek miedzy wszystkimio wiierzcholkami do pliku)
     public void print_paths(ArrayList<ArrayList<String>> M) throws FileNotFoundException {   // tylko sposob wypisywania
         ArrayList<ArrayList<Integer>> wartosci = new ArrayList<ArrayList<Integer>>();
         ArrayList<ArrayList<Integer>> wartosci2 = new ArrayList<ArrayList<Integer>>();
@@ -429,6 +435,7 @@ public class Floyyd {
     String path_sum = "";
     Integer couter = 0;
 
+    // wybranie najkrotszej sciezki z 120 kombinacji
     public void choose_the_shortest(int xLength, ArrayList<Integer> v, ArrayList<ArrayList<Integer>> M) {
 
         ArrayList<OurMap> ways = new ArrayList<>(); // potrzebuje stworzyć bo chce duplikaty i dodawanie po koleji
@@ -438,12 +445,12 @@ public class Floyyd {
 
 
         for (int i = 0; i < v.size(); i++) {
-            for (int j = 0; j < v.size(); j++) {
+            for (int j = 0; j < v.size(); j++) {  // 5 petli bo tyle max paczek
                 if (j != i) {
                     for (int k = 0; k < v.size(); k++) {
                         if (k != j && k != i) {
                             for (int r = 0; r < v.size(); r++) {
-                                if (r != i && r != j && r != k) {
+                                if (r != i && r != j && r != k) {  // eliminacja sytuacji na tym samym wierzcholku
                                     for (int l = 0; l < v.size(); l++) {
                                         if (l != i && l != j && l != k && l != r) {
                                             hopsOfRoute = Hop_Matrix.get(0).get(v.get(i)) + Hop_Matrix.get(v.get(i)).get(v.get(j)) + Hop_Matrix.get(v.get(j)).get(v.get(k)) + Hop_Matrix.get(v.get(k)).get(v.get(r)) + Hop_Matrix.get(v.get(r)).get(v.get(l)) + Hop_Matrix.get(v.get(l)).get(0);
@@ -484,7 +491,7 @@ public class Floyyd {
         for (Integer i = 0; i < M.size(); i++) {
             for (Integer j = 0; j < M.size(); j++) {
                 if (i != j) {
-                    if (M.get(i).get(j) == 0) {
+                    if (M.get(i).get(j) == 0) {  // conversja 0 miejsc macierzy na wartość INF (jakas duza ktora robiu za nieskonczonosc)
                         M.get(i).set(j, INF);
                     }
                 }

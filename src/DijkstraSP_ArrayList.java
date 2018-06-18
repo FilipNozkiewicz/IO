@@ -238,6 +238,8 @@ public class DijkstraSP_ArrayList {
         System.out.println("\n");
     }
 
+
+    // (printowanie sciezek miedzy wszystkimio wiierzcholkami do pliku)
     public void print_paths(ArrayList<ArrayList<String>> M) throws FileNotFoundException {   // tylko sposob wypisywania
         ArrayList<ArrayList<Integer>> wartosci = new ArrayList<ArrayList<Integer>>();
         ArrayList<ArrayList<Integer>> wartosci2 = new ArrayList<ArrayList<Integer>>();
@@ -368,6 +370,7 @@ public class DijkstraSP_ArrayList {
 
     public void choose_the_shortest(int xLength, ArrayList<Integer> v, ArrayList<ArrayList<Integer>> M, ArrayList<ArrayList<Integer>> P) {
 
+        // 5 petli do wybrania  najlepszej trasy ze maksymalnie 120 kombinacji
         ArrayList<OurMap> ways = new ArrayList<>(); // potrzebuje stworzyć bo chce duplikaty i dodawanie po koleji
         Integer lengthOfRoute = 0;
         Integer hopsOfRoute = 0;
@@ -412,7 +415,7 @@ public class DijkstraSP_ArrayList {
 
     }
 
-    ArrayList<ArrayList<Integer>> alokuj() {
+    ArrayList<ArrayList<Integer>> alokuj() {  // przykladow dane testowe
 
         ArrayList<ArrayList<Integer>> M = new ArrayList<ArrayList<Integer>>(V);
         ArrayList<Integer> zero = new ArrayList<>(9);
@@ -428,7 +431,7 @@ public class DijkstraSP_ArrayList {
 
         zero.add(0);
         zero.add(4);
-        zero.add(0);
+        zero.add(0);   // przykladowa macierz sasiedztwa
         zero.add(0);
         zero.add(0);
         zero.add(0);

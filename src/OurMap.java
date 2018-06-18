@@ -10,8 +10,8 @@ public class OurMap {
     }
 
     OurMap(Integer key, Integer extraKey, String value) {
-        this.extraKey = extraKey;
-        this.key = key;
+        this.extraKey = extraKey;  // dystans
+        this.key = key;  // hopy
         this.value = value;
     }
 

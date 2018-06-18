@@ -9,13 +9,14 @@ class Graph {
     Integer V, E;    // deklaracjavierzcholkow i edgy
     ArrayList<Edge> edge_list;
 
-    public Graph(ArrayList<ArrayList<Integer>> M) {
+
+    public Graph(ArrayList<ArrayList<Integer>> M) { // argument to macierz sasiedztwa
 
         edge_list = new ArrayList<Edge>();
         this.V = M.size();
         this.E = 0;
-        for (Integer i = 0; i < M.size(); i++) {
-            for (Integer j = 0; j < M.size(); j++) {
+        for (Integer i = 0; i < M.size(); i++) {         // idac po calej macierzy znajduje niezerowe elementy
+            for (Integer j = 0; j < M.size(); j++) {        // i jesli taki mam to dodaje krawedz do grafu    // bo to oznacza ze mam polacznie
 
                 if (i != j) {
                     if (M.get(i).get(j) != INF) {
@@ -23,9 +24,9 @@ class Graph {
                         edge_list.add(edge);
                         this.E++;
                     }
-                }
-            }
-        }
+                }  // Graf zawiera krawedzie i werzcholki ogolnie na tej strukturze bazuje algorytm
+            }       // przyjmuje te same dane wejsciowe co Dijkstra ale przerabia calosc na graf skierowany
+        }           // a odpowiednie polaczenia to krawedzie w naszym przypadku jest zawsze obustronne miedzy kazda para wierzholkow
     }
 
 
@@ -50,14 +51,15 @@ public class Bellman_Arraylist {
     private ArrayList<Integer> Hop_list;
     private ArrayList<String> Path_list;
 
+    // Glowny Algorytm
     public void BellmanFord(ArrayList<ArrayList<Integer>> M, Integer src) {
 
 
         Graph graph = new Graph(M);
         Integer V = graph.V;
         Integer E = graph.E;
-        Hop_list = new ArrayList<Integer>();
-        Path_list = new ArrayList<String>();
+        Hop_list = new ArrayList<Integer>();  // Macierz ilosci hopow
+        Path_list = new ArrayList<String>();    // Macierz typu string to macierz tras miedzy posczegolnymi wszystkimi wierzcholkami
         //System.out.println (V);
         //System.out.println (E);
         // for(Integer i = 0 ; i < E  ; i++){
@@ -65,11 +67,11 @@ public class Bellman_Arraylist {
         //    }
 
 
-        ArrayList<Integer> dist = new ArrayList<Integer>();
-        ArrayList<Integer> pred = new ArrayList<Integer>();
+        ArrayList<Integer> dist = new ArrayList<Integer>();  // vector dystansow
+        ArrayList<Integer> pred = new ArrayList<Integer>(); // vector przodkow
 
         for (Integer i = 0; i < V; i++) {
-            dist.add(INF);
+            dist.add(INF);          // poczatkowo alokuje vectoy na INf co oznacza ze vierchlki nieosoagalne
             pred.add(INF);
             // pred.add ( 0 );
             Path_list.add("");
@@ -77,7 +79,7 @@ public class Bellman_Arraylist {
         }
 
         pred.set(src, src);
-        dist.set(src, 0);
+        dist.set(src, 0);      // dystans do zrodla wiadomo na 0 (bardzo wazne)
         for (Integer i = 0; i < V; i++) {
             for (Integer j = 0; j < E; j++) {
                 //  System.out.println (graph.edge_list.get ( E  ).src + "==>" +graph.edge_list.get ( E  ).dest);
@@ -211,7 +213,7 @@ public class Bellman_Arraylist {
         System.out.println("\n");
     }
 
-    ArrayList<ArrayList<Integer>> alokuj() {
+    ArrayList<ArrayList<Integer>> alokuj() {  // przykladowe dane testowe
 
         ArrayList<ArrayList<Integer>> M = new ArrayList<ArrayList<Integer>>();
         ArrayList<Integer> zero = new ArrayList<>(9);
@@ -226,7 +228,7 @@ public class Bellman_Arraylist {
 
 
         zero.add(0);
-        zero.add(4);
+        zero.add(4);            // przykladowa macierz sasiedztwa do testow
         zero.add(0);
         zero.add(0);
         zero.add(0);
@@ -328,6 +330,7 @@ public class Bellman_Arraylist {
         return M;
     }
 
+    // klasa zapisujaca zawartosc do pliku (trasy miedzy wszyskimi wierzcholkami)
     public void print_paths(ArrayList<ArrayList<String>> M) throws FileNotFoundException {   // tylko sposob wypisywania
         ArrayList<ArrayList<Integer>> wartosci = new ArrayList<ArrayList<Integer>>();
         ArrayList<ArrayList<Integer>> wartosci2 = new ArrayList<ArrayList<Integer>>();
@@ -400,8 +403,8 @@ public class Bellman_Arraylist {
         FileWrite.writefile("\n", "trasy2.txt");
     }
 
-    public void choose_the_shortest(ArrayList<Integer> v, ArrayList<ArrayList<Integer>> M) {
-
+    public void choose_the_shortest(ArrayList<Integer> v, ArrayList<ArrayList<Integer>> M) { // 5 petli do wybrania
+        // najlepszej trasy ze maksymalnie 120 kombinacji
         ArrayList<OurMap> ways = new ArrayList<>(); // potrzebuje stworzyć bo chce duplikaty i dodawanie po koleji
         Integer lengthOfRoute = 0;
         Integer hopsOfRoute = 0;
@@ -434,7 +437,7 @@ public class Bellman_Arraylist {
         OurMap shortestWay = ways.get(0);
         for (OurMap o : ways) {
             if (shortestWay.getKey() > o.getKey()) {
-                shortestWay = o;
+                shortestWay = o;         // wybranie najbardziej optymalnej trasy
             }
             //shortestWay.printMap();
             //o.printMap();

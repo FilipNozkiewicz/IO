@@ -3,6 +3,8 @@ import java.util.ArrayList;
 
 public class Main_Floyd {
 
+    // Klasa Testowa
+
     public static void main(String[] args) {
 
         AdjacentMatrixGenerator adjacentMatrixGenerator = new AdjacentMatrixGenerator();

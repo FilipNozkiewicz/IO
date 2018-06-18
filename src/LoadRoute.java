@@ -97,7 +97,7 @@ public class LoadRoute {
     }
 
     public static List<String> parseLine(String cvsLine, char separators, char customQuote) {
-
+            // ustawiane okreslonych symbolo jako defaultowe oraz walidacja bledow roznego rodzaju
         List<String> result = new ArrayList<>();
 
         //if empty, return!

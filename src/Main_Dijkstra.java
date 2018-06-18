@@ -2,6 +2,8 @@ import java.io.IOException;
 
 public class Main_Dijkstra {
 
+    // Klasa Testowa
+
     public static void main(String[] args) {
 
         AdjacentMatrixGenerator adjacentMatrixGenerator = new AdjacentMatrixGenerator();

@@ -1,7 +1,7 @@
 import java.io.*;
 import java.sql.Timestamp;
 
-public class FileWrite {
+public class FileWrite {  // Klasa nadpisujaca zawartosc do pliku
 
     public static void main(String[] args) throws Exception {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());

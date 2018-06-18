@@ -37,7 +37,7 @@ public class Parcel {
 
     public String getDescription() {
         String coordinates;
-        coordinates = " Coordinates: ( " +
+        coordinates = " Coordinates: ( " +    // wlasciwy zapois wspolrzednych
                 address.getX() + (" , ") + address.getY() + (" )");
         return coordinates;
     }
